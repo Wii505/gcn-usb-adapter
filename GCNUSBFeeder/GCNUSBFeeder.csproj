@@ -81,6 +81,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibUsbDotNet">
       <HintPath>C:\Program Files\LibUsbDotNet\LibUsbDotNet.dll</HintPath>

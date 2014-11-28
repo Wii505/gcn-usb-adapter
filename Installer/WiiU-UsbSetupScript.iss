@@ -3,7 +3,7 @@
 
 #define MyAppName "Wii U USB GCN adapter"
 #define MyAppVersion "1.0"
-#define MyAppPublisher "Matt Cunningham (Massive)"
+#define MyAppPublisher "Matt Cunningham"
 #define MyAppURL "https://github.com/elmassivo/GCN-USB-Adapter"
 #define MyAppExeName "GCNUSBFeeder.exe"
 
@@ -22,7 +22,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\GCNadapter
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-OutputBaseFilename=setup
+OutputBaseFilename=WiiU-UsbSetup
 SetupIconFile=E:\C#\GCNUSBFeeder\GCNUSBFeeder\icon.ico
 Compression=lzma
 SolidCompression=yes
@@ -34,25 +34,35 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "E:\C#\GCNUSBFeeder\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCNUSBFeeder\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCNUSBFeeder\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCNUSBFeeder\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCNUSBFeeder\GCNUSBFeeder\bin\x86\Release\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCNUSBFeeder\GCNUSBFeeder\bin\x86\Release\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "E:\GCNController\LibUSB\device specification.htm"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\GCNController\LibUSB\install.bat"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\GCNController\LibUSB\uninstall.bat"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\GCNController\LibUSB\installer_x64.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\GCNController\LibUSB\installer_x86.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\GCNController\LibUSB\install-filter.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\GCNController\LibUSB\libusb-win32-bin-README.txt"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\GCNController\LibUSB\WUP-028.cat"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\GCNController\LibUSB\WUP-028.inf"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\GCNController\vJoy_204_I220914.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\GCNController\ConfigJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\GCNController\UninstallJoysticks.bat"; DestDir: "{app}"
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\device specification.htm"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\install-filter.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\install.bat"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\installer_x64.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\installer_x86.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\libusb-win32-bin-README.txt"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\uninstall.bat"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\WUP-028.cat"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\WUP-028.inf"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.dll"; DestDir: "{app}\LibUSB\amd64"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.sys"; DestDir: "{app}\LibUSB\amd64"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.dll"; DestDir: "{app}\LibUSB\ia64"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.sys"; DestDir: "{app}\LibUSB\ia64"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\license\libusb-win32\installer_license.txt"; DestDir: "{app}\LibUSB\license\libusb-win32"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0.sys"; DestDir: "{app}\LibUSB\x86"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0_x86.dll"; DestDir: "{app}\LibUSB\x86"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0_x86.dll"; DestDir: "{sys}"; DestName: "libusb0.dll"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX86
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.dll"; DestDir: "{sys}"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX64
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.dll"; DestDir: "{sys}"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsI64
+Source: "E:\C#\GCN-USB-Adapter\vJoy\ConfigJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\vJoy\UninstallJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\vJoy\vJoy_204_I220914.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -60,18 +70,42 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
+Filename: "rundll32"; Parameters: "libusb0.dll,usb_install_driver_np_rundll {app}\LibUSB\WUP-028.inf"; Flags: waituntilterminated; StatusMsg: "Installing driver (this may take a few seconds) ..."
 Filename: "{app}\LibUSB\install.bat"; WorkingDir: "{app}\LibUSB"; Flags: shellexec waituntilterminated
 Filename: "{app}\vJoy_204_I220914.exe"; WorkingDir: "{app}"; Flags: waituntilterminated
 Filename: "{app}\ConfigJoysticks.bat"; WorkingDir: "{app}\vJoy"; Flags: shellexec waituntilterminated
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
 
-[Messages]
-english.WizardInfoBefore=Please make sure the Wii U Gamecube Adapter with no Controllers is plugged into your computer before running this installer.
-
 [Dirs]
 Name: "{app}\LibUSB"; Flags: deleteafterinstall
 Name: "{app}\vJoy"; Flags: deleteafterinstall
+Name: "{app}\LibUSB\amd64"
+Name: "{app}\LibUSB\ia64"
+Name: "{app}\LibUSB\license"
+Name: "{app}\LibUSB\license\libusb-win32"
+Name: "{app}\LibUSB\x86"
 
 [UninstallRun]
-Filename: "{app}\LibUSB\uninstall.bat"; WorkingDir: "{app}\LibUSB"; Flags: shellexec
 Filename: "{app}\UninstallJoysticks.bat"; WorkingDir: "{app}"; Flags: shellexec
+Filename: "{app}\LibUSB\uninstall.bat"; WorkingDir: "{app}\LibUSB"; Flags: shellexec waituntilterminated
+
+[Code]
+function IsX64: Boolean;
+begin
+  Result := Is64BitInstallMode and (ProcessorArchitecture = paX64);
+end;
+
+function IsI64: Boolean;
+begin
+  Result := Is64BitInstallMode and (ProcessorArchitecture = paIA64);
+end;
+
+function IsX86: Boolean;
+begin
+  Result := not IsX64 and not IsI64;
+end;
+
+function Is64: Boolean;
+begin
+  Result := IsX64 or IsI64;
+end;
