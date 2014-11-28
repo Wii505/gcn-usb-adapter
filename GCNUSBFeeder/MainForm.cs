@@ -12,7 +12,6 @@ namespace GCNUSBFeeder
 {
     public partial class MainForm : Form
     {
-        public static Queue<Driver.LogMessage> logQueue = null;
         Driver mainDriver;
         public MainForm()
         {
@@ -21,7 +20,6 @@ namespace GCNUSBFeeder
             Driver.Log += Driver_Log;
             JoystickHelper.Log += Driver_Log;
             FormClosing += MainForm_FormClosing;
-            logQueue = new Queue<Driver.LogMessage>();
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -86,6 +84,7 @@ namespace GCNUSBFeeder
 
         private void Driver_Log(object sender, Driver.LogEventArgs e)
         {
+            //Invoke to talk safely across threads
             if (InvokeRequired)
             {
                 EventHandler<Driver.LogEventArgs> hnd = new EventHandler<Driver.LogEventArgs>(Driver_Log);

@@ -14,11 +14,9 @@ namespace GCNUSBFeeder
     {
         public static event EventHandler<LogEventArgs> Log;
         public static bool run = false;
-        public Queue<LogMessage> LogQueue = null;
 
         public Driver()
         {
-            LogQueue = new Queue<LogMessage>();
         }
 
         public void Start()
@@ -111,9 +109,6 @@ namespace GCNUSBFeeder
                     // PORT 4: bytes 29-36
                     byte[] ReadBuffer = new byte[37]; // 32 (4 players x 8) bytes for input, 5 bytes for formatting
 
-                    //TODO: make this loop endable somehow.
-                    //Log(null, new LogEventArgs("Activating Joysticks"));
-
                     Log(null, new LogEventArgs("Driver successfully started, entering input loop."));
                     run = true;
                     while (run)
@@ -172,15 +167,5 @@ namespace GCNUSBFeeder
                 set { _text = value; }
             }
         }
-
-        public class LogMessage
-        {
-            public LogMessage(string input)
-            {
-                message = string.Copy(input);
-            }
-            public string message { get; set;}
-        }
-
     }
 }
