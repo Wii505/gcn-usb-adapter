@@ -14,6 +14,7 @@ namespace GCNUSBFeeder
     {
         public static event EventHandler<LogEventArgs> Log;
         public static bool run = false;
+        public static int refreshRate = 10;
 
         public Driver()
         {
@@ -125,7 +126,7 @@ namespace GCNUSBFeeder
                         if (gcn4ok) { JoystickHelper.setJoystick(ref gcn4, input4, 4); }
 
                         //wait before rechecking to prevent performance problems.
-                        System.Threading.Thread.Sleep(20);
+                        System.Threading.Thread.Sleep(refreshRate);
                     }
 
                     //If we never leave the while loop, we never need this.

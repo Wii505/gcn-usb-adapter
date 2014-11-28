@@ -52,8 +52,11 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.btnGamepadInfo = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.RichTextBox();
+            this.refreshRate = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.trayMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -102,43 +105,43 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem1});
             this.trayMenu.Name = "trayMenu";
-            this.trayMenu.Size = new System.Drawing.Size(153, 126);
+            this.trayMenu.Size = new System.Drawing.Size(114, 104);
             // 
             // restoreToolStripMenuItem
             // 
             this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.restoreToolStripMenuItem.Text = "&Restore";
             this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(110, 6);
             // 
             // startToolStripMenuItem1
             // 
             this.startToolStripMenuItem1.Name = "startToolStripMenuItem1";
-            this.startToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.startToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
             this.startToolStripMenuItem1.Text = "&Start";
             this.startToolStripMenuItem1.Click += new System.EventHandler(this.startToolStripMenuItem1_Click);
             // 
             // stopToolStripMenuItem1
             // 
             this.stopToolStripMenuItem1.Name = "stopToolStripMenuItem1";
-            this.stopToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.stopToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
             this.stopToolStripMenuItem1.Text = "S&top";
             this.stopToolStripMenuItem1.Click += new System.EventHandler(this.stopToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(110, 6);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
             this.exitToolStripMenuItem1.Text = "E&xit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -257,12 +260,55 @@
             this.txtLog.TabIndex = 1;
             this.txtLog.Text = "";
             // 
+            // refreshRate
+            // 
+            this.refreshRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.refreshRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.refreshRate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshRate.ForeColor = System.Drawing.Color.White;
+            this.refreshRate.Location = new System.Drawing.Point(578, 304);
+            this.refreshRate.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.refreshRate.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.refreshRate.Name = "refreshRate";
+            this.refreshRate.Size = new System.Drawing.Size(82, 23);
+            this.refreshRate.TabIndex = 6;
+            this.refreshRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.refreshRate.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.refreshRate.ValueChanged += new System.EventHandler(this.refreshRate_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(432, 309);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(143, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Refresh Rate (ms)";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(676, 408);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.refreshRate);
             this.Controls.Add(this.btnGamepadInfo);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.label1);
@@ -278,6 +324,7 @@
             this.trayMenu.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +354,7 @@
         public System.Windows.Forms.RichTextBox txtLog;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.NumericUpDown refreshRate;
+        private System.Windows.Forms.Label label2;
     }
 }

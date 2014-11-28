@@ -135,5 +135,15 @@ namespace GCNUSBFeeder
         {
             exitToolStripMenuItem_Click(sender, e);
         }
+
+        private void refreshRate_ValueChanged(object sender, EventArgs e)
+        {
+            Driver.refreshRate = Convert.ToInt32(refreshRate.Value);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
