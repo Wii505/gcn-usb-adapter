@@ -104,7 +104,7 @@ namespace GCNUSBFeeder
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!exit)
+            if (!exit && Driver.run)
             {
                 this.Hide();
                 e.Cancel = true;

@@ -73,7 +73,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 Filename: "rundll32"; Parameters: "libusb0.dll,usb_install_driver_np_rundll {app}\LibUSB\WUP-028.inf"; Flags: waituntilterminated; StatusMsg: "Installing driver (this may take a few seconds) ..."
 Filename: "{app}\LibUSB\install.bat"; WorkingDir: "{app}\LibUSB"; Flags: shellexec waituntilterminated
 Filename: "{app}\vJoy_204_I220914.exe"; WorkingDir: "{app}"; Flags: waituntilterminated
-Filename: "{app}\ConfigJoysticks.bat"; WorkingDir: "{app}\vJoy"; Flags: shellexec waituntilterminated
+Filename: "{app}\ConfigJoysticks.bat"; WorkingDir: "{app}"; Flags: waituntilterminated shellexec
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
 
 [Dirs]
