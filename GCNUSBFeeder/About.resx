@@ -699,7 +699,7 @@
   </data>
   <data name="textBoxDescription.Text" xml:space="preserve">
     <value>Project Home:
-https://github.com/elmassivo/GCN-USB-Adapter
+https://bitbucket.org/elmassivo/gcn-usb-adapter/
 
 Written in C#, this program feeds data to vJoy (a virtual joystick application) from a LibUsbDotNet HID driver.
 
