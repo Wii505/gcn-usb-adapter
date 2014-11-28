@@ -124,7 +124,7 @@ namespace GCNUSBFeeder
                         if (gcn3ok) { JoystickHelper.setJoystick(ref gcn3, input3, 3); }
                         if (gcn4ok) { JoystickHelper.setJoystick(ref gcn4, input4, 4); }
 
-                        //wait 10ms before rechecking (this is actually faster than the gamecube)
+                        //wait before rechecking to prevent performance problems.
                         System.Threading.Thread.Sleep(20);
                     }
 
