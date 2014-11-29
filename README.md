@@ -3,6 +3,7 @@ This is a vjoy feeder application written in C# using LibUsbDotNet.
 It allows one to communicate with the WUP-028, Wii U to Gamecube USB adapter.
 
 ==================================================================
+
 This driver has been confirmed to work on Windows 7 and Windows 8 so far.
 
 Install Instructions:
