@@ -1,6 +1,6 @@
 This is a vjoy feeder application written in C# using LibUsbDotNet. 
 
-It allows one to communicate with the WUP-028, Wii U to Gamecube USB adapter.
+It allows for communication with the WUP-028 model of the Wii U to Gamecube USB adapter.
 
 ==================================================================
 
