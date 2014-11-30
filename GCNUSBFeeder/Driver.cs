@@ -16,8 +16,17 @@ namespace GCNUSBFeeder
         public static bool run = false;
         public static int refreshRate = 10;
 
+        public static ControllerDeadZones gcn1DZ;
+        public static ControllerDeadZones gcn2DZ;
+        public static ControllerDeadZones gcn3DZ;
+        public static ControllerDeadZones gcn4DZ;
+
         public Driver()
         {
+            gcn1DZ = new ControllerDeadZones();
+            gcn2DZ = new ControllerDeadZones();
+            gcn3DZ = new ControllerDeadZones();
+            gcn4DZ = new ControllerDeadZones();
         }
 
         public void Start()
@@ -120,10 +129,10 @@ namespace GCNUSBFeeder
                         var input3 = GCNState.GetState(ReadBuffer.Skip(20).Take(8).ToArray());
                         var input4 = GCNState.GetState(ReadBuffer.Skip(29).Take(8).ToArray());
 
-                        if (gcn1ok) { JoystickHelper.setJoystick(ref gcn1, input1, 1); }
-                        if (gcn2ok) { JoystickHelper.setJoystick(ref gcn2, input2, 2); }
-                        if (gcn3ok) { JoystickHelper.setJoystick(ref gcn3, input3, 3); }
-                        if (gcn4ok) { JoystickHelper.setJoystick(ref gcn4, input4, 4); }
+                        if (gcn1ok) { JoystickHelper.setJoystick(ref gcn1, input1, 1, gcn1DZ); }
+                        if (gcn2ok) { JoystickHelper.setJoystick(ref gcn2, input2, 2, gcn2DZ); }
+                        if (gcn3ok) { JoystickHelper.setJoystick(ref gcn3, input3, 3, gcn3DZ); }
+                        if (gcn4ok) { JoystickHelper.setJoystick(ref gcn4, input4, 4, gcn4DZ); }
 
                         //wait before rechecking to prevent performance problems.
                         System.Threading.Thread.Sleep(refreshRate);

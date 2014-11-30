@@ -9,24 +9,33 @@ namespace GCNUSBFeeder
     public class JoystickHelper
     {
         public static event EventHandler<Driver.LogEventArgs> Log;
-        public static void setJoystick(ref vJoy joystick, GCNState input, uint joystickID)
+        public static void setJoystick(ref vJoy joystick, GCNState input, uint joystickID, ControllerDeadZones deadZones)
         {
             bool res;
+            int multi = 126; // 255*126 is 32130, which is close to max int16: 32768
             
+            //TODO: Add deadzone to stick calculations.
+
             //analog stick
-            res = joystick.SetAxis(input.analogX, joystickID, HID_USAGES.HID_USAGE_X);
-            res = joystick.SetAxis((255-input.analogY), joystickID, HID_USAGES.HID_USAGE_Y);
+            res = joystick.SetAxis(input.analogX * multi, joystickID, HID_USAGES.HID_USAGE_X);
+            res = joystick.SetAxis((255 - input.analogY) * multi, joystickID, HID_USAGES.HID_USAGE_Y);
 
             //c-stick
-            res = joystick.SetAxis(input.cstickX, joystickID, HID_USAGES.HID_USAGE_RX);
-            res = joystick.SetAxis(255-input.cstickY, joystickID, HID_USAGES.HID_USAGE_RY);
+            res = joystick.SetAxis(input.cstickX * multi, joystickID, HID_USAGES.HID_USAGE_RX);
+            res = joystick.SetAxis((255 - input.cstickY) * multi, joystickID, HID_USAGES.HID_USAGE_RY);
 
             //triggers
-            res = joystick.SetAxis(input.analogL, joystickID, HID_USAGES.HID_USAGE_Z);
-            res = joystick.SetAxis(input.analogR, joystickID, HID_USAGES.HID_USAGE_RZ);
+            res = joystick.SetAxis(input.analogL * multi, joystickID, HID_USAGES.HID_USAGE_Z);
+            res = joystick.SetAxis(input.analogR * multi, joystickID, HID_USAGES.HID_USAGE_RZ);
 
             //dpad
-            res = joystick.SetDiscPov(input.POVstate, joystickID, 1);
+
+            //res = joystick.SetDiscPov(input.POVstate, joystickID, 1);
+
+            res = joystick.SetBtn(input.up, joystickID, 9);
+            res = joystick.SetBtn(input.down, joystickID, 10);
+            res = joystick.SetBtn(input.left, joystickID, 11);
+            res = joystick.SetBtn(input.right, joystickID, 12);
 
             //buttons
             res = joystick.SetBtn(input.A, joystickID, 1);

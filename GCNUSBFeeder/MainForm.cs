@@ -19,6 +19,8 @@ namespace GCNUSBFeeder
             InitializeComponent();
             Driver.Log += Driver_Log;
             JoystickHelper.Log += Driver_Log;
+            Configuration.Log += Driver_Log;
+
             FormClosing += MainForm_FormClosing;
         }
 
@@ -141,9 +143,15 @@ namespace GCNUSBFeeder
             Driver.refreshRate = Convert.ToInt32(refreshRate.Value);
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void configBtn_Click(object sender, EventArgs e)
         {
+            Configuration c = new Configuration();
+            c.ShowDialog();
+        }
 
+        private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            configBtn_Click(sender, e);
         }
     }
 }

@@ -54,6 +54,8 @@
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.refreshRate = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.configBtn = new System.Windows.Forms.Button();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trayMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).BeginInit();
@@ -206,6 +208,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.configurationToolStripMenuItem,
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -215,7 +218,7 @@
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
             this.aboutToolStripMenuItem1.Text = "&About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
@@ -224,7 +227,7 @@
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStop.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStop.ForeColor = System.Drawing.Color.White;
-            this.btnStop.Location = new System.Drawing.Point(428, 107);
+            this.btnStop.Location = new System.Drawing.Point(431, 103);
             this.btnStop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(232, 35);
@@ -266,7 +269,7 @@
             this.refreshRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.refreshRate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshRate.ForeColor = System.Drawing.Color.White;
-            this.refreshRate.Location = new System.Drawing.Point(578, 304);
+            this.refreshRate.Location = new System.Drawing.Point(581, 304);
             this.refreshRate.Maximum = new decimal(new int[] {
             30,
             0,
@@ -299,7 +302,27 @@
             this.label2.Size = new System.Drawing.Size(143, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Refresh Rate (ms)";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // configBtn
+            // 
+            this.configBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.configBtn.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.configBtn.ForeColor = System.Drawing.Color.White;
+            this.configBtn.Location = new System.Drawing.Point(431, 219);
+            this.configBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.configBtn.Name = "configBtn";
+            this.configBtn.Size = new System.Drawing.Size(232, 35);
+            this.configBtn.TabIndex = 8;
+            this.configBtn.Text = "Gamepad Configuration";
+            this.configBtn.UseVisualStyleBackColor = true;
+            this.configBtn.Click += new System.EventHandler(this.configBtn_Click);
+            // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.configurationToolStripMenuItem.Text = "Configuration";
+            this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -307,6 +330,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(676, 408);
+            this.Controls.Add(this.configBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.refreshRate);
             this.Controls.Add(this.btnGamepadInfo);
@@ -356,5 +380,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.NumericUpDown refreshRate;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button configBtn;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
     }
 }
