@@ -48,17 +48,14 @@
             this.closeToTrayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnGamepadInfo = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.RichTextBox();
-            this.refreshRate = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.configBtn = new System.Windows.Forms.Button();
-            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trayMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -215,6 +212,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.aboutToolStripMenuItem.Text = "&Help";
             // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.configurationToolStripMenuItem.Text = "Configuration";
+            this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
@@ -263,52 +267,12 @@
             this.txtLog.TabIndex = 1;
             this.txtLog.Text = "";
             // 
-            // refreshRate
-            // 
-            this.refreshRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.refreshRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.refreshRate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshRate.ForeColor = System.Drawing.Color.White;
-            this.refreshRate.Location = new System.Drawing.Point(581, 304);
-            this.refreshRate.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.refreshRate.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.refreshRate.Name = "refreshRate";
-            this.refreshRate.Size = new System.Drawing.Size(82, 23);
-            this.refreshRate.TabIndex = 6;
-            this.refreshRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.refreshRate.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.refreshRate.ValueChanged += new System.EventHandler(this.refreshRate_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(432, 309);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Refresh Rate (ms)";
-            // 
             // configBtn
             // 
             this.configBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.configBtn.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.configBtn.ForeColor = System.Drawing.Color.White;
-            this.configBtn.Location = new System.Drawing.Point(431, 219);
+            this.configBtn.Location = new System.Drawing.Point(431, 318);
             this.configBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.configBtn.Name = "configBtn";
             this.configBtn.Size = new System.Drawing.Size(232, 35);
@@ -317,13 +281,6 @@
             this.configBtn.UseVisualStyleBackColor = true;
             this.configBtn.Click += new System.EventHandler(this.configBtn_Click);
             // 
-            // configurationToolStripMenuItem
-            // 
-            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.configurationToolStripMenuItem.Text = "Configuration";
-            this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
@@ -331,8 +288,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(676, 408);
             this.Controls.Add(this.configBtn);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.refreshRate);
             this.Controls.Add(this.btnGamepadInfo);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.label1);
@@ -348,7 +303,6 @@
             this.trayMenu.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,8 +332,6 @@
         public System.Windows.Forms.RichTextBox txtLog;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.NumericUpDown refreshRate;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button configBtn;
         private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
     }

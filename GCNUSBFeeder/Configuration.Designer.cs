@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuration));
             this.label2 = new System.Windows.Forms.Label();
             this.refreshRate = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -176,11 +177,6 @@
             this.port1AX.ForeColor = System.Drawing.Color.White;
             this.port1AX.Location = new System.Drawing.Point(149, 34);
             this.port1AX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port1AX.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port1AX.Name = "port1AX";
             this.port1AX.Size = new System.Drawing.Size(109, 23);
             this.port1AX.TabIndex = 2;
@@ -212,11 +208,6 @@
             this.port1AY.ForeColor = System.Drawing.Color.White;
             this.port1AY.Location = new System.Drawing.Point(149, 65);
             this.port1AY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port1AY.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port1AY.Name = "port1AY";
             this.port1AY.Size = new System.Drawing.Size(109, 23);
             this.port1AY.TabIndex = 3;
@@ -248,11 +239,6 @@
             this.port1CX.ForeColor = System.Drawing.Color.White;
             this.port1CX.Location = new System.Drawing.Point(149, 100);
             this.port1CX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port1CX.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port1CX.Name = "port1CX";
             this.port1CX.Size = new System.Drawing.Size(109, 23);
             this.port1CX.TabIndex = 4;
@@ -284,11 +270,6 @@
             this.port1CY.ForeColor = System.Drawing.Color.White;
             this.port1CY.Location = new System.Drawing.Point(149, 134);
             this.port1CY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port1CY.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port1CY.Name = "port1CY";
             this.port1CY.Size = new System.Drawing.Size(109, 23);
             this.port1CY.TabIndex = 5;
@@ -321,7 +302,7 @@
             this.port1LT.Location = new System.Drawing.Point(149, 167);
             this.port1LT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port1LT.Maximum = new decimal(new int[] {
-            255,
+            200,
             0,
             0,
             0});
@@ -357,7 +338,7 @@
             this.port1RT.Location = new System.Drawing.Point(149, 202);
             this.port1RT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port1RT.Maximum = new decimal(new int[] {
-            255,
+            200,
             0,
             0,
             0});
@@ -451,11 +432,6 @@
             this.port2AX.ForeColor = System.Drawing.Color.White;
             this.port2AX.Location = new System.Drawing.Point(149, 34);
             this.port2AX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port2AX.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port2AX.Name = "port2AX";
             this.port2AX.Size = new System.Drawing.Size(109, 23);
             this.port2AX.TabIndex = 8;
@@ -475,7 +451,7 @@
             this.port2RT.Location = new System.Drawing.Point(149, 202);
             this.port2RT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port2RT.Maximum = new decimal(new int[] {
-            255,
+            200,
             0,
             0,
             0});
@@ -497,11 +473,6 @@
             this.port2AY.ForeColor = System.Drawing.Color.White;
             this.port2AY.Location = new System.Drawing.Point(149, 65);
             this.port2AY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port2AY.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port2AY.Name = "port2AY";
             this.port2AY.Size = new System.Drawing.Size(109, 23);
             this.port2AY.TabIndex = 9;
@@ -547,7 +518,7 @@
             this.port2LT.Location = new System.Drawing.Point(149, 167);
             this.port2LT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port2LT.Maximum = new decimal(new int[] {
-            255,
+            200,
             0,
             0,
             0});
@@ -569,11 +540,6 @@
             this.port2CX.ForeColor = System.Drawing.Color.White;
             this.port2CX.Location = new System.Drawing.Point(149, 100);
             this.port2CX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port2CX.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port2CX.Name = "port2CX";
             this.port2CX.Size = new System.Drawing.Size(109, 23);
             this.port2CX.TabIndex = 10;
@@ -618,11 +584,6 @@
             this.port2CY.ForeColor = System.Drawing.Color.White;
             this.port2CY.Location = new System.Drawing.Point(149, 134);
             this.port2CY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port2CY.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port2CY.Name = "port2CY";
             this.port2CY.Size = new System.Drawing.Size(109, 23);
             this.port2CY.TabIndex = 11;
@@ -690,11 +651,6 @@
             this.port3AX.ForeColor = System.Drawing.Color.White;
             this.port3AX.Location = new System.Drawing.Point(149, 34);
             this.port3AX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port3AX.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port3AX.Name = "port3AX";
             this.port3AX.Size = new System.Drawing.Size(109, 23);
             this.port3AX.TabIndex = 14;
@@ -714,7 +670,7 @@
             this.port3RT.Location = new System.Drawing.Point(149, 202);
             this.port3RT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port3RT.Maximum = new decimal(new int[] {
-            255,
+            200,
             0,
             0,
             0});
@@ -736,11 +692,6 @@
             this.port3AY.ForeColor = System.Drawing.Color.White;
             this.port3AY.Location = new System.Drawing.Point(149, 65);
             this.port3AY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port3AY.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port3AY.Name = "port3AY";
             this.port3AY.Size = new System.Drawing.Size(109, 23);
             this.port3AY.TabIndex = 15;
@@ -786,7 +737,7 @@
             this.port3LT.Location = new System.Drawing.Point(149, 167);
             this.port3LT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port3LT.Maximum = new decimal(new int[] {
-            255,
+            200,
             0,
             0,
             0});
@@ -808,11 +759,6 @@
             this.port3CX.ForeColor = System.Drawing.Color.White;
             this.port3CX.Location = new System.Drawing.Point(149, 100);
             this.port3CX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port3CX.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port3CX.Name = "port3CX";
             this.port3CX.Size = new System.Drawing.Size(109, 23);
             this.port3CX.TabIndex = 16;
@@ -857,11 +803,6 @@
             this.port3CY.ForeColor = System.Drawing.Color.White;
             this.port3CY.Location = new System.Drawing.Point(149, 134);
             this.port3CY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port3CY.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port3CY.Name = "port3CY";
             this.port3CY.Size = new System.Drawing.Size(109, 23);
             this.port3CY.TabIndex = 17;
@@ -929,11 +870,6 @@
             this.port4AX.ForeColor = System.Drawing.Color.White;
             this.port4AX.Location = new System.Drawing.Point(149, 34);
             this.port4AX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port4AX.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port4AX.Name = "port4AX";
             this.port4AX.Size = new System.Drawing.Size(109, 23);
             this.port4AX.TabIndex = 20;
@@ -953,7 +889,7 @@
             this.port4RT.Location = new System.Drawing.Point(149, 202);
             this.port4RT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port4RT.Maximum = new decimal(new int[] {
-            255,
+            200,
             0,
             0,
             0});
@@ -975,11 +911,6 @@
             this.port4AY.ForeColor = System.Drawing.Color.White;
             this.port4AY.Location = new System.Drawing.Point(149, 65);
             this.port4AY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port4AY.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port4AY.Name = "port4AY";
             this.port4AY.Size = new System.Drawing.Size(109, 23);
             this.port4AY.TabIndex = 21;
@@ -1025,7 +956,7 @@
             this.port4LT.Location = new System.Drawing.Point(149, 167);
             this.port4LT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port4LT.Maximum = new decimal(new int[] {
-            255,
+            200,
             0,
             0,
             0});
@@ -1047,11 +978,6 @@
             this.port4CX.ForeColor = System.Drawing.Color.White;
             this.port4CX.Location = new System.Drawing.Point(149, 100);
             this.port4CX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port4CX.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port4CX.Name = "port4CX";
             this.port4CX.Size = new System.Drawing.Size(109, 23);
             this.port4CX.TabIndex = 22;
@@ -1096,11 +1022,6 @@
             this.port4CY.ForeColor = System.Drawing.Color.White;
             this.port4CY.Location = new System.Drawing.Point(149, 134);
             this.port4CY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.port4CY.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.port4CY.Name = "port4CY";
             this.port4CY.Size = new System.Drawing.Size(109, 23);
             this.port4CY.TabIndex = 23;
@@ -1155,10 +1076,10 @@
             this.Controls.Add(this.refreshRate);
             this.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Configuration";
             this.Text = "Gamepad Configuration";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).EndInit();

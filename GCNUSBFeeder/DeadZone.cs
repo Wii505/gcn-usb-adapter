@@ -39,13 +39,40 @@ namespace GCNUSBFeeder
             centerY = cY;
         }
 
+        //elliptical deadzone
         public bool inDeadZone(int x, int y)
         {
             // MATH <3
             double value = (Math.Pow(x - centerX, 2) / Math.Pow(xRadius, 2)) +
                            (Math.Pow(y - centerY, 2) / Math.Pow(yRadius, 2));
-
             if (value <= 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //square deadzones (redundant with linear?)
+        public bool inDeadZoneX(int x)
+        {
+            if (x >= centerX-xRadius &&
+                x <= centerX+xRadius)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool InDeadZoneY(int y)
+        {
+            if (y >= centerY - yRadius &&
+                y <= centerY + yRadius)
             {
                 return true;
             }

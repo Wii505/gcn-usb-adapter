@@ -95,7 +95,6 @@ namespace GCNUSBFeeder
                         {
                             gcn3ok = true;
                             gcn3.ResetAll();
-
                         }
                         if (JoystickHelper.checkJoystick(ref gcn4, 4) && gcn4.AcquireVJD(4))
                         {
@@ -138,7 +137,6 @@ namespace GCNUSBFeeder
                         System.Threading.Thread.Sleep(refreshRate);
                     }
 
-                    //If we never leave the while loop, we never need this.
                     if (GCNAdapter != null)
                     {
                         if (GCNAdapter.IsOpen)
@@ -158,14 +156,14 @@ namespace GCNUSBFeeder
             }
             else
             {
-                Log(null, new LogEventArgs("GCN Adapter not detected"));
+                Log(null, new LogEventArgs("GCN Adapter not detected."));
                 Driver.run = false;
             }
         }
 
         public class LogEventArgs : EventArgs
         {
-            public LogEventArgs(string text="")
+            public LogEventArgs(string text = "")
             {
                 _text = text;
             }

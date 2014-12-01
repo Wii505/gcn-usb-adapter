@@ -20,8 +20,9 @@ namespace GCNUSBFeeder
             Driver.Log += Driver_Log;
             JoystickHelper.Log += Driver_Log;
             Configuration.Log += Driver_Log;
-
             FormClosing += MainForm_FormClosing;
+
+            Configuration.PropogateSettings();
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -136,11 +137,6 @@ namespace GCNUSBFeeder
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             exitToolStripMenuItem_Click(sender, e);
-        }
-
-        private void refreshRate_ValueChanged(object sender, EventArgs e)
-        {
-            Driver.refreshRate = Convert.ToInt32(refreshRate.Value);
         }
 
         private void configBtn_Click(object sender, EventArgs e)
