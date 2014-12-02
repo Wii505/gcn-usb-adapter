@@ -107,16 +107,19 @@ namespace GCNUSBFeeder
 
         private void Driver_Log(object sender, Driver.LogEventArgs e)
         {
-            //Invoke to talk safely across threads
-            if (InvokeRequired)
+            if (!exit)
             {
-                EventHandler<Driver.LogEventArgs> hnd = new EventHandler<Driver.LogEventArgs>(Driver_Log);
-                Invoke(hnd, new object[] { sender, e });
-                return;
+                //Invoke to talk safely across threads
+                if (InvokeRequired)
+                {
+                    EventHandler<Driver.LogEventArgs> hnd = new EventHandler<Driver.LogEventArgs>(Driver_Log);
+                    Invoke(hnd, new object[] { sender, e });
+                    return;
+                }
+                txtLog.Text += "\n" + e.Text;
+                txtLog.SelectionStart = txtLog.TextLength;
+                txtLog.ScrollToCaret();
             }
-            txtLog.Text += "\n" + e.Text;
-            txtLog.SelectionStart = txtLog.TextLength;
-            txtLog.ScrollToCaret();
         }
 
         private void trayIcon_DoubleClick(object sender, EventArgs e)
