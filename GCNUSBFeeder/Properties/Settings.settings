@@ -18,10 +18,10 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="port1LT" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">40</Value>
     </Setting>
     <Setting Name="port1RT" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">40</Value>
     </Setting>
     <Setting Name="port2AX" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
@@ -36,10 +36,10 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="port2LT" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">40</Value>
     </Setting>
     <Setting Name="port2RT" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">40</Value>
     </Setting>
     <Setting Name="port3AX" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
@@ -54,10 +54,10 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="port3LT" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">40</Value>
     </Setting>
     <Setting Name="port3RT" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">40</Value>
     </Setting>
     <Setting Name="port4AX" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
@@ -72,10 +72,10 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="port4LT" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">40</Value>
     </Setting>
     <Setting Name="port4RT" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">40</Value>
     </Setting>
     <Setting Name="autoStart" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

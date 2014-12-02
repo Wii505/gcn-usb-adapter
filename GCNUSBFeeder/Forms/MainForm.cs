@@ -115,6 +115,8 @@ namespace GCNUSBFeeder
                 return;
             }
             txtLog.Text += "\n" + e.Text;
+            txtLog.SelectionStart = txtLog.TextLength;
+            txtLog.ScrollToCaret();
         }
 
         private void trayIcon_DoubleClick(object sender, EventArgs e)

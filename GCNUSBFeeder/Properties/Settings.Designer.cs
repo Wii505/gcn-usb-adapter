@@ -85,7 +85,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public int port1LT {
             get {
                 return ((int)(this["port1LT"]));
@@ -97,7 +97,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public int port1RT {
             get {
                 return ((int)(this["port1RT"]));
@@ -157,7 +157,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public int port2LT {
             get {
                 return ((int)(this["port2LT"]));
@@ -169,7 +169,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public int port2RT {
             get {
                 return ((int)(this["port2RT"]));
@@ -229,7 +229,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public int port3LT {
             get {
                 return ((int)(this["port3LT"]));
@@ -241,7 +241,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public int port3RT {
             get {
                 return ((int)(this["port3RT"]));
@@ -301,7 +301,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public int port4LT {
             get {
                 return ((int)(this["port4LT"]));
@@ -313,7 +313,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public int port4RT {
             get {
                 return ((int)(this["port4RT"]));

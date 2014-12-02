@@ -295,7 +295,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 19;
-            this.label6.Text = "L Trigger";
+            this.label6.Text = "L-Trigger";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // port1LT
@@ -316,7 +316,7 @@
             this.port1LT.TabIndex = 6;
             this.port1LT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.port1LT.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -352,7 +352,7 @@
             this.port1RT.TabIndex = 7;
             this.port1RT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.port1RT.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -465,7 +465,7 @@
             this.port2RT.TabIndex = 13;
             this.port2RT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.port2RT.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -498,7 +498,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 13);
             this.label10.TabIndex = 19;
-            this.label10.Text = "L Trigger";
+            this.label10.Text = "L-Trigger";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label11
@@ -532,7 +532,7 @@
             this.port2LT.TabIndex = 12;
             this.port2LT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.port2LT.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -684,7 +684,7 @@
             this.port3RT.TabIndex = 19;
             this.port3RT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.port3RT.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -717,7 +717,7 @@
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(79, 13);
             this.label16.TabIndex = 19;
-            this.label16.Text = "L Trigger";
+            this.label16.Text = "L-Trigger";
             this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label17
@@ -751,7 +751,7 @@
             this.port3LT.TabIndex = 18;
             this.port3LT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.port3LT.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -903,7 +903,7 @@
             this.port4RT.TabIndex = 25;
             this.port4RT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.port4RT.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -936,7 +936,7 @@
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(79, 13);
             this.label22.TabIndex = 19;
-            this.label22.Text = "L Trigger";
+            this.label22.Text = "L-Trigger";
             this.label22.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label23
@@ -970,7 +970,7 @@
             this.port4LT.TabIndex = 24;
             this.port4LT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.port4LT.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
