@@ -12,8 +12,8 @@ namespace GCNUSBFeeder
 {
     public partial class MainForm : Form
     {
-
         public static bool autoStart = false;
+        public static bool startInTray = false;
         Driver mainDriver;
         public MainForm()
         {
@@ -24,13 +24,25 @@ namespace GCNUSBFeeder
             SystemHelper.Log       += Driver_Log;
             Configuration.Log      += Driver_Log;
             Configuration.StopProc += btnStop_Click;
-            FormClosing            += MainForm_FormClosing;
-
+            this.FormClosing       += MainForm_FormClosing;
+            this.FormClosed        += MainForm_FormClosed; //required since we're starting minimzed now
+            
             Configuration.PropogateSettings();
-
             SystemHelper.checkForMissingDrivers();
 
-            if (autoStart) btnStart_Click(null, EventArgs.Empty);
+            if (startInTray)
+            {
+                this.Hide();
+            }
+            else
+            {
+                this.Show();
+            }
+            if (autoStart) 
+            { 
+                btnStart_Click(null, EventArgs.Empty); 
+            }
+
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -121,6 +133,12 @@ namespace GCNUSBFeeder
                 e.Cancel = true;
             }
         }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
 
         private void btnGamepadInfo_Click(object sender, EventArgs e)
         {

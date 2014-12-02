@@ -117,7 +117,7 @@ namespace GCNUSBFeeder
                          gcn3ok &&
                          gcn4ok))
                     {
-                        Log(null, new LogEventArgs("Warning: Gamepads may not be configured properly. (try Configuration > ConfigureJoysticks.bat)"));
+                        Log(null, new LogEventArgs("Warning: Gamepads may not be configured properly. (Try Configuration > ConfigJoysticks.bat)"));
                     }
 
                     // PORT 1: bytes 02-09
@@ -171,19 +171,19 @@ namespace GCNUSBFeeder
         //Ugly, but faster than linq, at the very least.
         private byte[] getFastInput1(ref byte[] input)
         {
-            return new byte[] { input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9] };
+            return new byte[] { input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9] };
         }
         private byte[] getFastInput2(ref byte[] input)
         {
-            return new byte[] { input[11], input[12], input[13], input[14], input[15], input[16], input[17], input[18] };
+            return new byte[] { input[10], input[11], input[12], input[13], input[14], input[15], input[16], input[17], input[18] };
         }
         private byte[] getFastInput3(ref byte[] input)
         {
-            return new byte[] { input[20], input[21], input[22], input[23], input[24], input[25], input[26], input[27] };
+            return new byte[] { input[19], input[20], input[21], input[22], input[23], input[24], input[25], input[26], input[27] };
         }
         private byte[] getFastInput4(ref byte[] input)
         {
-            return new byte[] { input[29], input[30], input[31], input[32], input[33], input[34], input[35], input[36] };
+            return new byte[] { input[28], input[29], input[30], input[31], input[32], input[33], input[34], input[35], input[36] };
         }
 
         public class LogEventArgs : EventArgs

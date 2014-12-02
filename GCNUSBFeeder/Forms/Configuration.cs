@@ -27,7 +27,7 @@ namespace GCNUSBFeeder
 
             cbAutoStart.Checked = (bool)Settings.Default["autoStart"];
             cbStartWithWindows.Checked = (bool)Settings.Default["startWithWindows"];
-
+            cbStartInTray.Checked = (bool)Settings.Default["startInTray"];
 
             refreshRate.Value = (int)Settings.Default["refreshRate"];
 
@@ -65,6 +65,7 @@ namespace GCNUSBFeeder
         {
             Settings.Default["autoStart"] = cbAutoStart.Checked;
             Settings.Default["startWithWindows"] = cbStartWithWindows.Checked;
+            Settings.Default["startInTray"] = cbStartInTray.Checked;
 
             Settings.Default["refreshRate"] = Convert.ToInt32(refreshRate.Value);
 
@@ -120,7 +121,8 @@ namespace GCNUSBFeeder
                 SystemHelper.removeFromStartup();
             }
 
-            MainForm.autoStart  = (bool)Settings.Default["autoStart"];
+            MainForm.autoStart   = (bool)Settings.Default["autoStart"];
+            MainForm.startInTray = (bool)Settings.Default["startInTray"];
 
             Driver.refreshRate                 = (int)Settings.Default["refreshRate"];
             
@@ -170,6 +172,5 @@ namespace GCNUSBFeeder
             }
             SystemHelper.RunLibUsbInstall();
         }
-
     }
 }

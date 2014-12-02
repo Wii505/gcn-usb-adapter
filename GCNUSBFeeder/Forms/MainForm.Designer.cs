@@ -314,6 +314,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximumSize = new System.Drawing.Size(692, 446);
+            this.MinimumSize = new System.Drawing.Size(692, 446);
             this.Name = "MainForm";
             this.Text = "Gamecube USB Adapter Driver - v2.0";
             this.trayMenu.ResumeLayout(false);

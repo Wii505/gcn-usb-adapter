@@ -19,12 +19,26 @@ namespace GCNUSBFeeder
         public static RegistryKey registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
         public static void addToStartup()
         {
-            registryRun.SetValue("GCNAdapter", Application.ExecutablePath.ToString());
+            try
+            {
+                registryRun.SetValue("GCNAdapter", Application.ExecutablePath.ToString());
+            }
+            catch
+            {
+                Log(null, new Driver.LogEventArgs("Unable to set a startup object. (Are you running as administrator?"));
+            }
         }
 
         public static void removeFromStartup()
         {
-            registryRun.DeleteValue("GCNAdapter", false);
+            try
+            {
+                registryRun.DeleteValue("GCNAdapter", false);
+            }
+            catch
+            {
+
+            }
         }
 
         public static bool isOnStartUp()
@@ -44,22 +58,29 @@ namespace GCNUSBFeeder
         {
             bool vJoy   = false;
             bool libUsb = false;
-            SelectQuery query = new SelectQuery("Win32_SystemDriver");
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
-            var drivers = searcher.Get();
-            foreach (var d in drivers)
+            try
             {
-                if (d["Name"].ToString() == "vjoy") vJoy = true;
-                if (d["Name"].ToString().Contains("libusb")) libUsb = true;
-                if (vJoy && libUsb) break;
+                SelectQuery query = new SelectQuery("Win32_SystemDriver");
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
+                var drivers = searcher.Get();
+                foreach (var d in drivers)
+                {
+                    if (d["Name"].ToString() == "vjoy") vJoy = true;
+                    if (d["Name"].ToString().Contains("libusb")) libUsb = true;
+                    if (vJoy && libUsb) break;
+                }
+                if (!libUsb)
+                {
+                    Log(null, new Driver.LogEventArgs("LibUSB was not detected, please rerun the installer."));
+                }
+                if (!vJoy)
+                {
+                    Log(null, new Driver.LogEventArgs("vJoy was not detected, please rerun the installer."));
+                }
             }
-            if (!libUsb)
+            catch
             {
-                Log(null, new Driver.LogEventArgs("LibUSB was not detected, please rerun the installer."));
-            }
-            if (!vJoy)
-            {
-                Log(null, new Driver.LogEventArgs("vJoy was not detected, please rerun the installer."));
+                Log(null, new Driver.LogEventArgs("Driver check failed, (Are you running as Administrator?)"));
             }
         }
 

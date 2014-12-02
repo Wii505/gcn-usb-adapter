@@ -13,7 +13,8 @@ namespace GCNUSBFeeder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());            
+            MainForm form = new MainForm();
+            Application.Run();
         }
     }
 }

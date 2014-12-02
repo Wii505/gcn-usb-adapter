@@ -89,6 +89,7 @@
             this.cbStartWithWindows = new System.Windows.Forms.CheckBox();
             this.btnFixVjoy = new System.Windows.Forms.Button();
             this.BtnFixLibUsb = new System.Windows.Forms.Button();
+            this.cbStartInTray = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).BeginInit();
@@ -1069,12 +1070,12 @@
             this.cbAutoStart.AutoSize = true;
             this.cbAutoStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbAutoStart.ForeColor = System.Drawing.Color.White;
-            this.cbAutoStart.Location = new System.Drawing.Point(43, 25);
+            this.cbAutoStart.Location = new System.Drawing.Point(43, 12);
             this.cbAutoStart.Name = "cbAutoStart";
             this.cbAutoStart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cbAutoStart.Size = new System.Drawing.Size(232, 17);
             this.cbAutoStart.TabIndex = 28;
-            this.cbAutoStart.Text = "Automatically start Driver";
+            this.cbAutoStart.Text = "Automatically start driver";
             this.cbAutoStart.UseVisualStyleBackColor = true;
             // 
             // cbStartWithWindows
@@ -1082,7 +1083,7 @@
             this.cbStartWithWindows.AutoSize = true;
             this.cbStartWithWindows.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbStartWithWindows.ForeColor = System.Drawing.Color.White;
-            this.cbStartWithWindows.Location = new System.Drawing.Point(11, 48);
+            this.cbStartWithWindows.Location = new System.Drawing.Point(11, 58);
             this.cbStartWithWindows.Name = "cbStartWithWindows";
             this.cbStartWithWindows.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cbStartWithWindows.Size = new System.Drawing.Size(264, 17);
@@ -1119,12 +1120,27 @@
             this.BtnFixLibUsb.UseVisualStyleBackColor = true;
             this.BtnFixLibUsb.Click += new System.EventHandler(this.BtnFixLibUsb_Click);
             // 
+            // cbStartInTray
+            // 
+            this.cbStartInTray.AutoSize = true;
+            this.cbStartInTray.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbStartInTray.ForeColor = System.Drawing.Color.White;
+            this.cbStartInTray.Location = new System.Drawing.Point(91, 35);
+            this.cbStartInTray.Name = "cbStartInTray";
+            this.cbStartInTray.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cbStartInTray.Size = new System.Drawing.Size(184, 17);
+            this.cbStartInTray.TabIndex = 34;
+            this.cbStartInTray.Text = "Start in system tray";
+            this.cbStartInTray.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbStartInTray.UseVisualStyleBackColor = true;
+            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(649, 635);
+            this.Controls.Add(this.cbStartInTray);
             this.Controls.Add(this.BtnFixLibUsb);
             this.Controls.Add(this.btnFixVjoy);
             this.Controls.Add(this.cbStartWithWindows);
@@ -1243,5 +1259,6 @@
         private System.Windows.Forms.CheckBox cbStartWithWindows;
         private System.Windows.Forms.Button btnFixVjoy;
         private System.Windows.Forms.Button BtnFixLibUsb;
+        private System.Windows.Forms.CheckBox cbStartInTray;
     }
 }

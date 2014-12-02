@@ -346,5 +346,17 @@ namespace GCNUSBFeeder.Properties {
                 this["startWithWindows"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool startInTray {
+            get {
+                return ((bool)(this["startInTray"]));
+            }
+            set {
+                this["startInTray"] = value;
+            }
+        }
     }
 }
