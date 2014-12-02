@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using GCNUSBFeeder.Properties;
 
@@ -12,8 +13,8 @@ namespace GCNUSBFeeder
 {
     public partial class Configuration : Form
     {
-
         public static event EventHandler<Driver.LogEventArgs> Log;
+        public static event EventHandler StopProc;
 
         public Configuration()
         {
@@ -23,6 +24,11 @@ namespace GCNUSBFeeder
 
         public void IntializeSettingsPage()
         {
+
+            cbAutoStart.Checked = (bool)Settings.Default["autoStart"];
+            cbStartWithWindows.Checked = (bool)Settings.Default["startWithWindows"];
+
+
             refreshRate.Value = (int)Settings.Default["refreshRate"];
 
             port1AX.Value = (int)Settings.Default["port1AX"];
@@ -57,6 +63,9 @@ namespace GCNUSBFeeder
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Settings.Default["autoStart"] = cbAutoStart.Checked;
+            Settings.Default["startWithWindows"] = cbStartWithWindows.Checked;
+
             Settings.Default["refreshRate"] = Convert.ToInt32(refreshRate.Value);
 
             Settings.Default["port1AX"] = Convert.ToInt32(port1AX.Value);
@@ -102,8 +111,19 @@ namespace GCNUSBFeeder
         //used to initialize settings from saved data.
         public static void PropogateSettings()
         {
-            Driver.refreshRate                 = (int)Settings.Default["refreshRate"];
+            if ((bool)Settings.Default["startWithWindows"])
+            {
+                SystemHelper.addToStartup();
+            }
+            else
+            {
+                SystemHelper.removeFromStartup();
+            }
 
+            MainForm.autoStart  = (bool)Settings.Default["autoStart"];
+
+            Driver.refreshRate                 = (int)Settings.Default["refreshRate"];
+            
             Driver.gcn1DZ.analogStick.xRadius  = (int)Settings.Default["port1AX"];
             Driver.gcn1DZ.analogStick.yRadius  = (int)Settings.Default["port1AY"];
             Driver.gcn1DZ.cStick.xRadius       = (int)Settings.Default["port1CX"];
@@ -131,6 +151,24 @@ namespace GCNUSBFeeder
             Driver.gcn4DZ.cStick.yRadius       = (int)Settings.Default["port4CY"];
             Driver.gcn4DZ.LTrigger.radius      = (int)Settings.Default["port4LT"];
             Driver.gcn4DZ.RTrigger.radius      = (int)Settings.Default["port4RT"];
+        }
+
+        private void btnFixVjoy_Click(object sender, EventArgs e)
+        {
+            if (Driver.run)
+            {
+                StopProc(null, EventArgs.Empty);
+            }
+            SystemHelper.RunConfigureJoysticks();
+        }
+
+        private void BtnFixLibUsb_Click(object sender, EventArgs e)
+        {
+            if (Driver.run)
+            {
+                StopProc(null, EventArgs.Empty);
+            }
+            SystemHelper.RunLibUsbInstall();
         }
 
     }

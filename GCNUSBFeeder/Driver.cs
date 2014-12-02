@@ -112,10 +112,18 @@ namespace GCNUSBFeeder
                         }
                     }
 
+                    if(!(gcn1ok && 
+                         gcn2ok &&
+                         gcn3ok &&
+                         gcn4ok))
+                    {
+                        Log(null, new LogEventArgs("Warning: Gamepads may not be configured properly. (try Configuration > ConfigureJoysticks.bat)"));
+                    }
+
                     // PORT 1: bytes 02-09
                     // PORT 2: bytes 11-17
                     // PORT 3: bytes 20-27
-                    // PORT 4: bytes 29-36
+                    // PORT 4: bytes 29-36l
                     byte[] ReadBuffer = new byte[37]; // 32 (4 players x 8) bytes for input, 5 bytes for formatting
 
                     Log(null, new LogEventArgs("Driver successfully started, entering input loop."));
@@ -123,17 +131,16 @@ namespace GCNUSBFeeder
                     while (run)
                     {
                         var ec = reader.Read(ReadBuffer, 10, out transferLength);
-                        var input1 = GCNState.GetState(ReadBuffer.Skip(2).Take(8).ToArray());
-                        var input2 = GCNState.GetState(ReadBuffer.Skip(11).Take(8).ToArray());
-                        var input3 = GCNState.GetState(ReadBuffer.Skip(20).Take(8).ToArray());
-                        var input4 = GCNState.GetState(ReadBuffer.Skip(29).Take(8).ToArray());
+                        var input1 = GCNState.GetState(getFastInput1(ref ReadBuffer));
+                        var input2 = GCNState.GetState(getFastInput2(ref ReadBuffer));
+                        var input3 = GCNState.GetState(getFastInput3(ref ReadBuffer));
+                        var input4 = GCNState.GetState(getFastInput4(ref ReadBuffer));
 
                         if (gcn1ok) { JoystickHelper.setJoystick(ref gcn1, input1, 1, gcn1DZ); }
                         if (gcn2ok) { JoystickHelper.setJoystick(ref gcn2, input2, 2, gcn2DZ); }
                         if (gcn3ok) { JoystickHelper.setJoystick(ref gcn3, input3, 3, gcn3DZ); }
                         if (gcn4ok) { JoystickHelper.setJoystick(ref gcn4, input4, 4, gcn4DZ); }
 
-                        //wait before rechecking to prevent performance problems.
                         System.Threading.Thread.Sleep(refreshRate);
                     }
 
@@ -159,6 +166,24 @@ namespace GCNUSBFeeder
                 Log(null, new LogEventArgs("GCN Adapter not detected."));
                 Driver.run = false;
             }
+        }
+
+        //Ugly, but faster than linq, at the very least.
+        private byte[] getFastInput1(ref byte[] input)
+        {
+            return new byte[] { input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9] };
+        }
+        private byte[] getFastInput2(ref byte[] input)
+        {
+            return new byte[] { input[11], input[12], input[13], input[14], input[15], input[16], input[17], input[18] };
+        }
+        private byte[] getFastInput3(ref byte[] input)
+        {
+            return new byte[] { input[20], input[21], input[22], input[23], input[24], input[25], input[26], input[27] };
+        }
+        private byte[] getFastInput4(ref byte[] input)
+        {
+            return new byte[] { input[29], input[30], input[31], input[32], input[33], input[34], input[35], input[36] };
         }
 
         public class LogEventArgs : EventArgs

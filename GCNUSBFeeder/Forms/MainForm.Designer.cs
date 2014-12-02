@@ -54,6 +54,8 @@
             this.btnGamepadInfo = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.configBtn = new System.Windows.Forms.Button();
+            this.configurationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.trayMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -102,45 +104,47 @@
             this.startToolStripMenuItem1,
             this.stopToolStripMenuItem1,
             this.toolStripSeparator1,
+            this.configurationToolStripMenuItem1,
+            this.toolStripSeparator4,
             this.exitToolStripMenuItem1});
             this.trayMenu.Name = "trayMenu";
-            this.trayMenu.Size = new System.Drawing.Size(114, 104);
+            this.trayMenu.Size = new System.Drawing.Size(149, 132);
             // 
             // restoreToolStripMenuItem
             // 
             this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.restoreToolStripMenuItem.Text = "&Restore";
             this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(110, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // startToolStripMenuItem1
             // 
             this.startToolStripMenuItem1.Name = "startToolStripMenuItem1";
-            this.startToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.startToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.startToolStripMenuItem1.Text = "&Start";
             this.startToolStripMenuItem1.Click += new System.EventHandler(this.startToolStripMenuItem1_Click);
             // 
             // stopToolStripMenuItem1
             // 
             this.stopToolStripMenuItem1.Name = "stopToolStripMenuItem1";
-            this.stopToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.stopToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.stopToolStripMenuItem1.Text = "S&top";
             this.stopToolStripMenuItem1.Click += new System.EventHandler(this.stopToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(110, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem1.Text = "E&xit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -277,9 +281,21 @@
             this.configBtn.Name = "configBtn";
             this.configBtn.Size = new System.Drawing.Size(232, 35);
             this.configBtn.TabIndex = 8;
-            this.configBtn.Text = "Gamepad Configuration";
+            this.configBtn.Text = "Configuration";
             this.configBtn.UseVisualStyleBackColor = true;
             this.configBtn.Click += new System.EventHandler(this.configBtn_Click);
+            // 
+            // configurationToolStripMenuItem1
+            // 
+            this.configurationToolStripMenuItem1.Name = "configurationToolStripMenuItem1";
+            this.configurationToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.configurationToolStripMenuItem1.Text = "&Configuration";
+            this.configurationToolStripMenuItem1.Click += new System.EventHandler(this.configurationToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // MainForm
             // 
@@ -299,7 +315,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
-            this.Text = "Gamecube USB Adapter Driver - v1.0a";
+            this.Text = "Gamecube USB Adapter Driver - v2.0";
             this.trayMenu.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -334,5 +350,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Button configBtn;
         private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

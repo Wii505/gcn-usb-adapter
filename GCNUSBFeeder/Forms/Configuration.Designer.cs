@@ -85,6 +85,10 @@
             this.port4CY = new System.Windows.Forms.NumericUpDown();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.cbAutoStart = new System.Windows.Forms.CheckBox();
+            this.cbStartWithWindows = new System.Windows.Forms.CheckBox();
+            this.btnFixVjoy = new System.Windows.Forms.Button();
+            this.BtnFixLibUsb = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).BeginInit();
@@ -121,7 +125,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(17, 31);
+            this.label2.Location = new System.Drawing.Point(14, 94);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(143, 13);
@@ -134,7 +138,7 @@
             this.refreshRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.refreshRate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshRate.ForeColor = System.Drawing.Color.White;
-            this.refreshRate.Location = new System.Drawing.Point(197, 26);
+            this.refreshRate.Location = new System.Drawing.Point(166, 89);
             this.refreshRate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.refreshRate.Maximum = new decimal(new int[] {
             30,
@@ -368,7 +372,7 @@
             this.groupBox1.Controls.Add(this.port1CY);
             this.groupBox1.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(20, 70);
+            this.groupBox1.Location = new System.Drawing.Point(17, 118);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(286, 247);
             this.groupBox1.TabIndex = 22;
@@ -391,7 +395,7 @@
             this.groupBox2.Controls.Add(this.port2CY);
             this.groupBox2.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(346, 70);
+            this.groupBox2.Location = new System.Drawing.Point(346, 118);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(286, 247);
             this.groupBox2.TabIndex = 23;
@@ -610,7 +614,7 @@
             this.groupBox3.Controls.Add(this.port3CY);
             this.groupBox3.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(20, 331);
+            this.groupBox3.Location = new System.Drawing.Point(17, 379);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(286, 247);
             this.groupBox3.TabIndex = 24;
@@ -829,7 +833,7 @@
             this.groupBox4.Controls.Add(this.port4CY);
             this.groupBox4.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(346, 331);
+            this.groupBox4.Location = new System.Drawing.Point(346, 379);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(286, 247);
             this.groupBox4.TabIndex = 25;
@@ -1037,11 +1041,11 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(346, 20);
+            this.btnSave.Location = new System.Drawing.Point(346, 25);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(140, 35);
-            this.btnSave.TabIndex = 26;
+            this.btnSave.TabIndex = 30;
             this.btnSave.Text = "Save Changes";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -1051,21 +1055,80 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(502, 20);
+            this.btnClose.Location = new System.Drawing.Point(495, 25);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(130, 35);
-            this.btnClose.TabIndex = 27;
+            this.btnClose.TabIndex = 31;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // cbAutoStart
+            // 
+            this.cbAutoStart.AutoSize = true;
+            this.cbAutoStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbAutoStart.ForeColor = System.Drawing.Color.White;
+            this.cbAutoStart.Location = new System.Drawing.Point(43, 25);
+            this.cbAutoStart.Name = "cbAutoStart";
+            this.cbAutoStart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cbAutoStart.Size = new System.Drawing.Size(232, 17);
+            this.cbAutoStart.TabIndex = 28;
+            this.cbAutoStart.Text = "Automatically start Driver";
+            this.cbAutoStart.UseVisualStyleBackColor = true;
+            // 
+            // cbStartWithWindows
+            // 
+            this.cbStartWithWindows.AutoSize = true;
+            this.cbStartWithWindows.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbStartWithWindows.ForeColor = System.Drawing.Color.White;
+            this.cbStartWithWindows.Location = new System.Drawing.Point(11, 48);
+            this.cbStartWithWindows.Name = "cbStartWithWindows";
+            this.cbStartWithWindows.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cbStartWithWindows.Size = new System.Drawing.Size(264, 17);
+            this.cbStartWithWindows.TabIndex = 29;
+            this.cbStartWithWindows.Text = "Start Application with Windows";
+            this.cbStartWithWindows.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbStartWithWindows.UseVisualStyleBackColor = true;
+            // 
+            // btnFixVjoy
+            // 
+            this.btnFixVjoy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFixVjoy.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFixVjoy.ForeColor = System.Drawing.Color.White;
+            this.btnFixVjoy.Location = new System.Drawing.Point(346, 83);
+            this.btnFixVjoy.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnFixVjoy.Name = "btnFixVjoy";
+            this.btnFixVjoy.Size = new System.Drawing.Size(169, 24);
+            this.btnFixVjoy.TabIndex = 32;
+            this.btnFixVjoy.Text = "ConfigJoysticks.bat";
+            this.btnFixVjoy.UseVisualStyleBackColor = true;
+            this.btnFixVjoy.Click += new System.EventHandler(this.btnFixVjoy_Click);
+            // 
+            // BtnFixLibUsb
+            // 
+            this.BtnFixLibUsb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnFixLibUsb.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnFixLibUsb.ForeColor = System.Drawing.Color.White;
+            this.BtnFixLibUsb.Location = new System.Drawing.Point(523, 83);
+            this.BtnFixLibUsb.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtnFixLibUsb.Name = "BtnFixLibUsb";
+            this.BtnFixLibUsb.Size = new System.Drawing.Size(109, 24);
+            this.BtnFixLibUsb.TabIndex = 33;
+            this.BtnFixLibUsb.Text = "Fix LibUSB";
+            this.BtnFixLibUsb.UseVisualStyleBackColor = true;
+            this.BtnFixLibUsb.Click += new System.EventHandler(this.BtnFixLibUsb_Click);
             // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(652, 590);
+            this.ClientSize = new System.Drawing.Size(649, 635);
+            this.Controls.Add(this.BtnFixLibUsb);
+            this.Controls.Add(this.btnFixVjoy);
+            this.Controls.Add(this.cbStartWithWindows);
+            this.Controls.Add(this.cbAutoStart);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox4);
@@ -1079,7 +1142,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Configuration";
-            this.Text = "Gamepad Configuration";
+            this.Text = "Configuration";
             ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).EndInit();
@@ -1176,5 +1239,9 @@
         private System.Windows.Forms.NumericUpDown port4CY;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.CheckBox cbAutoStart;
+        private System.Windows.Forms.CheckBox cbStartWithWindows;
+        private System.Windows.Forms.Button btnFixVjoy;
+        private System.Windows.Forms.Button BtnFixLibUsb;
     }
 }

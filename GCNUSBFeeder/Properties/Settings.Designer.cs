@@ -322,5 +322,29 @@ namespace GCNUSBFeeder.Properties {
                 this["port4RT"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool autoStart {
+            get {
+                return ((bool)(this["autoStart"]));
+            }
+            set {
+                this["autoStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool startWithWindows {
+            get {
+                return ((bool)(this["startWithWindows"]));
+            }
+            set {
+                this["startWithWindows"] = value;
+            }
+        }
     }
 }

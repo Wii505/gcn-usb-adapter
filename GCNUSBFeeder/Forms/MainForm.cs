@@ -12,26 +12,34 @@ namespace GCNUSBFeeder
 {
     public partial class MainForm : Form
     {
+
+        public static bool autoStart = false;
         Driver mainDriver;
         public MainForm()
         {
             mainDriver = new Driver();
             InitializeComponent();
-            Driver.Log += Driver_Log;
-            JoystickHelper.Log += Driver_Log;
-            Configuration.Log += Driver_Log;
-            FormClosing += MainForm_FormClosing;
+            Driver.Log             += Driver_Log;
+            JoystickHelper.Log     += Driver_Log;
+            SystemHelper.Log       += Driver_Log;
+            Configuration.Log      += Driver_Log;
+            Configuration.StopProc += btnStop_Click;
+            FormClosing            += MainForm_FormClosing;
 
             Configuration.PropogateSettings();
+
+            SystemHelper.checkForMissingDrivers();
+
+            if (autoStart) btnStart_Click(null, EventArgs.Empty);
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             About a = new About();
-            a.ShowDialog();
+            a.Show();
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        public void btnStart_Click(object sender, EventArgs e)
         {
             if (!Driver.run)
             {
@@ -48,7 +56,7 @@ namespace GCNUSBFeeder
             }
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
+        public void btnStop_Click(object sender, EventArgs e)
         {
             if (Driver.run)
             {
@@ -142,10 +150,15 @@ namespace GCNUSBFeeder
         private void configBtn_Click(object sender, EventArgs e)
         {
             Configuration c = new Configuration();
-            c.ShowDialog();
+            c.Show();
         }
 
         private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            configBtn_Click(sender, e);
+        }
+
+        private void configurationToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             configBtn_Click(sender, e);
         }
