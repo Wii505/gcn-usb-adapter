@@ -14,7 +14,7 @@ Install Instructions:
 
 -   Run the Installer (as administrator).
 
--   You will be asked to install an unsigned driver (by something like this[4] ) click Install this software anyway.
+-   You will be asked to install an unsigned driver click Install this software anyway.
 
 -   You will be prompted to install vJoy. The default options are highly recommended.
 
@@ -23,8 +23,6 @@ Install Instructions:
 -   The provided application will start/stop access to your controllers, and it needs to be started to use them.
 
 -   Analog sticks may need to be calibrated before first use, click the Windows Gamepad Info button for quick access from the application.
-
--   Dolphin input profile configurations are now available![5] Copy the contents of the zip to "Documents\Dolphin Emulator\Config\Profiles" and then go to GCPad in dolphin and select the profile and load it.
 
 For reference:
 
