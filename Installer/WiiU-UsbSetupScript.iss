@@ -58,8 +58,11 @@ Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.xml"; D
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0_x86.dll"; DestDir: "{sys}"; DestName: "libusb0.dll"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX86
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0.sys"; DestDir: "{sys}\drivers"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX86
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.dll"; DestDir: "{sys}"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX64
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.sys"; DestDir: "{sys}\drivers"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX64
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.dll"; DestDir: "{sys}"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsI64
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.sys"; DestDir: "{sys}\drivers"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsI64
 Source: "E:\C#\GCN-USB-Adapter\vJoy\ConfigJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\vJoy\UninstallJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\vJoy\vJoy_204_I220914.exe"; DestDir: "{app}"; Flags: ignoreversion
