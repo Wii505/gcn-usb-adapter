@@ -1,6 +1,6 @@
 ﻿namespace GCNUSBFeeder
 {
-    partial class Configuration
+    partial class DeadZones
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuration));
-            this.label2 = new System.Windows.Forms.Label();
-            this.refreshRate = new System.Windows.Forms.NumericUpDown();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeadZones));
             this.label1 = new System.Windows.Forms.Label();
             this.port1AX = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,9 +42,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.port1RT = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.port1Enabled = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.port2Enabled = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.port2AX = new System.Windows.Forms.NumericUpDown();
@@ -60,7 +56,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.port2CY = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.port3Enabled = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.port3AX = new System.Windows.Forms.NumericUpDown();
@@ -74,7 +69,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.port3CY = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.port4Enabled = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.port4AX = new System.Windows.Forms.NumericUpDown();
@@ -89,16 +83,14 @@
             this.port4CY = new System.Windows.Forms.NumericUpDown();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.cbAutoStart = new System.Windows.Forms.CheckBox();
-            this.cbStartWithWindows = new System.Windows.Forms.CheckBox();
-            this.BtnFixLibUsb = new System.Windows.Forms.Button();
-            this.cbStartInTray = new System.Windows.Forms.CheckBox();
-            this.btnSaveAndClose = new System.Windows.Forms.Button();
-            this.cbDisablevJoyOnExit = new System.Windows.Forms.CheckBox();
-            this.cbAutoUpdates = new System.Windows.Forms.CheckBox();
-            this.savingPanel = new System.Windows.Forms.Panel();
-            this.label26 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).BeginInit();
+            this.cbPort1Enabled = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.rbConnected = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1CX)).BeginInit();
@@ -127,55 +119,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.port4LT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port4CX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port4CY)).BeginInit();
-            this.savingPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(25, 502);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Refresh Rate (ms)";
-            // 
-            // refreshRate
-            // 
-            this.refreshRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.refreshRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.refreshRate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshRate.ForeColor = System.Drawing.Color.White;
-            this.refreshRate.Location = new System.Drawing.Point(177, 497);
-            this.refreshRate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.refreshRate.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.refreshRate.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.refreshRate.Name = "refreshRate";
-            this.refreshRate.Size = new System.Drawing.Size(109, 23);
-            this.refreshRate.TabIndex = 1;
-            this.refreshRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.refreshRate.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(25, 39);
+            this.label1.Location = new System.Drawing.Point(29, 75);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 13);
@@ -189,7 +140,7 @@
             this.port1AX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port1AX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port1AX.ForeColor = System.Drawing.Color.White;
-            this.port1AX.Location = new System.Drawing.Point(155, 34);
+            this.port1AX.Location = new System.Drawing.Point(149, 70);
             this.port1AX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port1AX.Name = "port1AX";
             this.port1AX.Size = new System.Drawing.Size(109, 23);
@@ -206,7 +157,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(25, 70);
+            this.label3.Location = new System.Drawing.Point(29, 106);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 13);
@@ -220,7 +171,7 @@
             this.port1AY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port1AY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port1AY.ForeColor = System.Drawing.Color.White;
-            this.port1AY.Location = new System.Drawing.Point(155, 65);
+            this.port1AY.Location = new System.Drawing.Point(149, 101);
             this.port1AY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port1AY.Name = "port1AY";
             this.port1AY.Size = new System.Drawing.Size(109, 23);
@@ -237,7 +188,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(17, 105);
+            this.label4.Location = new System.Drawing.Point(21, 141);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 13);
@@ -251,7 +202,7 @@
             this.port1CX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port1CX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port1CX.ForeColor = System.Drawing.Color.White;
-            this.port1CX.Location = new System.Drawing.Point(155, 100);
+            this.port1CX.Location = new System.Drawing.Point(149, 136);
             this.port1CX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port1CX.Name = "port1CX";
             this.port1CX.Size = new System.Drawing.Size(109, 23);
@@ -268,7 +219,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(17, 139);
+            this.label5.Location = new System.Drawing.Point(21, 175);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 13);
@@ -282,7 +233,7 @@
             this.port1CY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port1CY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port1CY.ForeColor = System.Drawing.Color.White;
-            this.port1CY.Location = new System.Drawing.Point(155, 134);
+            this.port1CY.Location = new System.Drawing.Point(149, 170);
             this.port1CY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port1CY.Name = "port1CY";
             this.port1CY.Size = new System.Drawing.Size(109, 23);
@@ -299,7 +250,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(57, 172);
+            this.label6.Location = new System.Drawing.Point(61, 208);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 13);
@@ -313,7 +264,7 @@
             this.port1LT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port1LT.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port1LT.ForeColor = System.Drawing.Color.White;
-            this.port1LT.Location = new System.Drawing.Point(155, 167);
+            this.port1LT.Location = new System.Drawing.Point(149, 203);
             this.port1LT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port1LT.Maximum = new decimal(new int[] {
             200,
@@ -335,7 +286,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(57, 207);
+            this.label7.Location = new System.Drawing.Point(61, 243);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 13);
@@ -349,7 +300,7 @@
             this.port1RT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port1RT.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port1RT.ForeColor = System.Drawing.Color.White;
-            this.port1RT.Location = new System.Drawing.Point(155, 202);
+            this.port1RT.Location = new System.Drawing.Point(149, 238);
             this.port1RT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port1RT.Maximum = new decimal(new int[] {
             200,
@@ -368,7 +319,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.port1Enabled);
+            this.groupBox1.Controls.Add(this.rbConnected);
+            this.groupBox1.Controls.Add(this.cbPort1Enabled);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.port1AX);
@@ -383,29 +335,17 @@
             this.groupBox1.Controls.Add(this.port1CY);
             this.groupBox1.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(327, 12);
+            this.groupBox1.Location = new System.Drawing.Point(19, 55);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 247);
+            this.groupBox1.Size = new System.Drawing.Size(286, 280);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Port 1 Dead Zones";
             // 
-            // port1Enabled
-            // 
-            this.port1Enabled.Appearance = System.Windows.Forms.Appearance.Button;
-            this.port1Enabled.AutoSize = true;
-            this.port1Enabled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.port1Enabled.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.port1Enabled.Location = new System.Drawing.Point(210, 0);
-            this.port1Enabled.Name = "port1Enabled";
-            this.port1Enabled.Size = new System.Drawing.Size(73, 23);
-            this.port1Enabled.TabIndex = 35;
-            this.port1Enabled.Text = "Enabled";
-            this.port1Enabled.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.port2Enabled);
+            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.port2AX);
@@ -420,32 +360,19 @@
             this.groupBox2.Controls.Add(this.port2CY);
             this.groupBox2.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(646, 12);
+            this.groupBox2.Location = new System.Drawing.Point(348, 55);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(296, 247);
+            this.groupBox2.Size = new System.Drawing.Size(286, 280);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Port 2 Dead Zones";
-            // 
-            // port2Enabled
-            // 
-            this.port2Enabled.Appearance = System.Windows.Forms.Appearance.Button;
-            this.port2Enabled.AutoSize = true;
-            this.port2Enabled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.port2Enabled.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.port2Enabled.Location = new System.Drawing.Point(210, 0);
-            this.port2Enabled.Name = "port2Enabled";
-            this.port2Enabled.Size = new System.Drawing.Size(73, 23);
-            this.port2Enabled.TabIndex = 36;
-            this.port2Enabled.Text = "Enabled";
-            this.port2Enabled.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(25, 39);
+            this.label8.Location = new System.Drawing.Point(29, 75);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 13);
@@ -458,7 +385,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(57, 207);
+            this.label9.Location = new System.Drawing.Point(61, 243);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(79, 13);
@@ -472,7 +399,7 @@
             this.port2AX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port2AX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port2AX.ForeColor = System.Drawing.Color.White;
-            this.port2AX.Location = new System.Drawing.Point(155, 34);
+            this.port2AX.Location = new System.Drawing.Point(149, 70);
             this.port2AX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port2AX.Name = "port2AX";
             this.port2AX.Size = new System.Drawing.Size(109, 23);
@@ -490,7 +417,7 @@
             this.port2RT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port2RT.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port2RT.ForeColor = System.Drawing.Color.White;
-            this.port2RT.Location = new System.Drawing.Point(155, 202);
+            this.port2RT.Location = new System.Drawing.Point(149, 238);
             this.port2RT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port2RT.Maximum = new decimal(new int[] {
             200,
@@ -513,7 +440,7 @@
             this.port2AY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port2AY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port2AY.ForeColor = System.Drawing.Color.White;
-            this.port2AY.Location = new System.Drawing.Point(155, 65);
+            this.port2AY.Location = new System.Drawing.Point(149, 101);
             this.port2AY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port2AY.Name = "port2AY";
             this.port2AY.Size = new System.Drawing.Size(109, 23);
@@ -530,7 +457,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(57, 172);
+            this.label10.Location = new System.Drawing.Point(61, 208);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 13);
@@ -543,7 +470,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(25, 70);
+            this.label11.Location = new System.Drawing.Point(29, 106);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(111, 13);
@@ -557,7 +484,7 @@
             this.port2LT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port2LT.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port2LT.ForeColor = System.Drawing.Color.White;
-            this.port2LT.Location = new System.Drawing.Point(155, 167);
+            this.port2LT.Location = new System.Drawing.Point(149, 203);
             this.port2LT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port2LT.Maximum = new decimal(new int[] {
             200,
@@ -580,7 +507,7 @@
             this.port2CX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port2CX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port2CX.ForeColor = System.Drawing.Color.White;
-            this.port2CX.Location = new System.Drawing.Point(155, 100);
+            this.port2CX.Location = new System.Drawing.Point(149, 136);
             this.port2CX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port2CX.Name = "port2CX";
             this.port2CX.Size = new System.Drawing.Size(109, 23);
@@ -597,7 +524,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(17, 139);
+            this.label12.Location = new System.Drawing.Point(21, 175);
             this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(119, 13);
@@ -610,7 +537,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(17, 105);
+            this.label13.Location = new System.Drawing.Point(21, 141);
             this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(119, 13);
@@ -624,7 +551,7 @@
             this.port2CY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port2CY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port2CY.ForeColor = System.Drawing.Color.White;
-            this.port2CY.Location = new System.Drawing.Point(155, 134);
+            this.port2CY.Location = new System.Drawing.Point(149, 170);
             this.port2CY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port2CY.Name = "port2CY";
             this.port2CY.Size = new System.Drawing.Size(109, 23);
@@ -638,7 +565,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.port3Enabled);
+            this.groupBox3.Controls.Add(this.radioButton2);
+            this.groupBox3.Controls.Add(this.checkBox2);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.port3AX);
@@ -653,32 +581,19 @@
             this.groupBox3.Controls.Add(this.port3CY);
             this.groupBox3.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(327, 273);
+            this.groupBox3.Location = new System.Drawing.Point(19, 341);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(296, 247);
+            this.groupBox3.Size = new System.Drawing.Size(286, 280);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Port 3 Dead Zones";
-            // 
-            // port3Enabled
-            // 
-            this.port3Enabled.Appearance = System.Windows.Forms.Appearance.Button;
-            this.port3Enabled.AutoSize = true;
-            this.port3Enabled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.port3Enabled.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.port3Enabled.Location = new System.Drawing.Point(210, 0);
-            this.port3Enabled.Name = "port3Enabled";
-            this.port3Enabled.Size = new System.Drawing.Size(73, 23);
-            this.port3Enabled.TabIndex = 38;
-            this.port3Enabled.Text = "Enabled";
-            this.port3Enabled.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(25, 39);
+            this.label14.Location = new System.Drawing.Point(29, 75);
             this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(111, 13);
@@ -691,7 +606,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(57, 207);
+            this.label15.Location = new System.Drawing.Point(61, 243);
             this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 13);
@@ -705,7 +620,7 @@
             this.port3AX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port3AX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port3AX.ForeColor = System.Drawing.Color.White;
-            this.port3AX.Location = new System.Drawing.Point(155, 34);
+            this.port3AX.Location = new System.Drawing.Point(149, 70);
             this.port3AX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port3AX.Name = "port3AX";
             this.port3AX.Size = new System.Drawing.Size(109, 23);
@@ -723,7 +638,7 @@
             this.port3RT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port3RT.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port3RT.ForeColor = System.Drawing.Color.White;
-            this.port3RT.Location = new System.Drawing.Point(155, 202);
+            this.port3RT.Location = new System.Drawing.Point(149, 238);
             this.port3RT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port3RT.Maximum = new decimal(new int[] {
             200,
@@ -746,7 +661,7 @@
             this.port3AY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port3AY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port3AY.ForeColor = System.Drawing.Color.White;
-            this.port3AY.Location = new System.Drawing.Point(155, 65);
+            this.port3AY.Location = new System.Drawing.Point(149, 101);
             this.port3AY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port3AY.Name = "port3AY";
             this.port3AY.Size = new System.Drawing.Size(109, 23);
@@ -763,7 +678,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(57, 172);
+            this.label16.Location = new System.Drawing.Point(61, 208);
             this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(79, 13);
@@ -776,7 +691,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(25, 70);
+            this.label17.Location = new System.Drawing.Point(29, 106);
             this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(111, 13);
@@ -790,7 +705,7 @@
             this.port3LT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port3LT.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port3LT.ForeColor = System.Drawing.Color.White;
-            this.port3LT.Location = new System.Drawing.Point(155, 167);
+            this.port3LT.Location = new System.Drawing.Point(149, 203);
             this.port3LT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port3LT.Maximum = new decimal(new int[] {
             200,
@@ -813,7 +728,7 @@
             this.port3CX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port3CX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port3CX.ForeColor = System.Drawing.Color.White;
-            this.port3CX.Location = new System.Drawing.Point(155, 100);
+            this.port3CX.Location = new System.Drawing.Point(149, 136);
             this.port3CX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port3CX.Name = "port3CX";
             this.port3CX.Size = new System.Drawing.Size(109, 23);
@@ -830,7 +745,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(17, 139);
+            this.label18.Location = new System.Drawing.Point(21, 175);
             this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(119, 13);
@@ -843,7 +758,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(17, 105);
+            this.label19.Location = new System.Drawing.Point(21, 141);
             this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(119, 13);
@@ -857,7 +772,7 @@
             this.port3CY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port3CY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port3CY.ForeColor = System.Drawing.Color.White;
-            this.port3CY.Location = new System.Drawing.Point(155, 134);
+            this.port3CY.Location = new System.Drawing.Point(149, 170);
             this.port3CY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port3CY.Name = "port3CY";
             this.port3CY.Size = new System.Drawing.Size(109, 23);
@@ -871,7 +786,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.port4Enabled);
+            this.groupBox4.Controls.Add(this.radioButton3);
+            this.groupBox4.Controls.Add(this.checkBox3);
             this.groupBox4.Controls.Add(this.label20);
             this.groupBox4.Controls.Add(this.label21);
             this.groupBox4.Controls.Add(this.port4AX);
@@ -886,32 +802,19 @@
             this.groupBox4.Controls.Add(this.port4CY);
             this.groupBox4.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(646, 273);
+            this.groupBox4.Location = new System.Drawing.Point(348, 341);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(296, 247);
+            this.groupBox4.Size = new System.Drawing.Size(286, 280);
             this.groupBox4.TabIndex = 25;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Port 4 Dead Zones";
-            // 
-            // port4Enabled
-            // 
-            this.port4Enabled.Appearance = System.Windows.Forms.Appearance.Button;
-            this.port4Enabled.AutoSize = true;
-            this.port4Enabled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.port4Enabled.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.port4Enabled.Location = new System.Drawing.Point(210, 0);
-            this.port4Enabled.Name = "port4Enabled";
-            this.port4Enabled.Size = new System.Drawing.Size(73, 23);
-            this.port4Enabled.TabIndex = 37;
-            this.port4Enabled.Text = "Enabled";
-            this.port4Enabled.UseVisualStyleBackColor = true;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(25, 39);
+            this.label20.Location = new System.Drawing.Point(29, 75);
             this.label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(111, 13);
@@ -924,7 +827,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(57, 207);
+            this.label21.Location = new System.Drawing.Point(61, 243);
             this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(79, 13);
@@ -938,7 +841,7 @@
             this.port4AX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port4AX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port4AX.ForeColor = System.Drawing.Color.White;
-            this.port4AX.Location = new System.Drawing.Point(155, 34);
+            this.port4AX.Location = new System.Drawing.Point(149, 70);
             this.port4AX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port4AX.Name = "port4AX";
             this.port4AX.Size = new System.Drawing.Size(109, 23);
@@ -956,7 +859,7 @@
             this.port4RT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port4RT.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port4RT.ForeColor = System.Drawing.Color.White;
-            this.port4RT.Location = new System.Drawing.Point(155, 202);
+            this.port4RT.Location = new System.Drawing.Point(149, 238);
             this.port4RT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port4RT.Maximum = new decimal(new int[] {
             200,
@@ -979,7 +882,7 @@
             this.port4AY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port4AY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port4AY.ForeColor = System.Drawing.Color.White;
-            this.port4AY.Location = new System.Drawing.Point(155, 65);
+            this.port4AY.Location = new System.Drawing.Point(149, 101);
             this.port4AY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port4AY.Name = "port4AY";
             this.port4AY.Size = new System.Drawing.Size(109, 23);
@@ -996,7 +899,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(57, 172);
+            this.label22.Location = new System.Drawing.Point(61, 208);
             this.label22.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(79, 13);
@@ -1009,7 +912,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(25, 70);
+            this.label23.Location = new System.Drawing.Point(29, 106);
             this.label23.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(111, 13);
@@ -1023,7 +926,7 @@
             this.port4LT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port4LT.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port4LT.ForeColor = System.Drawing.Color.White;
-            this.port4LT.Location = new System.Drawing.Point(155, 167);
+            this.port4LT.Location = new System.Drawing.Point(149, 203);
             this.port4LT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port4LT.Maximum = new decimal(new int[] {
             200,
@@ -1046,7 +949,7 @@
             this.port4CX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port4CX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port4CX.ForeColor = System.Drawing.Color.White;
-            this.port4CX.Location = new System.Drawing.Point(155, 100);
+            this.port4CX.Location = new System.Drawing.Point(149, 136);
             this.port4CX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port4CX.Name = "port4CX";
             this.port4CX.Size = new System.Drawing.Size(109, 23);
@@ -1063,7 +966,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(17, 139);
+            this.label24.Location = new System.Drawing.Point(21, 175);
             this.label24.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(119, 13);
@@ -1076,7 +979,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(17, 105);
+            this.label25.Location = new System.Drawing.Point(21, 141);
             this.label25.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(119, 13);
@@ -1090,7 +993,7 @@
             this.port4CY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.port4CY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.port4CY.ForeColor = System.Drawing.Color.White;
-            this.port4CY.Location = new System.Drawing.Point(155, 134);
+            this.port4CY.Location = new System.Drawing.Point(149, 170);
             this.port4CY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.port4CY.Name = "port4CY";
             this.port4CY.Size = new System.Drawing.Size(109, 23);
@@ -1107,7 +1010,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(518, 562);
+            this.btnSave.Location = new System.Drawing.Point(356, 12);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(140, 35);
@@ -1121,164 +1024,145 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(814, 562);
+            this.btnClose.Location = new System.Drawing.Point(505, 12);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(130, 35);
             this.btnClose.TabIndex = 31;
-            this.btnClose.Text = "Cancel";
+            this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // cbAutoStart
+            // cbPort1Enabled
             // 
-            this.cbAutoStart.AutoSize = true;
-            this.cbAutoStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbAutoStart.ForeColor = System.Drawing.Color.White;
-            this.cbAutoStart.Location = new System.Drawing.Point(54, 18);
-            this.cbAutoStart.Name = "cbAutoStart";
-            this.cbAutoStart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cbAutoStart.Size = new System.Drawing.Size(232, 17);
-            this.cbAutoStart.TabIndex = 28;
-            this.cbAutoStart.Text = "Automatically start driver";
-            this.cbAutoStart.UseVisualStyleBackColor = true;
+            this.cbPort1Enabled.AutoSize = true;
+            this.cbPort1Enabled.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbPort1Enabled.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPort1Enabled.Location = new System.Drawing.Point(178, 25);
+            this.cbPort1Enabled.Name = "cbPort1Enabled";
+            this.cbPort1Enabled.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cbPort1Enabled.Size = new System.Drawing.Size(80, 17);
+            this.cbPort1Enabled.TabIndex = 22;
+            this.cbPort1Enabled.Text = "Enabled";
+            this.cbPort1Enabled.UseVisualStyleBackColor = true;
             // 
-            // cbStartWithWindows
+            // checkBox1
             // 
-            this.cbStartWithWindows.AutoSize = true;
-            this.cbStartWithWindows.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbStartWithWindows.ForeColor = System.Drawing.Color.White;
-            this.cbStartWithWindows.Location = new System.Drawing.Point(22, 64);
-            this.cbStartWithWindows.Name = "cbStartWithWindows";
-            this.cbStartWithWindows.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cbStartWithWindows.Size = new System.Drawing.Size(264, 17);
-            this.cbStartWithWindows.TabIndex = 29;
-            this.cbStartWithWindows.Text = "Start Application with Windows";
-            this.cbStartWithWindows.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbStartWithWindows.UseVisualStyleBackColor = true;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkBox1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(178, 25);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 23;
+            this.checkBox1.Text = "Enabled";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // BtnFixLibUsb
+            // checkBox2
             // 
-            this.BtnFixLibUsb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnFixLibUsb.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnFixLibUsb.ForeColor = System.Drawing.Color.White;
-            this.BtnFixLibUsb.Location = new System.Drawing.Point(177, 573);
-            this.BtnFixLibUsb.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.BtnFixLibUsb.Name = "BtnFixLibUsb";
-            this.BtnFixLibUsb.Size = new System.Drawing.Size(109, 24);
-            this.BtnFixLibUsb.TabIndex = 33;
-            this.BtnFixLibUsb.Text = "Fix LibUSB";
-            this.BtnFixLibUsb.UseVisualStyleBackColor = true;
-            this.BtnFixLibUsb.Click += new System.EventHandler(this.BtnFixLibUsb_Click);
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkBox2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(178, 25);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBox2.Size = new System.Drawing.Size(80, 17);
+            this.checkBox2.TabIndex = 23;
+            this.checkBox2.Text = "Enabled";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // cbStartInTray
+            // checkBox3
             // 
-            this.cbStartInTray.AutoSize = true;
-            this.cbStartInTray.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbStartInTray.ForeColor = System.Drawing.Color.White;
-            this.cbStartInTray.Location = new System.Drawing.Point(102, 41);
-            this.cbStartInTray.Name = "cbStartInTray";
-            this.cbStartInTray.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cbStartInTray.Size = new System.Drawing.Size(184, 17);
-            this.cbStartInTray.TabIndex = 34;
-            this.cbStartInTray.Text = "Start in system tray";
-            this.cbStartInTray.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbStartInTray.UseVisualStyleBackColor = true;
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkBox3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox3.Location = new System.Drawing.Point(178, 25);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBox3.Size = new System.Drawing.Size(80, 17);
+            this.checkBox3.TabIndex = 26;
+            this.checkBox3.Text = "Enabled";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // btnSaveAndClose
+            // rbConnected
             // 
-            this.btnSaveAndClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSaveAndClose.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveAndClose.ForeColor = System.Drawing.Color.White;
-            this.btnSaveAndClose.Location = new System.Drawing.Point(666, 562);
-            this.btnSaveAndClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSaveAndClose.Name = "btnSaveAndClose";
-            this.btnSaveAndClose.Size = new System.Drawing.Size(140, 35);
-            this.btnSaveAndClose.TabIndex = 35;
-            this.btnSaveAndClose.Text = "Save and Close";
-            this.btnSaveAndClose.UseVisualStyleBackColor = true;
-            this.btnSaveAndClose.Click += new System.EventHandler(this.btnSaveAndClose_Click);
+            this.rbConnected.AutoSize = true;
+            this.rbConnected.Enabled = false;
+            this.rbConnected.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rbConnected.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbConnected.Location = new System.Drawing.Point(24, 25);
+            this.rbConnected.Name = "rbConnected";
+            this.rbConnected.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rbConnected.Size = new System.Drawing.Size(96, 17);
+            this.rbConnected.TabIndex = 23;
+            this.rbConnected.TabStop = true;
+            this.rbConnected.Text = "Connected";
+            this.rbConnected.UseVisualStyleBackColor = true;
             // 
-            // cbDisablevJoyOnExit
+            // radioButton1
             // 
-            this.cbDisablevJoyOnExit.AutoSize = true;
-            this.cbDisablevJoyOnExit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbDisablevJoyOnExit.ForeColor = System.Drawing.Color.White;
-            this.cbDisablevJoyOnExit.Location = new System.Drawing.Point(94, 87);
-            this.cbDisablevJoyOnExit.Name = "cbDisablevJoyOnExit";
-            this.cbDisablevJoyOnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cbDisablevJoyOnExit.Size = new System.Drawing.Size(192, 17);
-            this.cbDisablevJoyOnExit.TabIndex = 36;
-            this.cbDisablevJoyOnExit.Text = "Disable ports on exit";
-            this.cbDisablevJoyOnExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbDisablevJoyOnExit.UseVisualStyleBackColor = false;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Enabled = false;
+            this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.radioButton1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(24, 25);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radioButton1.Size = new System.Drawing.Size(96, 17);
+            this.radioButton1.TabIndex = 24;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Connected";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // cbAutoUpdates
+            // radioButton2
             // 
-            this.cbAutoUpdates.AutoSize = true;
-            this.cbAutoUpdates.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbAutoUpdates.ForeColor = System.Drawing.Color.White;
-            this.cbAutoUpdates.Location = new System.Drawing.Point(102, 110);
-            this.cbAutoUpdates.Name = "cbAutoUpdates";
-            this.cbAutoUpdates.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cbAutoUpdates.Size = new System.Drawing.Size(184, 17);
-            this.cbAutoUpdates.TabIndex = 37;
-            this.cbAutoUpdates.Text = "Automatically Update";
-            this.cbAutoUpdates.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbAutoUpdates.UseVisualStyleBackColor = true;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Enabled = false;
+            this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.radioButton2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(24, 25);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radioButton2.Size = new System.Drawing.Size(96, 17);
+            this.radioButton2.TabIndex = 25;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Connected";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // savingPanel
+            // radioButton3
             // 
-            this.savingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.savingPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.savingPanel.Controls.Add(this.label26);
-            this.savingPanel.Location = new System.Drawing.Point(54, 230);
-            this.savingPanel.Name = "savingPanel";
-            this.savingPanel.Size = new System.Drawing.Size(200, 100);
-            this.savingPanel.TabIndex = 38;
-            this.savingPanel.Visible = false;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Enabled = false;
+            this.radioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.radioButton3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton3.Location = new System.Drawing.Point(24, 25);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radioButton3.Size = new System.Drawing.Size(96, 17);
+            this.radioButton3.TabIndex = 25;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Connected";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(43, 39);
-            this.label26.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(127, 21);
-            this.label26.TabIndex = 10;
-            this.label26.Text = "Saving...";
-            // 
-            // Configuration
+            // DeadZones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(961, 609);
-            this.Controls.Add(this.savingPanel);
-            this.Controls.Add(this.cbAutoUpdates);
-            this.Controls.Add(this.cbDisablevJoyOnExit);
-            this.Controls.Add(this.btnSaveAndClose);
-            this.Controls.Add(this.cbStartInTray);
-            this.Controls.Add(this.BtnFixLibUsb);
-            this.Controls.Add(this.cbStartWithWindows);
-            this.Controls.Add(this.cbAutoStart);
+            this.ClientSize = new System.Drawing.Size(649, 635);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.refreshRate);
             this.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Configuration";
+            this.Name = "DeadZones";
             this.Text = "Configuration";
-            ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1CX)).EndInit();
@@ -1311,17 +1195,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.port4LT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port4CX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port4CY)).EndInit();
-            this.savingPanel.ResumeLayout(false);
-            this.savingPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown refreshRate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown port1AX;
         private System.Windows.Forms.Label label3;
@@ -1376,18 +1255,13 @@
         private System.Windows.Forms.NumericUpDown port4CY;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.CheckBox cbAutoStart;
-        private System.Windows.Forms.CheckBox cbStartWithWindows;
-        private System.Windows.Forms.Button BtnFixLibUsb;
-        private System.Windows.Forms.CheckBox cbStartInTray;
-        private System.Windows.Forms.CheckBox port1Enabled;
-        private System.Windows.Forms.CheckBox port2Enabled;
-        private System.Windows.Forms.CheckBox port3Enabled;
-        private System.Windows.Forms.CheckBox port4Enabled;
-        private System.Windows.Forms.Button btnSaveAndClose;
-        private System.Windows.Forms.CheckBox cbDisablevJoyOnExit;
-        private System.Windows.Forms.CheckBox cbAutoUpdates;
-        private System.Windows.Forms.Panel savingPanel;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.RadioButton rbConnected;
+        private System.Windows.Forms.CheckBox cbPort1Enabled;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }

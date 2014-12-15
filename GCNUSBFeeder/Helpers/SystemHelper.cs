@@ -8,6 +8,9 @@ using Microsoft.Win32;
 
 using System.Diagnostics;
 using System.Threading;
+using System.IO;
+
+using HardwareHelperLib;
 
 namespace GCNUSBFeeder
 {
@@ -54,6 +57,7 @@ namespace GCNUSBFeeder
         }
         #endregion
 
+        #region Driver Functions
         public static void checkForMissingDrivers()
         {
             bool vJoy   = false;
@@ -84,25 +88,6 @@ namespace GCNUSBFeeder
             }
         }
 
-        public static void RunConfigureJoysticks()
-        {
-            //configjoysticks.bat needs to be in the application root directory for this to work.
-            Log(null, new Driver.LogEventArgs("Attempting to reconfigure vJoy..."));
-            try
-            {
-                var p = Process.Start(Application.StartupPath + @"\ConfigJoysticks.bat");
-                while (!p.HasExited)
-                {
-                    Thread.Sleep(1000);
-                }
-                Log(null, new Driver.LogEventArgs("Reconfigure has completed."));
-            }
-            catch
-            {
-                Log(null, new Driver.LogEventArgs("Error: ConfigJoysticks.bat was not found or unable to start."));
-            }
-        }
-
         public static void RunLibUsbInstall()
         {
             //install.bat needs to be in the .\LibUSB\ directory for this to work
@@ -128,5 +113,128 @@ namespace GCNUSBFeeder
             }
         }
 
+        #endregion
+
+        #region External vJoy Functions
+        static string vJoyDirectory = Path.GetPathRoot(Environment.SystemDirectory)+@"Program Files\vJoy\";
+
+        public static void CreateJoystick(int portNum)
+        {
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                WorkingDirectory = vJoyDirectory,
+                FileName = "vJoyConfig.exe",
+                Arguments = portNum + " -f -a x y z rx ry rz -b 12", //create
+                UseShellExecute = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
+            };
+
+            var p = new Process();
+            p.StartInfo = psi;
+            try
+            {
+                Log(null, new Driver.LogEventArgs("Enabling port " + portNum + "..."));
+                p.Start();
+                while (!p.HasExited)
+                {
+                    Thread.Sleep(500);
+                }
+                Log(null, new Driver.LogEventArgs("Port " + portNum + " is detected (OK)."));
+            }
+            catch
+            {
+                Log(null, new Driver.LogEventArgs("Error: Unable to complete configuration for port " + portNum + ". (Check vJoy install?)"));
+            }
+        }
+
+        public static void DestroyJoystick(int portNum)
+        {
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                WorkingDirectory = vJoyDirectory,
+                FileName = "vJoyConfig.exe",
+                Arguments = "-d "+ portNum, //delete
+                UseShellExecute = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
+            };
+
+            var p = new Process();
+            p.StartInfo = psi;
+            try
+            {
+                p.Start();
+                while (!p.HasExited)
+                {
+                    Thread.Sleep(500);
+                }
+                Log(null, new Driver.LogEventArgs("Port " + portNum + " disabled."));
+            }
+            catch
+            {
+                Log(null, new Driver.LogEventArgs("Error: Unable to complete configuration for port " + portNum + ". (Check vJoy install?)"));
+            }
+        }
+
+        public static void CreateAllJoysticks()
+        {
+            try
+            {
+                var p = Process.Start(Application.StartupPath + @"\ConfigJoysticks.bat");
+                while (!p.HasExited)
+                {
+                    Thread.Sleep(500);
+                }
+                Log(null, new Driver.LogEventArgs("All ports opened."));
+            }
+            catch
+            {
+                Log(null, new Driver.LogEventArgs("Error: ConfigJoysticks.bat was not found or unable to start."));
+            }
+        }
+
+        public static void DestroyAllJoysticks()
+        {
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                WorkingDirectory = vJoyDirectory,
+                FileName = "vJoyConfig.exe",
+                Arguments = "-d 1 2 3 4", //delete
+                UseShellExecute = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
+            };
+
+            var p = new Process();
+            p.StartInfo = psi;
+            try
+            {
+                p.Start();
+                while (!p.HasExited)
+                {
+                    Thread.Sleep(500);
+                }
+                Log(null, new Driver.LogEventArgs("All ports disabled."));
+            }
+            catch
+            {
+                Log(null, new Driver.LogEventArgs("Error: Unable to complete configuration for ports. (Check vJoy install?)"));
+            }
+        }
+
+
+        public static void EnablevJoy()
+        {
+            string[] borp = { "vJoy Device" };
+            HH_Lib hardwareInterface = new HH_Lib();
+            hardwareInterface.SetDeviceState(borp, true);
+        }
+
+        public static void DisablevJoy()
+        {
+            string[] borp = { "vJoy Device" };
+            HH_Lib hardwareInterface = new HH_Lib();
+            hardwareInterface.SetDeviceState(borp, false);
+        }
+
+        #endregion
     }
 }

@@ -21,6 +21,11 @@ namespace GCNUSBFeeder
         public static ControllerDeadZones gcn3DZ;
         public static ControllerDeadZones gcn4DZ;
 
+        public static bool gcn1Enabled = false;
+        public static bool gcn2Enabled = false;
+        public static bool gcn3Enabled = false;
+        public static bool gcn4Enabled = false;
+
         public Driver()
         {
             gcn1DZ = new ControllerDeadZones();
@@ -81,22 +86,27 @@ namespace GCNUSBFeeder
 
                     try
                     {
-                        if (JoystickHelper.checkJoystick(ref gcn1, 1) && gcn1.AcquireVJD(1))
+                        if (gcn1Enabled && !JoystickHelper.checkJoystick(ref gcn1, 1)) { SystemHelper.CreateJoystick(1); }
+                        if (gcn2Enabled && !JoystickHelper.checkJoystick(ref gcn1, 2)) { SystemHelper.CreateJoystick(2); }
+                        if (gcn3Enabled && !JoystickHelper.checkJoystick(ref gcn1, 3)) { SystemHelper.CreateJoystick(3); }
+                        if (gcn4Enabled && !JoystickHelper.checkJoystick(ref gcn1, 4)) { SystemHelper.CreateJoystick(4); }
+
+                        if (gcn1Enabled && gcn1.AcquireVJD(1))
                         {
                             gcn1ok = true;
                             gcn1.ResetAll();
                         }
-                        if (JoystickHelper.checkJoystick(ref gcn2, 2) && gcn2.AcquireVJD(2))
+                        if (gcn2Enabled && gcn2.AcquireVJD(2))
                         {
                             gcn2ok = true;
                             gcn2.ResetAll();
                         }
-                        if (JoystickHelper.checkJoystick(ref gcn3, 3) && gcn3.AcquireVJD(3))
+                        if (gcn3Enabled && gcn3.AcquireVJD(3))
                         {
                             gcn3ok = true;
                             gcn3.ResetAll();
                         }
-                        if (JoystickHelper.checkJoystick(ref gcn4, 4) && gcn4.AcquireVJD(4))
+                        if (gcn4Enabled && gcn4.AcquireVJD(4))
                         {
                             gcn4ok = true;
                             gcn4.ResetAll();
@@ -112,13 +122,13 @@ namespace GCNUSBFeeder
                         }
                     }
 
-                    if(!(gcn1ok && 
-                         gcn2ok &&
-                         gcn3ok &&
-                         gcn4ok))
-                    {
-                        Log(null, new LogEventArgs("Warning: Gamepads may not be configured properly. (Try Configuration > ConfigJoysticks.bat)"));
-                    }
+                    //if(!(gcn1ok && 
+                    //     gcn2ok &&
+                    //     gcn3ok &&
+                    //     gcn4ok))
+                    //{
+                    //    Log(null, new LogEventArgs("Warning: Gamepads may not be configured properly. (Try Configuration > ConfigJoysticks.bat)"));
+                    //}
 
                     // PORT 1: bytes 02-09
                     // PORT 2: bytes 11-17

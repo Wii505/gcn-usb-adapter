@@ -11,12 +11,12 @@ using GCNUSBFeeder.Properties;
 
 namespace GCNUSBFeeder
 {
-    public partial class Configuration : Form
+    public partial class DeadZones : Form
     {
         public static event EventHandler<Driver.LogEventArgs> Log;
         public static event EventHandler StopProc;
 
-        public Configuration()
+        public DeadZones()
         {
             InitializeComponent();
             IntializeSettingsPage();
@@ -25,19 +25,6 @@ namespace GCNUSBFeeder
         public void IntializeSettingsPage()
         {
 
-            cbAutoStart.Checked         = (bool)Settings.Default["autoStart"];
-            cbStartWithWindows.Checked  = (bool)Settings.Default["startWithWindows"];
-            cbStartInTray.Checked       = (bool)Settings.Default["startInTray"];
-            cbAutoUpdates.Checked       = (bool)Settings.Default["autoUpdate"];
-            cbDisablevJoyOnExit.Checked = (bool)Settings.Default["disablePortsOnExit"];
-
-            refreshRate.Value           = (int)Settings.Default["refreshRate"];
-
-            port1Enabled.Checked = (bool)Settings.Default["port1Enabled"];
-            port2Enabled.Checked = (bool)Settings.Default["port2Enabled"];
-            port3Enabled.Checked = (bool)Settings.Default["port3Enabled"];
-            port4Enabled.Checked = (bool)Settings.Default["port4Enabled"];
-            
             port1AX.Value = (int)Settings.Default["port1AX"];
             port1AY.Value = (int)Settings.Default["port1AY"];
             port1CX.Value = (int)Settings.Default["port1CX"];
@@ -70,31 +57,6 @@ namespace GCNUSBFeeder
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Settings.Default["autoStart"]          = cbAutoStart.Checked;
-            Settings.Default["startWithWindows"]   = cbStartWithWindows.Checked;
-            Settings.Default["startInTray"]        = cbStartInTray.Checked;
-            Settings.Default["autoUpdate"]         = cbAutoUpdates.Checked;
-            Settings.Default["disablePortsOnExit"] = cbDisablevJoyOnExit.Checked;
-
-            //disable joysticks we don't want, but only when a change has occured.
-            if ((bool)Settings.Default["port1Enabled"] != port1Enabled.Checked && !port1Enabled.Checked)
-            { SystemHelper.DestroyJoystick(1); }
-            if ((bool)Settings.Default["port2Enabled"] != port2Enabled.Checked && !port2Enabled.Checked)
-            { SystemHelper.DestroyJoystick(2); }
-            if ((bool)Settings.Default["port3Enabled"] != port3Enabled.Checked && !port3Enabled.Checked)
-            { SystemHelper.DestroyJoystick(3); }
-            if ((bool)Settings.Default["port4Enabled"] != port4Enabled.Checked && !port4Enabled.Checked)
-            { SystemHelper.DestroyJoystick(4); }
-
-
-            Settings.Default["port1Enabled"] = port1Enabled.Checked;
-            Settings.Default["port2Enabled"] = port2Enabled.Checked;
-            Settings.Default["port3Enabled"] = port3Enabled.Checked;
-            Settings.Default["port4Enabled"] = port4Enabled.Checked;
-
-
-            Settings.Default["refreshRate"] = Convert.ToInt32(refreshRate.Value);
-
             Settings.Default["port1AX"] = Convert.ToInt32(port1AX.Value);
             Settings.Default["port1AY"] = Convert.ToInt32(port1AY.Value);
             Settings.Default["port1CX"] = Convert.ToInt32(port1CX.Value);
@@ -123,15 +85,11 @@ namespace GCNUSBFeeder
             Settings.Default["port4LT"] = Convert.ToInt32(port4LT.Value);
             Settings.Default["port4RT"] = Convert.ToInt32(port4RT.Value);
 
-            savingPanel.Location = new Point(406, 226);
-            savingPanel.Visible = true;
-
             Settings.Default.Save();
             Settings.Default.Upgrade();
             PropogateSettings();
 
             Log(null, new Driver.LogEventArgs("Settings saved, configuration has been updated."));
-            savingPanel.Visible = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -141,29 +99,7 @@ namespace GCNUSBFeeder
 
         //used to initialize settings from saved data.
         public static void PropogateSettings()
-        {
-            if ((bool)Settings.Default["startWithWindows"])
-            {
-                SystemHelper.addToStartup();
-            }
-            else
-            {
-                SystemHelper.removeFromStartup();
-            }
-
-            MainForm.autoUpdate         = (bool)Settings.Default["autoUpdate"];
-            MainForm.disablePortsOnExit = (bool)Settings.Default["disablePortsOnExit"];
-
-            Driver.gcn1Enabled = (bool)Settings.Default["port1Enabled"];
-            Driver.gcn2Enabled = (bool)Settings.Default["port2Enabled"];
-            Driver.gcn3Enabled = (bool)Settings.Default["port3Enabled"];
-            Driver.gcn4Enabled = (bool)Settings.Default["port4Enabled"];
-
-            MainForm.autoStart   = (bool)Settings.Default["autoStart"];
-            MainForm.startInTray = (bool)Settings.Default["startInTray"];
-
-            Driver.refreshRate                 = (int)Settings.Default["refreshRate"];
-            
+        {            
             Driver.gcn1DZ.analogStick.xRadius  = (int)Settings.Default["port1AX"];
             Driver.gcn1DZ.analogStick.yRadius  = (int)Settings.Default["port1AY"];
             Driver.gcn1DZ.cStick.xRadius       = (int)Settings.Default["port1CX"];
@@ -191,30 +127,6 @@ namespace GCNUSBFeeder
             Driver.gcn4DZ.cStick.yRadius       = (int)Settings.Default["port4CY"];
             Driver.gcn4DZ.LTrigger.radius      = (int)Settings.Default["port4LT"];
             Driver.gcn4DZ.RTrigger.radius      = (int)Settings.Default["port4RT"];
-        }
-
-        private void btnFixVjoy_Click(object sender, EventArgs e)
-        {
-            if (Driver.run)
-            {
-                StopProc(null, EventArgs.Empty);
-            }
-            //SystemHelper.RunConfigureJoysticks();
-        }
-
-        private void BtnFixLibUsb_Click(object sender, EventArgs e)
-        {
-            if (Driver.run)
-            {
-                StopProc(null, EventArgs.Empty);
-            }
-            SystemHelper.RunLibUsbInstall();
-        }
-
-        private void btnSaveAndClose_Click(object sender, EventArgs e)
-        {
-            btnSave_Click(sender, e);
-            btnClose_Click(sender, e);
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using AutoUpdaterDotNET;
 
 namespace GCNUSBFeeder
 {
@@ -14,7 +15,10 @@ namespace GCNUSBFeeder
     {
         public static bool autoStart = false;
         public static bool startInTray = false;
+        public static bool disablePortsOnExit = false;
+        public static bool autoUpdate = false;
         Driver mainDriver;
+        
         public MainForm()
         {
             mainDriver = new Driver();
@@ -29,7 +33,7 @@ namespace GCNUSBFeeder
             
             Configuration.PropogateSettings();
             SystemHelper.checkForMissingDrivers();
-
+            
             if (startInTray)
             {
                 this.Hide();
@@ -38,11 +42,14 @@ namespace GCNUSBFeeder
             {
                 this.Show();
             }
-            if (autoStart) 
-            { 
-                btnStart_Click(null, EventArgs.Empty); 
+            if (autoUpdate)
+            {
+                AutoUpdater.Start("URL");
             }
-
+            if (autoStart)
+            {
+                btnStart_Click(null, EventArgs.Empty);
+            }
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -137,6 +144,10 @@ namespace GCNUSBFeeder
                 this.Hide();
                 e.Cancel = true;
             }
+            if (disablePortsOnExit)
+            {
+                SystemHelper.DisablevJoy();
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -184,6 +195,11 @@ namespace GCNUSBFeeder
         private void configurationToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             configBtn_Click(sender, e);
+        }
+
+        private void btnClearLog_Click(object sender, EventArgs e)
+        {
+            txtLog.Text = "";
         }
     }
 }

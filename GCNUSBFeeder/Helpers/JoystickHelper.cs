@@ -12,35 +12,36 @@ namespace GCNUSBFeeder
         public static void setJoystick(ref vJoy joystick, GCNState input, uint joystickID, ControllerDeadZones deadZones)
         {
             bool res;
-
+            int multiplier = 127;
+            //32767
             //analog stick
             if(!deadZones.analogStick.inDeadZone(input.analogX, input.analogY))
             {
-                res = joystick.SetAxis(input.analogX, joystickID, HID_USAGES.HID_USAGE_X);
-                res = joystick.SetAxis((255 - input.analogY), joystickID, HID_USAGES.HID_USAGE_Y);
+                res = joystick.SetAxis(multiplier * input.analogX, joystickID, HID_USAGES.HID_USAGE_X);
+                res = joystick.SetAxis(multiplier * (255 - input.analogY), joystickID, HID_USAGES.HID_USAGE_Y);
             }
             else
             {
-                res = joystick.SetAxis(127, joystickID, HID_USAGES.HID_USAGE_X);
-                res = joystick.SetAxis(127, joystickID, HID_USAGES.HID_USAGE_Y);
+                res = joystick.SetAxis(multiplier * 129, joystickID, HID_USAGES.HID_USAGE_X);
+                res = joystick.SetAxis(multiplier * 129, joystickID, HID_USAGES.HID_USAGE_Y);
             }
             
             //c stick
             if (!deadZones.cStick.inDeadZone(input.cstickX, input.cstickY))
             {
-                res = joystick.SetAxis(input.cstickX, joystickID, HID_USAGES.HID_USAGE_RX);
-                res = joystick.SetAxis((255 - input.cstickY), joystickID, HID_USAGES.HID_USAGE_RY);
+                res = joystick.SetAxis(multiplier * input.cstickX, joystickID, HID_USAGES.HID_USAGE_RX);
+                res = joystick.SetAxis(multiplier * (255 - input.cstickY), joystickID, HID_USAGES.HID_USAGE_RY);
             }
             else
             {
-                res = joystick.SetAxis(127, joystickID, HID_USAGES.HID_USAGE_RX);
-                res = joystick.SetAxis(127, joystickID, HID_USAGES.HID_USAGE_RY);
+                res = joystick.SetAxis(multiplier * 129, joystickID, HID_USAGES.HID_USAGE_RX);
+                res = joystick.SetAxis(multiplier * 129, joystickID, HID_USAGES.HID_USAGE_RY);
             }
 
             //triggers
             if (!deadZones.LTrigger.inDeadZone(input.analogL))
             {
-                res = joystick.SetAxis(input.analogL, joystickID, HID_USAGES.HID_USAGE_Z);
+                res = joystick.SetAxis(multiplier * input.analogL, joystickID, HID_USAGES.HID_USAGE_Z);
             }
             else
             {
@@ -48,7 +49,7 @@ namespace GCNUSBFeeder
             }
             if (!deadZones.RTrigger.inDeadZone(input.analogR))
             {
-                res = joystick.SetAxis(input.analogR, joystickID, HID_USAGES.HID_USAGE_RZ);
+                res = joystick.SetAxis(multiplier * input.analogR, joystickID, HID_USAGES.HID_USAGE_RZ);
             }
             else
             {
@@ -93,7 +94,7 @@ namespace GCNUSBFeeder
                         checker = false;
                         return checker;
                     case VjdStat.VJD_STAT_MISS:
-                        Log(null, new Driver.LogEventArgs(string.Format("Port {0} is not installed or disabled, cannot continue.", id)));
+                        Log(null, new Driver.LogEventArgs(string.Format("Port {0} is not detected.", id)));
                         checker = false;
                         return checker;
                     default:
@@ -102,10 +103,8 @@ namespace GCNUSBFeeder
                         return checker;
                 }
 
-                int numPOVs = joystick.GetVJDDiscPovNumber(id);
-                if (numPOVs != 1) { checker = false; }
                 int numButtons = joystick.GetVJDButtonNumber(id);
-                if (numButtons != 8) { checker = false; }
+                if (numButtons != 12) { checker = false; }
 
                 //analog stick
                 checker = joystick.GetVJDAxisExist(id, HID_USAGES.HID_USAGE_X);
