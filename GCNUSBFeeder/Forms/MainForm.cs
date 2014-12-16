@@ -30,10 +30,13 @@ namespace GCNUSBFeeder
             Configuration.StopProc += btnStop_Click;
             this.FormClosing       += MainForm_FormClosing;
             this.FormClosed        += MainForm_FormClosed; //required since we're starting minimzed now
-            
+
+
             Configuration.PropogateSettings();
             SystemHelper.checkForMissingDrivers();
             
+            SystemHelper.EnablevJoy();
+
             if (startInTray)
             {
                 this.Hide();

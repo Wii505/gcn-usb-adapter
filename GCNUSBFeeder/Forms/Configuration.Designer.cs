@@ -96,8 +96,6 @@
             this.btnSaveAndClose = new System.Windows.Forms.Button();
             this.cbDisablevJoyOnExit = new System.Windows.Forms.CheckBox();
             this.cbAutoUpdates = new System.Windows.Forms.CheckBox();
-            this.savingPanel = new System.Windows.Forms.Panel();
-            this.label26 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).BeginInit();
@@ -127,7 +125,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.port4LT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port4CX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port4CY)).BeginInit();
-            this.savingPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -1227,36 +1224,12 @@
             this.cbAutoUpdates.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbAutoUpdates.UseVisualStyleBackColor = true;
             // 
-            // savingPanel
-            // 
-            this.savingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.savingPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.savingPanel.Controls.Add(this.label26);
-            this.savingPanel.Location = new System.Drawing.Point(54, 230);
-            this.savingPanel.Name = "savingPanel";
-            this.savingPanel.Size = new System.Drawing.Size(200, 100);
-            this.savingPanel.TabIndex = 38;
-            this.savingPanel.Visible = false;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(43, 39);
-            this.label26.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(127, 21);
-            this.label26.TabIndex = 10;
-            this.label26.Text = "Saving...";
-            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(961, 609);
-            this.Controls.Add(this.savingPanel);
             this.Controls.Add(this.cbAutoUpdates);
             this.Controls.Add(this.cbDisablevJoyOnExit);
             this.Controls.Add(this.btnSaveAndClose);
@@ -1311,8 +1284,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.port4LT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port4CX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port4CY)).EndInit();
-            this.savingPanel.ResumeLayout(false);
-            this.savingPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1387,7 +1358,5 @@
         private System.Windows.Forms.Button btnSaveAndClose;
         private System.Windows.Forms.CheckBox cbDisablevJoyOnExit;
         private System.Windows.Forms.CheckBox cbAutoUpdates;
-        private System.Windows.Forms.Panel savingPanel;
-        private System.Windows.Forms.Label label26;
     }
 }

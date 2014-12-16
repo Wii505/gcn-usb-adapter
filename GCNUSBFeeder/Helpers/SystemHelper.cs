@@ -10,14 +10,11 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 
-using HardwareHelperLib;
-
 namespace GCNUSBFeeder
 {
     public class SystemHelper
     {
         public static event EventHandler<Driver.LogEventArgs> Log;
-
         #region Registry Functions
         public static RegistryKey registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
         public static void addToStartup()
@@ -223,16 +220,60 @@ namespace GCNUSBFeeder
 
         public static void EnablevJoy()
         {
-            string[] borp = { "vJoy Device" };
-            HH_Lib hardwareInterface = new HH_Lib();
-            hardwareInterface.SetDeviceState(borp, true);
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                WorkingDirectory = Application.StartupPath + @"\HardwareHelperLib\",
+                FileName = "HardwareHelperLib.exe",
+                Arguments = "-e",
+                UseShellExecute = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                Verb = "runas"
+            };
+
+            var p = new Process();
+            p.StartInfo = psi;
+            try
+            {
+                p.Start();
+                while (!p.HasExited)
+                {
+                    Thread.Sleep(500);
+                }
+                //7Log(null, new Driver.LogEventArgs("Enabling vJoy."));
+            }
+            catch
+            {
+                Log(null, new Driver.LogEventArgs("Error: Unable to complete vJoy enable."));
+            }
         }
 
         public static void DisablevJoy()
         {
-            string[] borp = { "vJoy Device" };
-            HH_Lib hardwareInterface = new HH_Lib();
-            hardwareInterface.SetDeviceState(borp, false);
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                WorkingDirectory = Application.StartupPath + @"\HardwareHelperLib\",
+                FileName = "HardwareHelperLib.exe",
+                Arguments = "-d",
+                UseShellExecute = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                Verb = "runas"
+            };
+
+            var p = new Process();
+            p.StartInfo = psi;
+            try
+            {
+                p.Start();
+                while (!p.HasExited)
+                {
+                    Thread.Sleep(500);
+                }
+                Log(null, new Driver.LogEventArgs("Disabling vJoy."));
+            }
+            catch
+            {
+                Log(null, new Driver.LogEventArgs("Error: Unable to disable vJoy."));
+            }
         }
 
         #endregion

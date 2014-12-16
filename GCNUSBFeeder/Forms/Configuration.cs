@@ -86,12 +86,10 @@ namespace GCNUSBFeeder
             if ((bool)Settings.Default["port4Enabled"] != port4Enabled.Checked && !port4Enabled.Checked)
             { SystemHelper.DestroyJoystick(4); }
 
-
             Settings.Default["port1Enabled"] = port1Enabled.Checked;
             Settings.Default["port2Enabled"] = port2Enabled.Checked;
             Settings.Default["port3Enabled"] = port3Enabled.Checked;
             Settings.Default["port4Enabled"] = port4Enabled.Checked;
-
 
             Settings.Default["refreshRate"] = Convert.ToInt32(refreshRate.Value);
 
@@ -123,15 +121,11 @@ namespace GCNUSBFeeder
             Settings.Default["port4LT"] = Convert.ToInt32(port4LT.Value);
             Settings.Default["port4RT"] = Convert.ToInt32(port4RT.Value);
 
-            savingPanel.Location = new Point(406, 226);
-            savingPanel.Visible = true;
-
             Settings.Default.Save();
             Settings.Default.Upgrade();
             PropogateSettings();
 
             Log(null, new Driver.LogEventArgs("Settings saved, configuration has been updated."));
-            savingPanel.Visible = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -191,15 +185,6 @@ namespace GCNUSBFeeder
             Driver.gcn4DZ.cStick.yRadius       = (int)Settings.Default["port4CY"];
             Driver.gcn4DZ.LTrigger.radius      = (int)Settings.Default["port4LT"];
             Driver.gcn4DZ.RTrigger.radius      = (int)Settings.Default["port4RT"];
-        }
-
-        private void btnFixVjoy_Click(object sender, EventArgs e)
-        {
-            if (Driver.run)
-            {
-                StopProc(null, EventArgs.Empty);
-            }
-            //SystemHelper.RunConfigureJoysticks();
         }
 
         private void BtnFixLibUsb_Click(object sender, EventArgs e)

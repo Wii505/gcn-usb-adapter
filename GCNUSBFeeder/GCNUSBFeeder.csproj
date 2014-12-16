@@ -68,6 +68,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>43DBACA462CC540DBA2E12D6EE246055567AB7F5</ManifestCertificateThumbprint>
@@ -173,6 +174,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HardwareHelperLib\HardwareHelperLib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HardwareHelperLib\HardwareHelperLib.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="icon.ico" />
     <Content Include="loading.gif" />
     <Content Include="vJoyInterface.dll">
@@ -190,12 +197,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="HarwareHelperLib\HardwareHelperLib.csproj">
-      <Project>{86054fd0-a9f8-419e-b185-e55c9e3e1ee5}</Project>
-      <Name>HardwareHelperLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
