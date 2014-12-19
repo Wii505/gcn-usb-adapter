@@ -6,6 +6,7 @@ using System.Management;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
+using HardwareHelperLib;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
@@ -214,6 +215,32 @@ namespace GCNUSBFeeder
             catch
             {
                 Log(null, new Driver.LogEventArgs("Error: Unable to complete configuration for ports. (Check vJoy install?)"));
+            }
+        }
+
+        public static void EnablevJoyDLL()
+        {
+            try
+            {
+                HardwareHelperLib.HH_Lib lb = new HH_Lib();
+                lb.SetDeviceState("vJoy Device", true);
+            }
+            catch
+            {
+                Log(null, new Driver.LogEventArgs("Error: Unable to complete vJoy enable."));
+            }
+        }
+
+        public static void DisablevJoyDLL()
+        {
+            try
+            {
+                HardwareHelperLib.HH_Lib lb = new HH_Lib();
+                lb.SetDeviceState("vJoy Device", false);
+            }
+            catch
+            {
+                Log(null, new Driver.LogEventArgs("Error: Unable to disable vJoy."));
             }
         }
 

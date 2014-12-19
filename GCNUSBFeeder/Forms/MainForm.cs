@@ -35,7 +35,7 @@ namespace GCNUSBFeeder
             Configuration.PropogateSettings();
             SystemHelper.checkForMissingDrivers();
             
-            SystemHelper.EnablevJoy();
+            SystemHelper.EnablevJoyDLL();
 
             if (startInTray)
             {
@@ -145,7 +145,7 @@ namespace GCNUSBFeeder
             }
             if (disablePortsOnExit)
             {
-                SystemHelper.DisablevJoy();
+                SystemHelper.DisablevJoyDLL();
             }
         }
 

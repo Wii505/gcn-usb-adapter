@@ -55,8 +55,6 @@ Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.exe"; D
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0_x86.dll"; DestDir: "{sys}"; DestName: "libusb0.dll"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX86
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0.sys"; DestDir: "{sys}\drivers"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX86
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.dll"; DestDir: "{sys}"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX64
@@ -68,9 +66,13 @@ Source: "E:\C#\GCN-USB-Adapter\vJoy\UninstallJoysticks.bat"; DestDir: "{app}"; F
 Source: "E:\C#\GCN-USB-Adapter\vJoy\vJoy_204_I220914.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\HardwareHelperLib\HardwareHelperLib.dll"; DestDir: "{app}\HardwareHelperLib"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\HardwareHelperLib\HardwareHelperLib.exe"; DestDir: "{app}\HardwareHelperLib"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst32.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst64.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst32.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion 32bit
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst64.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion 64bit
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst.xml"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion 32bit; Check: not IsWin64
+Source: "E:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion 32bit; Check: not IsWin64
+Source: "E:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion 64bit; Check: IsWin64
+Source: "E:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion 64bit; Check: IsWin64
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
