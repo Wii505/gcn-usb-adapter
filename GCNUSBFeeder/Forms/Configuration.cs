@@ -70,6 +70,16 @@ namespace GCNUSBFeeder
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            txtSaving.Location = new Point(350, 205);
+            txtSaving.Visible = true;
+            txtSaving.Update();
+
+            if (Settings.Default.upgradeRequired)
+            {
+                Settings.Default.Upgrade();
+                Settings.Default.upgradeRequired = false;
+            }
+
             Settings.Default["autoStart"]          = cbAutoStart.Checked;
             Settings.Default["startWithWindows"]   = cbStartWithWindows.Checked;
             Settings.Default["startInTray"]        = cbStartInTray.Checked;
@@ -77,14 +87,26 @@ namespace GCNUSBFeeder
             Settings.Default["disablePortsOnExit"] = cbDisablevJoyOnExit.Checked;
 
             //disable joysticks we don't want, but only when a change has occured.
-            if ((bool)Settings.Default["port1Enabled"] != port1Enabled.Checked && !port1Enabled.Checked)
-            { SystemHelper.DestroyJoystick(1); }
-            if ((bool)Settings.Default["port2Enabled"] != port2Enabled.Checked && !port2Enabled.Checked)
-            { SystemHelper.DestroyJoystick(2); }
-            if ((bool)Settings.Default["port3Enabled"] != port3Enabled.Checked && !port3Enabled.Checked)
-            { SystemHelper.DestroyJoystick(3); }
-            if ((bool)Settings.Default["port4Enabled"] != port4Enabled.Checked && !port4Enabled.Checked)
-            { SystemHelper.DestroyJoystick(4); }
+            if ((bool)Settings.Default["port1Enabled"] != port1Enabled.Checked)
+            {
+                if (!port1Enabled.Checked) { SystemHelper.DestroyJoystick(1); }
+                else                       { SystemHelper.CreateJoystick(1);  }
+            }
+            if ((bool)Settings.Default["port2Enabled"] != port2Enabled.Checked)
+            {
+                if (!port2Enabled.Checked) { SystemHelper.DestroyJoystick(2); }
+                else                       { SystemHelper.CreateJoystick(2);  }
+            }
+            if ((bool)Settings.Default["port3Enabled"] != port3Enabled.Checked)
+            {
+                if (!port3Enabled.Checked) { SystemHelper.DestroyJoystick(3); }
+                else                       { SystemHelper.CreateJoystick(3);  }
+            }
+            if ((bool)Settings.Default["port4Enabled"] != port4Enabled.Checked)
+            {
+                if (!port4Enabled.Checked) { SystemHelper.DestroyJoystick(4); }
+                else                       { SystemHelper.CreateJoystick(4);  }
+            }
 
             Settings.Default["port1Enabled"] = port1Enabled.Checked;
             Settings.Default["port2Enabled"] = port2Enabled.Checked;
@@ -122,10 +144,11 @@ namespace GCNUSBFeeder
             Settings.Default["port4RT"] = Convert.ToInt32(port4RT.Value);
 
             Settings.Default.Save();
-            Settings.Default.Upgrade();
             PropogateSettings();
 
             Log(null, new Driver.LogEventArgs("Settings saved, configuration has been updated."));
+
+            txtSaving.Visible = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

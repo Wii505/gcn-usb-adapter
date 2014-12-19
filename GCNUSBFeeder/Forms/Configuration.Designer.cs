@@ -96,6 +96,7 @@
             this.btnSaveAndClose = new System.Windows.Forms.Button();
             this.cbDisablevJoyOnExit = new System.Windows.Forms.CheckBox();
             this.cbAutoUpdates = new System.Windows.Forms.CheckBox();
+            this.txtSaving = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).BeginInit();
@@ -1223,6 +1224,22 @@
             this.cbAutoUpdates.Text = "Automatically Update";
             this.cbAutoUpdates.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbAutoUpdates.UseVisualStyleBackColor = true;
+            this.cbAutoUpdates.Visible = false;
+            // 
+            // txtSaving
+            // 
+            this.txtSaving.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtSaving.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(81)))), ((int)(((byte)(81)))));
+            this.txtSaving.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSaving.Font = new System.Drawing.Font("Lucida Console", 20F);
+            this.txtSaving.ForeColor = System.Drawing.Color.White;
+            this.txtSaving.Location = new System.Drawing.Point(54, 205);
+            this.txtSaving.Name = "txtSaving";
+            this.txtSaving.Size = new System.Drawing.Size(250, 150);
+            this.txtSaving.TabIndex = 0;
+            this.txtSaving.Text = "Saving...";
+            this.txtSaving.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtSaving.Visible = false;
             // 
             // Configuration
             // 
@@ -1230,6 +1247,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(961, 609);
+            this.Controls.Add(this.txtSaving);
             this.Controls.Add(this.cbAutoUpdates);
             this.Controls.Add(this.cbDisablevJoyOnExit);
             this.Controls.Add(this.btnSaveAndClose);
@@ -1358,5 +1376,6 @@
         private System.Windows.Forms.Button btnSaveAndClose;
         private System.Windows.Forms.CheckBox cbDisablevJoyOnExit;
         private System.Windows.Forms.CheckBox cbAutoUpdates;
+        private System.Windows.Forms.Label txtSaving;
     }
 }

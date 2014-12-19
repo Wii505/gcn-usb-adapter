@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Wii U USB GCN adapter"
-#define MyAppVersion "1.0"
+#define MyAppVersion "2.5"
 #define MyAppPublisher "Matt Cunningham"
 #define MyAppURL "https://github.com/elmassivo/GCN-USB-Adapter"
 #define MyAppExeName "GCNUSBFeeder.exe"
@@ -66,6 +66,11 @@ Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.sys"; DestDir: "{sys}\drivers
 Source: "E:\C#\GCN-USB-Adapter\vJoy\ConfigJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\vJoy\UninstallJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\vJoy\vJoy_204_I220914.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\HardwareHelperLib\HardwareHelperLib.dll"; DestDir: "{app}\HardwareHelperLib"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\HardwareHelperLib\HardwareHelperLib.exe"; DestDir: "{app}\HardwareHelperLib"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst32.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst64.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst.xml"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -73,15 +78,14 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "rundll32"; Parameters: "libusb0.dll,usb_install_driver_np_rundll {app}\LibUSB\WUP-028.inf"; Flags: waituntilterminated; StatusMsg: "Installing driver (this may take a few seconds) ..."
-Filename: "{app}\LibUSB\install.bat"; WorkingDir: "{app}\LibUSB"; Flags: shellexec waituntilterminated
+Filename: "{app}\LibUSB\dpinst32.exe"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: not IsWin64
+Filename: "{app}\LibUSB\dpinst64.exe"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: IsWin64
 Filename: "{app}\vJoy_204_I220914.exe"; WorkingDir: "{app}"; Flags: waituntilterminated
-Filename: "{app}\ConfigJoysticks.bat"; WorkingDir: "{app}"; Flags: waituntilterminated shellexec
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
 
 [Dirs]
-Name: "{app}\LibUSB"; Flags: deleteafterinstall
-Name: "{app}\vJoy"; Flags: deleteafterinstall
+Name: "{app}\LibUSB"
+Name: "{app}\vJoy"
 Name: "{app}\LibUSB\amd64"
 Name: "{app}\LibUSB\ia64"
 Name: "{app}\LibUSB\license"
@@ -89,8 +93,8 @@ Name: "{app}\LibUSB\license\libusb-win32"
 Name: "{app}\LibUSB\x86"
 
 [UninstallRun]
-Filename: "{app}\UninstallJoysticks.bat"; WorkingDir: "{app}"; Flags: shellexec
-Filename: "{app}\LibUSB\uninstall.bat"; WorkingDir: "{app}\LibUSB"; Flags: shellexec waituntilterminated
+Filename: "{app}\LibUSB\dpinst32.exe"; Parameters: "/u WUP-028.inf"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: not IsWin64
+Filename: "{app}\LibUSB\dpinst64.exe"; Parameters: "/u WUP-028.inf"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: IsWin64
 
 [Code]
 function IsX64: Boolean;

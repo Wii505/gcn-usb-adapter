@@ -430,5 +430,17 @@ namespace GCNUSBFeeder.Properties {
                 this["disablePortsOnExit"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool upgradeRequired {
+            get {
+                return ((bool)(this["upgradeRequired"]));
+            }
+            set {
+                this["upgradeRequired"] = value;
+            }
+        }
     }
 }

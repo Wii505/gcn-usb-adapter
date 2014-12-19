@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
-using AutoUpdaterDotNET;
+using System.Configuration;
 
 namespace GCNUSBFeeder
 {
@@ -44,10 +44,6 @@ namespace GCNUSBFeeder
             else
             {
                 this.Show();
-            }
-            if (autoUpdate)
-            {
-                AutoUpdater.Start("URL");
             }
             if (autoStart)
             {
