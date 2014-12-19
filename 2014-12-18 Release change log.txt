@@ -1,0 +1,11 @@
+**Wii U USB GCN Controller Adapter v2.5 CHANGELOG**
+
+* Controllers can now be turned on and off in the Configuration menu.
+
+* The vJoy driver now defaults to deactivating when the program is closed (configurable).
+
+* ***Controllers no longer require calibration*** (use "reset to default" in the windows calibration properties to fix existing calibrations).
+
+* A "clear log" button has been added.
+
+* A different LibUSB install method that should work better on windows 8 has been implemented.
