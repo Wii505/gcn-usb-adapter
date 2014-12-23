@@ -92,10 +92,6 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HardwareHelperLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>HardwareHelperLib\HardwareHelperLib.dll</HintPath>
-    </Reference>
     <Reference Include="LibUsbDotNet">
       <HintPath>C:\Program Files\LibUsbDotNet\LibUsbDotNet.dll</HintPath>
     </Reference>
@@ -176,12 +172,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HardwareHelperLib\HardwareHelperLib.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="HardwareHelperLib\HardwareHelperLib.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +185,13 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HarwareHelperLib\HardwareHelperLib.csproj">
+      <Project>{86054fd0-a9f8-419e-b185-e55c9e3e1ee5}</Project>
+      <Name>HardwareHelperLib</Name>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -64,8 +64,7 @@ Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.sys"; DestDir: "{sys}\drivers
 Source: "E:\C#\GCN-USB-Adapter\vJoy\ConfigJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\vJoy\UninstallJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\vJoy\vJoy_204_I220914.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\HardwareHelperLib\HardwareHelperLib.dll"; DestDir: "{app}\HardwareHelperLib"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\HardwareHelperLib\HardwareHelperLib.exe"; DestDir: "{app}\HardwareHelperLib"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\HardwareHelperLib.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst32.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion 32bit
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst64.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion 64bit
 Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst.xml"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
@@ -80,8 +79,8 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\LibUSB\dpinst32.exe"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: not IsWin64
-Filename: "{app}\LibUSB\dpinst64.exe"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: IsWin64
+Filename: "{app}\LibUSB\dpinst32.exe"; Parameters: "/f /el"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: not IsWin64
+Filename: "{app}\LibUSB\dpinst64.exe"; Parameters: "/f /el"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: IsWin64
 Filename: "{app}\vJoy_204_I220914.exe"; WorkingDir: "{app}"; Flags: waituntilterminated
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
 
@@ -95,8 +94,8 @@ Name: "{app}\LibUSB\license\libusb-win32"
 Name: "{app}\LibUSB\x86"
 
 [UninstallRun]
-Filename: "{app}\LibUSB\dpinst32.exe"; Parameters: "/u WUP-028.inf"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: not IsWin64
-Filename: "{app}\LibUSB\dpinst64.exe"; Parameters: "/u WUP-028.inf"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: IsWin64
+Filename: "{app}\LibUSB\dpinst32.exe"; Parameters: "/u WUP-028.inf"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated 32bit; Check: not IsWin64
+Filename: "{app}\LibUSB\dpinst64.exe"; Parameters: "/u WUP-028.inf"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated 64bit; Check: IsWin64
 
 [Code]
 function IsX64: Boolean;

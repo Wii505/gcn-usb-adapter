@@ -244,6 +244,20 @@ namespace GCNUSBFeeder
             }
         }
 
+        public static void CheckDevice()
+        {
+            try
+            {
+                HardwareHelperLib.HH_Lib lb = new HH_Lib();
+
+                lb.CheckDevice("vJoy Device");
+            }
+            catch
+            {
+
+            }
+        }
+
 
         public static void EnablevJoy()
         {

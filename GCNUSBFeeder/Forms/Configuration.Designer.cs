@@ -91,7 +91,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.cbAutoStart = new System.Windows.Forms.CheckBox();
             this.cbStartWithWindows = new System.Windows.Forms.CheckBox();
-            this.BtnFixLibUsb = new System.Windows.Forms.Button();
             this.cbStartInTray = new System.Windows.Forms.CheckBox();
             this.btnSaveAndClose = new System.Windows.Forms.Button();
             this.cbDisablevJoyOnExit = new System.Windows.Forms.CheckBox();
@@ -1155,20 +1154,6 @@
             this.cbStartWithWindows.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbStartWithWindows.UseVisualStyleBackColor = true;
             // 
-            // BtnFixLibUsb
-            // 
-            this.BtnFixLibUsb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnFixLibUsb.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnFixLibUsb.ForeColor = System.Drawing.Color.White;
-            this.BtnFixLibUsb.Location = new System.Drawing.Point(177, 573);
-            this.BtnFixLibUsb.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.BtnFixLibUsb.Name = "BtnFixLibUsb";
-            this.BtnFixLibUsb.Size = new System.Drawing.Size(109, 24);
-            this.BtnFixLibUsb.TabIndex = 33;
-            this.BtnFixLibUsb.Text = "Fix LibUSB";
-            this.BtnFixLibUsb.UseVisualStyleBackColor = true;
-            this.BtnFixLibUsb.Click += new System.EventHandler(this.BtnFixLibUsb_Click);
-            // 
             // cbStartInTray
             // 
             this.cbStartInTray.AutoSize = true;
@@ -1252,7 +1237,6 @@
             this.Controls.Add(this.cbDisablevJoyOnExit);
             this.Controls.Add(this.btnSaveAndClose);
             this.Controls.Add(this.cbStartInTray);
-            this.Controls.Add(this.BtnFixLibUsb);
             this.Controls.Add(this.cbStartWithWindows);
             this.Controls.Add(this.cbAutoStart);
             this.Controls.Add(this.btnClose);
@@ -1367,7 +1351,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.CheckBox cbAutoStart;
         private System.Windows.Forms.CheckBox cbStartWithWindows;
-        private System.Windows.Forms.Button BtnFixLibUsb;
         private System.Windows.Forms.CheckBox cbStartInTray;
         private System.Windows.Forms.CheckBox port1Enabled;
         private System.Windows.Forms.CheckBox port2Enabled;
