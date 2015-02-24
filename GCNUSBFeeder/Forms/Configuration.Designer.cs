@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuration));
-            this.label2 = new System.Windows.Forms.Label();
-            this.refreshRate = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.port1AX = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -96,7 +94,6 @@
             this.cbDisablevJoyOnExit = new System.Windows.Forms.CheckBox();
             this.cbAutoUpdates = new System.Windows.Forms.CheckBox();
             this.txtSaving = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1CX)).BeginInit();
@@ -126,46 +123,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.port4CX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port4CY)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(25, 502);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Refresh Rate (ms)";
-            // 
-            // refreshRate
-            // 
-            this.refreshRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.refreshRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.refreshRate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshRate.ForeColor = System.Drawing.Color.White;
-            this.refreshRate.Location = new System.Drawing.Point(177, 497);
-            this.refreshRate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.refreshRate.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.refreshRate.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.refreshRate.Name = "refreshRate";
-            this.refreshRate.Size = new System.Drawing.Size(109, 23);
-            this.refreshRate.TabIndex = 1;
-            this.refreshRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.refreshRate.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             // 
             // label1
             // 
@@ -1201,15 +1158,14 @@
             this.cbAutoUpdates.AutoSize = true;
             this.cbAutoUpdates.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbAutoUpdates.ForeColor = System.Drawing.Color.White;
-            this.cbAutoUpdates.Location = new System.Drawing.Point(102, 110);
+            this.cbAutoUpdates.Location = new System.Drawing.Point(14, 110);
             this.cbAutoUpdates.Name = "cbAutoUpdates";
             this.cbAutoUpdates.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cbAutoUpdates.Size = new System.Drawing.Size(184, 17);
+            this.cbAutoUpdates.Size = new System.Drawing.Size(272, 17);
             this.cbAutoUpdates.TabIndex = 37;
-            this.cbAutoUpdates.Text = "Automatically Update";
+            this.cbAutoUpdates.Text = "Automatically check for updates";
             this.cbAutoUpdates.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbAutoUpdates.UseVisualStyleBackColor = true;
-            this.cbAutoUpdates.Visible = false;
             // 
             // txtSaving
             // 
@@ -1245,15 +1201,12 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.refreshRate);
             this.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Configuration";
             this.Text = "Configuration";
-            ((System.ComponentModel.ISupportInitialize)(this.refreshRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1CX)).EndInit();
@@ -1293,8 +1246,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown refreshRate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown port1AX;
         private System.Windows.Forms.Label label3;

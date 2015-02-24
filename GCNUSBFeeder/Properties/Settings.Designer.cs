@@ -442,5 +442,41 @@ namespace GCNUSBFeeder.Properties {
                 this["upgradeRequired"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool currentVersion {
+            get {
+                return ((bool)(this["currentVersion"]));
+            }
+            set {
+                this["currentVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        public int applicationVersion {
+            get {
+                return ((int)(this["applicationVersion"]));
+            }
+            set {
+                this["applicationVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\version.json")]
+        public string updateURL {
+            get {
+                return ((string)(this["updateURL"]));
+            }
+            set {
+                this["updateURL"] = value;
+            }
+        }
     }
 }

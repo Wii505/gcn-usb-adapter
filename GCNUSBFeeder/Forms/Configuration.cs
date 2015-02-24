@@ -31,8 +31,6 @@ namespace GCNUSBFeeder
             cbAutoUpdates.Checked       = (bool)Settings.Default["autoUpdate"];
             cbDisablevJoyOnExit.Checked = (bool)Settings.Default["disablePortsOnExit"];
 
-            refreshRate.Value           = (int)Settings.Default["refreshRate"];
-
             port1Enabled.Checked = (bool)Settings.Default["port1Enabled"];
             port2Enabled.Checked = (bool)Settings.Default["port2Enabled"];
             port3Enabled.Checked = (bool)Settings.Default["port3Enabled"];
@@ -74,10 +72,10 @@ namespace GCNUSBFeeder
             txtSaving.Visible = true;
             txtSaving.Update();
 
-            if (Settings.Default.upgradeRequired)
+            if (Settings.Default.currentVersion)
             {
                 Settings.Default.Upgrade();
-                Settings.Default.upgradeRequired = false;
+                Settings.Default.currentVersion = false;
             }
 
             Settings.Default["autoStart"]          = cbAutoStart.Checked;
@@ -112,8 +110,6 @@ namespace GCNUSBFeeder
             Settings.Default["port2Enabled"] = port2Enabled.Checked;
             Settings.Default["port3Enabled"] = port3Enabled.Checked;
             Settings.Default["port4Enabled"] = port4Enabled.Checked;
-
-            Settings.Default["refreshRate"] = Convert.ToInt32(refreshRate.Value);
 
             Settings.Default["port1AX"] = Convert.ToInt32(port1AX.Value);
             Settings.Default["port1AY"] = Convert.ToInt32(port1AY.Value);
@@ -169,6 +165,15 @@ namespace GCNUSBFeeder
             }
 
             MainForm.autoUpdate         = (bool)Settings.Default["autoUpdate"];
+
+            if (MainForm.autoUpdate)
+            {
+
+                MainForm.updater.currentVersion = (int)Settings.Default["applicationVersion"];
+                MainForm.updater.updateUrl = (string)Settings.Default["updateURL"];
+                MainForm.updater.CheckForUpdates();
+            }
+
             MainForm.disablePortsOnExit = (bool)Settings.Default["disablePortsOnExit"];
 
             Driver.gcn1Enabled = (bool)Settings.Default["port1Enabled"];
@@ -178,8 +183,6 @@ namespace GCNUSBFeeder
 
             MainForm.autoStart   = (bool)Settings.Default["autoStart"];
             MainForm.startInTray = (bool)Settings.Default["startInTray"];
-
-            Driver.refreshRate                 = (int)Settings.Default["refreshRate"];
             
             Driver.gcn1DZ.analogStick.xRadius  = (int)Settings.Default["port1AX"];
             Driver.gcn1DZ.analogStick.yRadius  = (int)Settings.Default["port1AY"];

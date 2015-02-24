@@ -107,5 +107,14 @@
     <Setting Name="upgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="currentVersion" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="applicationVersion" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="updateURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\version.json</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

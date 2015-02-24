@@ -98,6 +98,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -111,6 +112,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoUpdater.cs" />
     <Compile Include="Forms\About.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +127,12 @@
     </Compile>
     <Compile Include="DeadZone.cs" />
     <Compile Include="Driver.cs" />
+    <Compile Include="Forms\Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Update.Designer.cs">
+      <DependentUpon>Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="GCNState.cs" />
     <Compile Include="Helpers\JoystickHelper.cs" />
     <Compile Include="Forms\MainForm.cs">
@@ -142,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Update.resx">
+      <DependentUpon>Update.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

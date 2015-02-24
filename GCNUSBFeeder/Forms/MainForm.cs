@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.Configuration;
+using AutoUpdater;
 
 namespace GCNUSBFeeder
 {
@@ -17,11 +18,15 @@ namespace GCNUSBFeeder
         public static bool startInTray = false;
         public static bool disablePortsOnExit = false;
         public static bool autoUpdate = false;
+
+        public static AutoUpdater.AutoUpdater updater = null;
+
         Driver mainDriver;
         
         public MainForm()
         {
             mainDriver = new Driver();
+            updater = new AutoUpdater.AutoUpdater();
             InitializeComponent();
             Driver.Log             += Driver_Log;
             JoystickHelper.Log     += Driver_Log;
@@ -31,8 +36,14 @@ namespace GCNUSBFeeder
             this.FormClosing       += MainForm_FormClosing;
             this.FormClosed        += MainForm_FormClosed; //required since we're starting minimzed now
 
-
             Configuration.PropogateSettings();
+
+            if (autoUpdate && MainForm.updater.updateAvailable)
+            {
+                Update u = new Update();
+                u.ShowDialog();
+            }
+
             SystemHelper.checkForMissingDrivers();
 
             if (disablePortsOnExit)
