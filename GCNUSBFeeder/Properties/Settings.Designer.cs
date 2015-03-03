@@ -457,7 +457,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
         public int applicationVersion {
             get {
                 return ((int)(this["applicationVersion"]));
@@ -469,7 +469,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\version.json")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://www.m4sv.com/gcnadapter/version.txt")]
         public string updateURL {
             get {
                 return ((string)(this["updateURL"]));

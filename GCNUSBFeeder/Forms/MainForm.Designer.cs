@@ -334,7 +334,7 @@
             this.MaximumSize = new System.Drawing.Size(692, 446);
             this.MinimumSize = new System.Drawing.Size(692, 446);
             this.Name = "MainForm";
-            this.Text = "Gamecube USB Adapter Driver - v2.5";
+            this.Text = "Gamecube USB Adapter Driver - v3.0";
             this.trayMenu.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

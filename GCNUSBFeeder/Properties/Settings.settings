@@ -111,10 +111,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="applicationVersion" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">250</Value>
+      <Value Profile="(Default)">300</Value>
     </Setting>
     <Setting Name="updateURL" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\version.json</Value>
+      <Value Profile="(Default)">http://www.m4sv.com/gcnadapter/version.txt</Value>
     </Setting>
   </Settings>
 </SettingsFile>

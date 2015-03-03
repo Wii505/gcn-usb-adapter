@@ -26,6 +26,7 @@ namespace GCNUSBFeeder
         private void btnDownload_Click(object sender, EventArgs e)
         {
             MainForm.updater.GenerateRedirect();
+            Application.Exit();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

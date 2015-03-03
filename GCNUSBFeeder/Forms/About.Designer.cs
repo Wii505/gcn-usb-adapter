@@ -77,7 +77,7 @@
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(363, 17);
             this.labelVersion.TabIndex = 0;
-            this.labelVersion.Text = "Version 2.5 - 2014-12-16";
+            this.labelVersion.Text = "Version 3.0 - 2015-03-02";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelProductName

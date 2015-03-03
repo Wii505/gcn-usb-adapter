@@ -71,10 +71,10 @@ namespace GCNUSBFeeder
                     if (d["Name"].ToString().Contains("libusb")) libUsb = true;
                     if (vJoy && libUsb) break;
                 }
-                if (!libUsb)
-                {
-                    Log(null, new Driver.LogEventArgs("LibUSB was not detected, please rerun the installer."));
-                }
+                //if (!libUsb)
+                //{
+                //    Log(null, new Driver.LogEventArgs("LibUSB was not detected, please rerun the installer."));
+                //}
                 if (!vJoy)
                 {
                     Log(null, new Driver.LogEventArgs("vJoy was not detected, please rerun the installer."));

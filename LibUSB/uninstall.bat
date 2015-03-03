@@ -1,1 +1,0 @@
-install-filter.exe uninstall --inf=WUP-028.inf

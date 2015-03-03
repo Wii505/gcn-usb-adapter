@@ -56,9 +56,9 @@
             this.cbDisableAutoUpdates.Location = new System.Drawing.Point(228, 276);
             this.cbDisableAutoUpdates.Name = "cbDisableAutoUpdates";
             this.cbDisableAutoUpdates.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cbDisableAutoUpdates.Size = new System.Drawing.Size(127, 15);
+            this.cbDisableAutoUpdates.Size = new System.Drawing.Size(183, 15);
             this.cbDisableAutoUpdates.TabIndex = 30;
-            this.cbDisableAutoUpdates.Text = "Don\'t ask again";
+            this.cbDisableAutoUpdates.Text = "Don\'t check for &updates";
             this.cbDisableAutoUpdates.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbDisableAutoUpdates.UseVisualStyleBackColor = true;
             this.cbDisableAutoUpdates.CheckedChanged += new System.EventHandler(this.cbDisableAutoUpdates_CheckedChanged);
@@ -87,7 +87,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(135, 35);
             this.btnCancel.TabIndex = 37;
-            this.btnCancel.Text = "&Close";
+            this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 

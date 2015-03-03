@@ -35,43 +35,24 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\device specification.htm"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\install-filter.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\install.bat"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\installer_x64.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\installer_x86.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\libusb-win32-bin-README.txt"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\uninstall.bat"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\WUP-028.cat"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\WUP-028.inf"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.dll"; DestDir: "{app}\LibUSB\amd64"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.sys"; DestDir: "{app}\LibUSB\amd64"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.dll"; DestDir: "{app}\LibUSB\ia64"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.sys"; DestDir: "{app}\LibUSB\ia64"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\license\libusb-win32\installer_license.txt"; DestDir: "{app}\LibUSB\license\libusb-win32"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0.sys"; DestDir: "{app}\LibUSB\x86"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0_x86.dll"; DestDir: "{app}\LibUSB\x86"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\ConfigJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\HardwareHelperLib.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\HardwareHelperLib.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0_x86.dll"; DestDir: "{sys}"; DestName: "libusb0.dll"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX86
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\x86\libusb0.sys"; DestDir: "{sys}\drivers"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX86
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.dll"; DestDir: "{sys}"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX64
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\amd64\libusb0.sys"; DestDir: "{sys}\drivers"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsX64
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.dll"; DestDir: "{sys}"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsI64
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\ia64\libusb0.sys"; DestDir: "{sys}\drivers"; Flags: uninsneveruninstall replacesameversion restartreplace promptifolder; Check: IsI64
-Source: "E:\C#\GCN-USB-Adapter\vJoy\ConfigJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\vJoy\UninstallJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\UninstallJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterfaceWrap64.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\zadig.ini"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\zadig_2.1.1.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\vJoy\vJoy_204_I220914.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\HardwareHelperLib.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst32.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion 32bit
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst64.exe"; DestDir: "{app}\LibUSB"; Flags: ignoreversion 64bit
-Source: "E:\C#\GCN-USB-Adapter\LibUSB\dpinst.xml"; DestDir: "{app}\LibUSB"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion 32bit; Check: not IsWin64
-Source: "E:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion 32bit; Check: not IsWin64
-Source: "E:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion 64bit; Check: IsWin64
-Source: "E:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion 64bit; Check: IsWin64
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -79,8 +60,7 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\LibUSB\dpinst32.exe"; Parameters: "/f /el"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: not IsWin64
-Filename: "{app}\LibUSB\dpinst64.exe"; Parameters: "/f /el"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated; Check: IsWin64
+Filename: "{app}\zadig_2.1.1.exe"; WorkingDir: "{app}"
 Filename: "{app}\vJoy_204_I220914.exe"; WorkingDir: "{app}"; Flags: waituntilterminated
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
 
@@ -93,9 +73,8 @@ Name: "{app}\LibUSB\license"
 Name: "{app}\LibUSB\license\libusb-win32"
 Name: "{app}\LibUSB\x86"
 
-[UninstallRun]
-Filename: "{app}\LibUSB\dpinst32.exe"; Parameters: "/u WUP-028.inf"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated 32bit; Check: not IsWin64
-Filename: "{app}\LibUSB\dpinst64.exe"; Parameters: "/u WUP-028.inf"; WorkingDir: "{app}\LibUSB"; Flags: waituntilterminated 64bit; Check: IsWin64
+[InstallDelete]
+Type: filesandordirs; Name: "{app}\usb_driver"
 
 [Code]
 function IsX64: Boolean;
