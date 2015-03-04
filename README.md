@@ -2,28 +2,6 @@ This is a vjoy feeder application written in C# using LibUsbDotNet.
 
 It allows for communication with the WUP-028 model of the Wii U to Gamecube USB adapter.
 
-==================================================================
-
-This driver has been confirmed to work on Windows 7 and Windows 8 so far.
-
-Install Instructions:
-
--   (Windows 8 only) Restart into "disable driver signature enforcement" mode before proceeding.
-
--   Plug in your wii U adapter first (black USB end), and let Windows do nothing/fail to install it.
-
--   Run the Installer (as administrator).
-
--   You will be asked to install an unsigned driver click Install this software anyway.
-
--   You will be prompted to install vJoy. The default options are highly recommended.
-
--   After that, the installer will generate 4 controllers and populate them with the correct buttons/axes.
-
--   The provided application will start/stop access to your controllers, and it needs to be started to use them.
-
--   Analog sticks may need to be calibrated before first use, click the Windows Gamepad Info button for quick access from the application.
-
 For reference:
 
 *   Z-Axis is the L trigger
