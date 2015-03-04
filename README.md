@@ -1,5 +1,7 @@
 This is a vjoy feeder application written in C# using LibUsbDotNet. 
 
+A more readable help page is located here: http://m4sv.com/page/wii-u-gcn-usb-driver
+
 It allows for communication with the WUP-028 model of the Wii U to Gamecube USB adapter.
 
 Quick Features and Facts
