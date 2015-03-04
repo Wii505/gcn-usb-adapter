@@ -8,6 +8,10 @@ Quick Features and Facts
 
 *   Not Compatible with Windows 10
 
+*   Use up to 4 gamecube controllers on 1 USB port
+
+*   Only requires the black plug (gray is used to power the rumble motor)
+
 *   Tied with the raphnet adapter for the lowest latency method of using a gamecube controller on PC
 
 *   Compatible with sample rate overclocking using a modified HIDUSB.sys
