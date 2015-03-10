@@ -55,6 +55,52 @@ namespace GCNUSBFeeder
         }
         #endregion
 
+        #region Windows Version
+        public static double GetOSVersion()
+        {
+            switch (Environment.OSVersion.Platform)
+            {
+                case PlatformID.Win32S: return 3.1;
+                case PlatformID.Win32Windows:
+                    switch (Environment.OSVersion.Version.Minor)
+                    {
+                        case 0:  return 3.2;
+                        case 10: return 3.3;
+                        case 90: return 3.4;
+                    }
+                    break;
+                case PlatformID.Win32NT:
+                    switch (Environment.OSVersion.Version.Major)
+                    {
+                        case 3: return 3.51;
+                        case 4: return 4.0;
+                        case 5:
+                            switch (Environment.OSVersion.Version.Minor)
+                            {
+                                case 0: return 5.0;
+                                case 1: return 5.1;
+                                case 2: return 5.2;
+                            }
+                            break;
+                        case 6:
+                            switch (Environment.OSVersion.Version.Minor)
+                            {
+                                case 0: return 6.0; // Vista
+                                case 1: return 6.1; // 7.0
+                                case 2: return 6.2; // 8.0
+                                case 3: return 6.3; // 8.1
+                                case 4: return 6.4; // 10 TP
+                            }
+                            break;
+                        case 10: return 10.0; // 10?
+                    }
+                    break;
+                case PlatformID.WinCE: return 2.0;
+            }
+            return 0;
+        }
+        #endregion
+
         #region Driver Functions
         public static void checkForMissingDrivers()
         {

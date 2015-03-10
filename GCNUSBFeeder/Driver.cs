@@ -17,6 +17,8 @@ namespace GCNUSBFeeder
         public static event EventHandler<LogEventArgs> Log;
         public static bool run = false;
 
+        public static bool noEventMode = true;
+
         public static ControllerDeadZones gcn1DZ;
         public static ControllerDeadZones gcn2DZ;
         public static ControllerDeadZones gcn3DZ;
@@ -131,21 +133,56 @@ namespace GCNUSBFeeder
                     }
                 }
 
-                // PORT 1: bytes 02-09
-                // PORT 2: bytes 11-17
-                // PORT 3: bytes 20-27
-                // PORT 4: bytes 29-36l
-                byte[] ReadBuffer = new byte[37]; // 32 (4 players x 8) bytes for input, 5 bytes for formatting
+                if (noEventMode)
+                {
+                    // PORT 1: bytes 02-09
+                    // PORT 2: bytes 11-17
+                    // PORT 3: bytes 20-27
+                    // PORT 4: bytes 29-36l
+                    byte[] ReadBuffer = new byte[37]; // 32 (4 players x 8) bytes for input, 5 bytes for formatting
+                    Log(null, new LogEventArgs("Driver successfully started, entering input loop."));
+                    run = true;
+                    while (run)
+                    {
+                        var ec = reader.Read(ReadBuffer, 10, out transferLength);
+                        var input1 = GCNState.GetState(getFastInput1(ref ReadBuffer));
+                        var input2 = GCNState.GetState(getFastInput2(ref ReadBuffer));
+                        var input3 = GCNState.GetState(getFastInput3(ref ReadBuffer));
+                        var input4 = GCNState.GetState(getFastInput4(ref ReadBuffer));
 
-                Log(null, new LogEventArgs("Driver successfully started, entering input loop."));
+                        if (gcn1ok) { JoystickHelper.setJoystick(ref gcn1, input1, 1, gcn1DZ); }
+                        if (gcn2ok) { JoystickHelper.setJoystick(ref gcn2, input2, 2, gcn2DZ); }
+                        if (gcn3ok) { JoystickHelper.setJoystick(ref gcn3, input3, 3, gcn3DZ); }
+                        if (gcn4ok) { JoystickHelper.setJoystick(ref gcn4, input4, 4, gcn4DZ); }
+                        System.Threading.Thread.Sleep(5);
+                    }
 
-                //using  Interrupt request instead of looping behavior.
-                reader.DataReceivedEnabled = true;
-                reader.DataReceived += reader_DataReceived;
-                reader.ReadBufferSize = 37;
-                reader.ReadThreadPriority = System.Threading.ThreadPriority.Highest;
-                
-                run = true;
+                    if (GCNAdapter != null)
+                    {
+                        if (GCNAdapter.IsOpen)
+                        {
+                            if (!ReferenceEquals(wholeGCNAdapter, null))
+                            {
+                                wholeGCNAdapter.ReleaseInterface(0);
+                            }
+                            GCNAdapter.Close();
+                        }
+                        GCNAdapter = null;
+                        UsbDevice.Exit();
+                        Log(null, new LogEventArgs("Closing driver thread..."));
+                    }
+                    Log(null, new LogEventArgs("Driver thread has been stopped."));
+                }
+                else
+                {
+                    Log(null, new LogEventArgs("Driver successfully started, entering input loop."));
+                    //using  Interrupt request instead of looping behavior.
+                    reader.DataReceivedEnabled = true;
+                    reader.DataReceived += reader_DataReceived;
+                    reader.ReadBufferSize = 37;
+                    reader.ReadThreadPriority = System.Threading.ThreadPriority.Highest;
+                    run = true;
+                }
             }
             else
             {

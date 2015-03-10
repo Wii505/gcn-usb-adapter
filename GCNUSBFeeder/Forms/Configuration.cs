@@ -30,6 +30,8 @@ namespace GCNUSBFeeder
             cbStartInTray.Checked       = (bool)Settings.Default["startInTray"];
             cbAutoUpdates.Checked       = (bool)Settings.Default["autoUpdate"];
             cbDisablevJoyOnExit.Checked = (bool)Settings.Default["disablePortsOnExit"];
+            
+            cbNoEventMode.Checked       = (bool)Settings.Default["noEventMode"];
 
             port1Enabled.Checked = (bool)Settings.Default["port1Enabled"];
             port2Enabled.Checked = (bool)Settings.Default["port2Enabled"];
@@ -83,6 +85,8 @@ namespace GCNUSBFeeder
             Settings.Default["startInTray"]        = cbStartInTray.Checked;
             Settings.Default["autoUpdate"]         = cbAutoUpdates.Checked;
             Settings.Default["disablePortsOnExit"] = cbDisablevJoyOnExit.Checked;
+
+            Settings.Default["noEventMode"] = cbNoEventMode.Checked;
 
             //disable joysticks we don't want, but only when a change has occured.
             if ((bool)Settings.Default["port1Enabled"] != port1Enabled.Checked)
@@ -175,6 +179,8 @@ namespace GCNUSBFeeder
             }
 
             MainForm.disablePortsOnExit = (bool)Settings.Default["disablePortsOnExit"];
+
+            Driver.noEventMode = (bool)Settings.Default["noEventMode"];
 
             Driver.gcn1Enabled = (bool)Settings.Default["port1Enabled"];
             Driver.gcn2Enabled = (bool)Settings.Default["port2Enabled"];

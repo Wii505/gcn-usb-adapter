@@ -94,6 +94,7 @@
             this.cbDisablevJoyOnExit = new System.Windows.Forms.CheckBox();
             this.cbAutoUpdates = new System.Windows.Forms.CheckBox();
             this.txtSaving = new System.Windows.Forms.Label();
+            this.cbNoEventMode = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.port1AX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1AY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port1CX)).BeginInit();
@@ -1182,12 +1183,27 @@
             this.txtSaving.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.txtSaving.Visible = false;
             // 
+            // cbNoEventMode
+            // 
+            this.cbNoEventMode.AutoSize = true;
+            this.cbNoEventMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbNoEventMode.ForeColor = System.Drawing.Color.White;
+            this.cbNoEventMode.Location = new System.Drawing.Point(30, 133);
+            this.cbNoEventMode.Name = "cbNoEventMode";
+            this.cbNoEventMode.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cbNoEventMode.Size = new System.Drawing.Size(256, 17);
+            this.cbNoEventMode.TabIndex = 38;
+            this.cbNoEventMode.Text = "Windows 8+ Compatibility Mode";
+            this.cbNoEventMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbNoEventMode.UseVisualStyleBackColor = true;
+            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(961, 609);
+            this.Controls.Add(this.cbNoEventMode);
             this.Controls.Add(this.txtSaving);
             this.Controls.Add(this.cbAutoUpdates);
             this.Controls.Add(this.cbDisablevJoyOnExit);
@@ -1311,5 +1327,6 @@
         private System.Windows.Forms.CheckBox cbDisablevJoyOnExit;
         private System.Windows.Forms.CheckBox cbAutoUpdates;
         private System.Windows.Forms.Label txtSaving;
+        private System.Windows.Forms.CheckBox cbNoEventMode;
     }
 }

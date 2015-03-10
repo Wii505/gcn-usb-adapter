@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Wii U USB GCN adapter"
-#define MyAppVersion "2.5"
+#define MyAppVersion "3.1"
 #define MyAppPublisher "Matt Cunningham"
 #define MyAppURL "https://github.com/elmassivo/GCN-USB-Adapter"
 #define MyAppExeName "GCNUSBFeeder.exe"
@@ -23,7 +23,7 @@ DefaultDirName={pf}\GCNadapter
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 OutputBaseFilename=WiiU-UsbSetup
-SetupIconFile=E:\C#\GCNUSBFeeder\GCNUSBFeeder\icon.ico
+SetupIconFile=E:\C#\GCN-USB-Adapter\GCNUSBFeeder\icon.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -47,12 +47,13 @@ Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\HardwareHelperLib.pd
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\UninstallJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\vJoyInterfaceWrap64.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\zadig.ini"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\C#\GCN-USB-Adapter\zadig_2.1.1.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\vJoy\vJoy_204_I220914.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterface.dll"; DestDir: "{app}\x86"
+Source: "E:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterfaceWrap.dll"; DestDir: "{app}\x86"
+Source: "E:\C#\GCN-USB-Adapter\vJoy\vJoy_205_080115.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -61,7 +62,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 
 [Run]
 Filename: "{app}\zadig_2.1.1.exe"; WorkingDir: "{app}"
-Filename: "{app}\vJoy_204_I220914.exe"; WorkingDir: "{app}"; Flags: waituntilterminated
+Filename: "{app}\vJoy_205_080115.exe"
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
 
 [Dirs]
@@ -75,6 +76,9 @@ Name: "{app}\LibUSB\x86"
 
 [InstallDelete]
 Type: filesandordirs; Name: "{app}\usb_driver"
+
+[UninstallRun]
+Filename: "{sd}:\Program Files\vJoy\unins000.exe"
 
 [Code]
 function IsX64: Boolean;
