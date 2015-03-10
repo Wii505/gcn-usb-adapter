@@ -1,41 +1,31 @@
 This is a vjoy feeder application written in C# using LibUsbDotNet. 
 
+A more readable help page is located here: http://m4sv.com/page/wii-u-gcn-usb-driver
+
 It allows for communication with the WUP-028 model of the Wii U to Gamecube USB adapter.
 
-==================================================================
+Quick Features and Facts
 
-This driver has been confirmed to work on Windows 7 and Windows 8 so far.
+*   Compatible with Windows XP/Vista/7/8
 
-Install Instructions:
+*   Not Compatible with Windows 10
 
--   (Windows 8 only) Restart into "disable driver signature enforcement" mode before proceeding.
+*   Use up to 4 gamecube controllers on 1 USB port
 
--   Plug in your wii U adapter first (black USB end), and let Windows do nothing/fail to install it.
+*   Only requires the black plug (gray is used to power the rumble motor)
 
--   Run the Installer (as administrator).
+*   Tied with the raphnet adapter for the lowest latency method of using a gamecube controller on PC
 
--   You will be asked to install an unsigned driver click Install this software anyway.
+*   Compatible with sample rate overclocking using a modified HIDUSB.sys
 
--   You will be prompted to install vJoy. The default options are highly recommended.
+*   Creates joystick as a default Windows joystick
 
--   After that, the installer will generate 4 controllers and populate them with the correct buttons/axes.
+*   Compatible with x360ce (for use with games that only support xbox controllers)
 
--   The provided application will start/stop access to your controllers, and it needs to be started to use them.
+*   Configurable Deadzones
 
--   Analog sticks may need to be calibrated before first use, click the Windows Gamepad Info button for quick access from the application.
+*   Automatic Updates
 
-For reference:
+*   Full comaptibility with the native dolphin driver
 
-*   Z-Axis is the L trigger
-
-*   X-rotation is the C-stick X axis
-
-*   Y-Rotation is the C-stick Y axis
-
-*   Z-rotation is the R trigger
-
-*   When calibrating the triggers, do not make them click (hit the button), it will cause you to go to the next screen and could mess up your calibration.
-
-*   Rumble is not currently supported.
-
-*   Input lag is variable as of the 2014-11-28.5 release. It defaults to 10ms (~2/3 a frame) and can go as low as 5ms (roughly 1/3 frame) or as high as 30ms (just under 2 frames). Faster refresh rates (lower values) will use more processing power but be more responsive.
+*   Rumble is not currently supported
