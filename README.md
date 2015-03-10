@@ -8,7 +8,7 @@ Quick Features and Facts
 
 *   Compatible with Windows XP/Vista/7/8
 
-*   Not Compatible with Windows 10
+*   Compatibiltiy with windows 10 possible (pending feedback)
 
 *   Use up to 4 gamecube controllers on 1 USB port
 
