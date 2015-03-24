@@ -457,7 +457,7 @@ namespace GCNUSBFeeder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("310")]
+        [global::System.Configuration.DefaultSettingValueAttribute("311")]
         public int applicationVersion {
             get {
                 return ((int)(this["applicationVersion"]));

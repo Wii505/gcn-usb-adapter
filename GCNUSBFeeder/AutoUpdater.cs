@@ -53,7 +53,8 @@ namespace AutoUpdater
         {
             if (updateAvailable)
             {
-                Process.Start(response.applicationUrl);
+                var startInfo = new ProcessStartInfo("explorer.exe", response.applicationUrl);
+                Process.Start(startInfo);
             }
         }
         public string   updateUrl           { get; set; }

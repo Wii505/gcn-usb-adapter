@@ -65,6 +65,7 @@
             // 
             // btnDownload
             // 
+            this.btnDownload.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.btnDownload.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDownload.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDownload.ForeColor = System.Drawing.Color.White;

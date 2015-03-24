@@ -117,10 +117,6 @@ namespace GCNUSBFeeder
                     if (d["Name"].ToString().Contains("libusb")) libUsb = true;
                     if (vJoy && libUsb) break;
                 }
-                //if (!libUsb)
-                //{
-                //    Log(null, new Driver.LogEventArgs("LibUSB was not detected, please rerun the installer."));
-                //}
                 if (!vJoy)
                 {
                     Log(null, new Driver.LogEventArgs("vJoy was not detected, please rerun the installer."));
@@ -131,36 +127,11 @@ namespace GCNUSBFeeder
                 Log(null, new Driver.LogEventArgs("Driver check failed, (Are you running as Administrator?)"));
             }
         }
-
-        public static void RunLibUsbInstall()
-        {
-            //install.bat needs to be in the .\LibUSB\ directory for this to work
-            Log(null, new Driver.LogEventArgs("Attempting LibUSB WUP-028.inf filter fix..."));
-            try
-            {
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.WorkingDirectory = @".\LibUSB";
-                psi.FileName = "install.bat";
-                var p = new Process();
-                p.StartInfo = psi;
-                p.Start();
-
-                while (!p.HasExited)
-                {
-                    Thread.Sleep(1000);
-                }
-                Log(null, new Driver.LogEventArgs("LibUSB filter fix has completed."));
-            }
-            catch
-            {
-                Log(null, new Driver.LogEventArgs(@"Error: \LibUSB\install.bat was not found or unable to start."));
-            }
-        }
-
         #endregion
 
         #region External vJoy Functions
-        static string vJoyDirectory = Path.GetPathRoot(Environment.SystemDirectory)+@"Program Files\vJoy\";
+        //as of vjoy 2.05, x32 and x64 binaries are separated
+        static string vJoyDirectory = Path.GetPathRoot(Environment.SystemDirectory) + @"Program Files\vJoy"+ ((IntPtr.Size == 8) ? @"\x64\" : @"\x86\");
 
         public static void CreateJoystick(int portNum)
         {
@@ -219,51 +190,6 @@ namespace GCNUSBFeeder
             }
         }
 
-        public static void CreateAllJoysticks()
-        {
-            try
-            {
-                var p = Process.Start(Application.StartupPath + @"\ConfigJoysticks.bat");
-                while (!p.HasExited)
-                {
-                    Thread.Sleep(500);
-                }
-                Log(null, new Driver.LogEventArgs("All ports opened."));
-            }
-            catch
-            {
-                Log(null, new Driver.LogEventArgs("Error: ConfigJoysticks.bat was not found or unable to start."));
-            }
-        }
-
-        public static void DestroyAllJoysticks()
-        {
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                WorkingDirectory = vJoyDirectory,
-                FileName = "vJoyConfig.exe",
-                Arguments = "-d 1 2 3 4", //delete
-                UseShellExecute = true,
-                WindowStyle = ProcessWindowStyle.Hidden,
-            };
-
-            var p = new Process();
-            p.StartInfo = psi;
-            try
-            {
-                p.Start();
-                while (!p.HasExited)
-                {
-                    Thread.Sleep(500);
-                }
-                Log(null, new Driver.LogEventArgs("All ports disabled."));
-            }
-            catch
-            {
-                Log(null, new Driver.LogEventArgs("Error: Unable to complete configuration for ports. (Check vJoy install?)"));
-            }
-        }
-
         public static void EnablevJoyDLL()
         {
             try
@@ -276,7 +202,7 @@ namespace GCNUSBFeeder
                 Log(null, new Driver.LogEventArgs("Error: Unable to complete vJoy enable."));
             }
         }
-
+        //This is a workaround since vJoy does not support disabling all 4 joysticks.
         public static void DisablevJoyDLL()
         {
             try
@@ -289,80 +215,6 @@ namespace GCNUSBFeeder
                 Log(null, new Driver.LogEventArgs("Error: Unable to disable vJoy."));
             }
         }
-
-        public static void CheckDevice()
-        {
-            try
-            {
-                HardwareHelperLib.HH_Lib lb = new HH_Lib();
-
-                lb.CheckDevice("vJoy Device");
-            }
-            catch
-            {
-
-            }
-        }
-
-
-        public static void EnablevJoy()
-        {
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                WorkingDirectory = Application.StartupPath + @"\HardwareHelperLib\",
-                FileName = "HardwareHelperLib.exe",
-                Arguments = "-e",
-                UseShellExecute = true,
-                WindowStyle = ProcessWindowStyle.Hidden,
-                Verb = "runas"
-            };
-
-            var p = new Process();
-            p.StartInfo = psi;
-            try
-            {
-                p.Start();
-                while (!p.HasExited)
-                {
-                    Thread.Sleep(500);
-                }
-                //7Log(null, new Driver.LogEventArgs("Enabling vJoy."));
-            }
-            catch
-            {
-                Log(null, new Driver.LogEventArgs("Error: Unable to complete vJoy enable."));
-            }
-        }
-
-        public static void DisablevJoy()
-        {
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                WorkingDirectory = Application.StartupPath + @"\HardwareHelperLib\",
-                FileName = "HardwareHelperLib.exe",
-                Arguments = "-d",
-                UseShellExecute = true,
-                WindowStyle = ProcessWindowStyle.Hidden,
-                Verb = "runas"
-            };
-
-            var p = new Process();
-            p.StartInfo = psi;
-            try
-            {
-                p.Start();
-                while (!p.HasExited)
-                {
-                    Thread.Sleep(500);
-                }
-                Log(null, new Driver.LogEventArgs("Disabling vJoy."));
-            }
-            catch
-            {
-                Log(null, new Driver.LogEventArgs("Error: Unable to disable vJoy."));
-            }
-        }
-
         #endregion
     }
 }

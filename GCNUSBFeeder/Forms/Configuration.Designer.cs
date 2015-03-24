@@ -357,6 +357,7 @@
             this.port1Enabled.TabIndex = 35;
             this.port1Enabled.Text = "Enabled";
             this.port1Enabled.UseVisualStyleBackColor = true;
+            this.port1Enabled.CheckedChanged += new System.EventHandler(this.port1Enabled_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -394,6 +395,7 @@
             this.port2Enabled.TabIndex = 36;
             this.port2Enabled.Text = "Enabled";
             this.port2Enabled.UseVisualStyleBackColor = true;
+            this.port2Enabled.CheckedChanged += new System.EventHandler(this.port2Enabled_CheckedChanged);
             // 
             // label8
             // 
@@ -627,6 +629,7 @@
             this.port3Enabled.TabIndex = 38;
             this.port3Enabled.Text = "Enabled";
             this.port3Enabled.UseVisualStyleBackColor = true;
+            this.port3Enabled.CheckedChanged += new System.EventHandler(this.port3Enabled_CheckedChanged);
             // 
             // label14
             // 
@@ -860,6 +863,7 @@
             this.port4Enabled.TabIndex = 37;
             this.port4Enabled.Text = "Enabled";
             this.port4Enabled.UseVisualStyleBackColor = true;
+            this.port4Enabled.CheckedChanged += new System.EventHandler(this.port4Enabled_CheckedChanged);
             // 
             // label20
             // 

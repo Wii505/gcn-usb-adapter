@@ -14,6 +14,8 @@ namespace GCNUSBFeeder
 {
     public partial class MainForm : Form
     {
+        public static int version = 311;
+
         public static bool autoStart = false;
         public static bool startInTray = false;
         public static bool disablePortsOnExit = false;
@@ -27,6 +29,7 @@ namespace GCNUSBFeeder
         {
             mainDriver = new Driver();
             updater = new AutoUpdater.AutoUpdater();
+            updater.currentVersion = version;
             InitializeComponent();
             Driver.Log             += Driver_Log;
             JoystickHelper.Log     += Driver_Log;
@@ -34,34 +37,38 @@ namespace GCNUSBFeeder
             Configuration.Log      += Driver_Log;
             Configuration.StopProc += btnStop_Click;
             this.FormClosing       += MainForm_FormClosing;
-            this.FormClosed        += MainForm_FormClosed; //required since we're starting minimzed now
+            this.FormClosed        += MainForm_FormClosed;
 
             Configuration.PropogateSettings();
-
+            bool updating = false;
             if (autoUpdate && MainForm.updater.updateAvailable)
             {
                 Update u = new Update();
-                u.ShowDialog();
+                if (u.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+                {
+                    updating = true;
+                }
             }
-
-            SystemHelper.checkForMissingDrivers();
-
-            if (disablePortsOnExit)
+            //quietly finish the constructor if we're updating.
+            if (!updating)
             {
-                SystemHelper.EnablevJoyDLL();
-            }
-
-            if (startInTray)
-            {
-                this.Hide();
-            }
-            else
-            {
-                this.Show();
-            }
-            if (autoStart)
-            {
-                btnStart_Click(null, EventArgs.Empty);
+                SystemHelper.checkForMissingDrivers();
+                if (disablePortsOnExit)
+                {
+                    SystemHelper.EnablevJoyDLL();
+                }
+                if (startInTray)
+                {
+                    this.Hide();
+                }
+                else
+                {
+                    this.Show();
+                }
+                if (autoStart)
+                {
+                    btnStart_Click(null, EventArgs.Empty);
+                }
             }
         }
 

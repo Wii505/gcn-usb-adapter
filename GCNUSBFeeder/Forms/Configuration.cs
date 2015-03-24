@@ -172,8 +172,6 @@ namespace GCNUSBFeeder
 
             if (MainForm.autoUpdate)
             {
-
-                MainForm.updater.currentVersion = (int)Settings.Default["applicationVersion"];
                 MainForm.updater.updateUrl = (string)Settings.Default["updateURL"];
                 MainForm.updater.CheckForUpdates();
             }
@@ -219,19 +217,54 @@ namespace GCNUSBFeeder
             Driver.gcn4DZ.RTrigger.radius      = (int)Settings.Default["port4RT"];
         }
 
-        private void BtnFixLibUsb_Click(object sender, EventArgs e)
-        {
-            if (Driver.run)
-            {
-                StopProc(null, EventArgs.Empty);
-            }
-            SystemHelper.RunLibUsbInstall();
-        }
-
         private void btnSaveAndClose_Click(object sender, EventArgs e)
         {
             btnSave_Click(sender, e);
             btnClose_Click(sender, e);
+        }
+
+        private void port1Enabled_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!port1Enabled.Checked &&
+                !port2Enabled.Checked &&
+                !port3Enabled.Checked &&
+                !port4Enabled.Checked) 
+            {
+                port1Enabled.Checked = true;
+            }
+        }
+
+        private void port2Enabled_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!port1Enabled.Checked &&
+                !port2Enabled.Checked &&
+                !port3Enabled.Checked &&
+                !port4Enabled.Checked)
+            {
+                port2Enabled.Checked = true;
+            }
+        }
+
+        private void port3Enabled_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!port1Enabled.Checked &&
+                !port2Enabled.Checked &&
+                !port3Enabled.Checked &&
+                !port4Enabled.Checked)
+            {
+                port3Enabled.Checked = true;
+            }
+        }
+
+        private void port4Enabled_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!port1Enabled.Checked &&
+                !port2Enabled.Checked &&
+                !port3Enabled.Checked &&
+                !port4Enabled.Checked)
+            {
+                port4Enabled.Checked = true;
+            }
         }
     }
 }
