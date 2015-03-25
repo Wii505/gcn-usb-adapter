@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Wii U USB GCN adapter"
-#define MyAppVersion "3.1"
+#define MyAppVersion "3.11"
 #define MyAppPublisher "Matt Cunningham"
 #define MyAppURL "https://github.com/elmassivo/GCN-USB-Adapter"
 #define MyAppExeName "GCNUSBFeeder.exe"
