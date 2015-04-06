@@ -133,7 +133,7 @@ namespace GCNUSBFeeder
         //as of vjoy 2.05, x32 and x64 binaries are separated
         static string vJoyDirectory = Path.GetPathRoot(Environment.SystemDirectory) + @"Program Files\vJoy"+ ((IntPtr.Size == 8) ? @"\x64\" : @"\x86\");
 
-        public static void CreateJoystick(int portNum)
+        public static void CreateJoystick(uint portNum)
         {
             ProcessStartInfo psi = new ProcessStartInfo
             {

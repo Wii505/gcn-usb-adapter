@@ -62,32 +62,7 @@ namespace GCNUSBFeeder
 
             if (GCNAdapter != null)
             {
-                //The winUSB implementation doesn't require setting configuration
-                if (GCNAdapter.GetType().Name != "WinUsbDevice")
-                {
-                    wholeGCNAdapter = (IUsbDevice)GCNAdapter;
-                    wholeGCNAdapter.SetConfiguration(1);
-                    wholeGCNAdapter.ClaimInterface(0);
-                }
-
-                byte[] WriteBuffer = new byte[100];
                 int transferLength;
-                var URB = new UsbSetupPacket(0x21, 11, 0x0001, 0, 0);
-
-                //activate controller
-                bool success = false;
-                int loop = 0;
-                while (!success && loop < 10)
-                {
-                    success = GCNAdapter.ControlTransfer(ref URB, WriteBuffer, 0, out transferLength);
-                    loop++;
-                }
-
-                if (!success)
-                {
-                    Log(null, new LogEventArgs("Unable to obtain control of adapter, try disconnecting and reconnecting the adapter."));
-                    return;
-                }
 
                 reader = GCNAdapter.OpenEndpointReader(ReadEndpointID.Ep01);
                 writer = GCNAdapter.OpenEndpointWriter(WriteEndpointID.Ep02);

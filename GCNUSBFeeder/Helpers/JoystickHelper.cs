@@ -103,22 +103,12 @@ namespace GCNUSBFeeder
                         return checker;
                 }
 
-                int numButtons = joystick.GetVJDButtonNumber(id);
-                if (numButtons != 12) { checker = false; }
-
-                //analog stick
-                checker = joystick.GetVJDAxisExist(id, HID_USAGES.HID_USAGE_X);
-                checker = joystick.GetVJDAxisExist(id, HID_USAGES.HID_USAGE_Y);
-
-                //c stick
-                checker = joystick.GetVJDAxisExist(id, HID_USAGES.HID_USAGE_RX);
-                checker = joystick.GetVJDAxisExist(id, HID_USAGES.HID_USAGE_RY);
-
-                //triggers
-                checker = joystick.GetVJDAxisExist(id, HID_USAGES.HID_USAGE_Z);
-                checker = joystick.GetVJDAxisExist(id, HID_USAGES.HID_USAGE_RZ);
+                //fix missing buttons, if the count is off.
+                if (joystick.GetVJDButtonNumber(id) != 12) 
+                {
+                    SystemHelper.CreateJoystick(id);
+                }
             }
-
             return checker;
         }
     }
