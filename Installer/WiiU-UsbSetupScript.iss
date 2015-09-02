@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Wii U USB GCN adapter"
-#define MyAppVersion "3.2"
+#define MyAppVersion "3.2.1"
 #define MyAppPublisher "Matt Cunningham"
 #define MyAppURL "https://github.com/elmassivo/GCN-USB-Adapter"
 #define MyAppExeName "GCNUSBFeeder.exe"
@@ -23,7 +23,7 @@ DefaultDirName={pf}\GCNadapter
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 OutputBaseFilename=WiiU-UsbSetup
-SetupIconFile=E:\C#\GCN-USB-Adapter\GCNUSBFeeder\icon.ico
+SetupIconFile=D:\C#\GCN-USB-Adapter\GCNUSBFeeder\icon.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -35,25 +35,24 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\ConfigJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\HardwareHelperLib.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\HardwareHelperLib.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\UninstallJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\zadig.ini"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\zadig_2.1.1.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterface.dll"; DestDir: "{app}\x86"
-Source: "E:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterfaceWrap.dll"; DestDir: "{app}\x86"
-Source: "E:\C#\GCN-USB-Adapter\vJoy\vJoy_205_080115.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\ConfigJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\GCNUSBFeeder.vshost.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\HardwareHelperLib.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\HardwareHelperLib.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\LibUsbDotNet.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\GCNUSBFeeder\bin\x86\Release\UninstallJoysticks.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\zadig.ini"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\zadig_2.1.1.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterface.dll"; DestDir: "{app}\x86"
+Source: "D:\C#\GCN-USB-Adapter\vJoy\x86\vJoyInterfaceWrap.dll"; DestDir: "{app}\x86"
+Source: "D:\C#\GCN-USB-Adapter\vJoy\vJoy_205_050515.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\C#\GCN-USB-Adapter\vJoy\x64\vJoyInterfaceWrap.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -62,7 +61,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 
 [Run]
 Filename: "{app}\zadig_2.1.1.exe"; WorkingDir: "{app}"
-Filename: "{app}\vJoy_205_080115.exe"
+Filename: "{app}\vJoy_205_050515.exe"
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
 
 [Dirs]

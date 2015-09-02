@@ -14,7 +14,7 @@ namespace GCNUSBFeeder
 {
     public partial class MainForm : Form
     {
-        public static int version = 320;
+        public static int version = 321;
 
         public static bool autoStart = false;
         public static bool startInTray = false;

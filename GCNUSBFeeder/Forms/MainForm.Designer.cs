@@ -318,7 +318,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(676, 408);
+            this.ClientSize = new System.Drawing.Size(676, 407);
             this.Controls.Add(this.btnClearLog);
             this.Controls.Add(this.configBtn);
             this.Controls.Add(this.btnGamepadInfo);
@@ -334,7 +334,7 @@
             this.MaximumSize = new System.Drawing.Size(692, 446);
             this.MinimumSize = new System.Drawing.Size(692, 446);
             this.Name = "MainForm";
-            this.Text = "Gamecube USB Adapter Driver - v3.2";
+            this.Text = "Gamecube USB Adapter Driver - v3.2.1";
             this.trayMenu.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
