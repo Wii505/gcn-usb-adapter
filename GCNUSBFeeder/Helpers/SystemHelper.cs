@@ -130,16 +130,17 @@ namespace GCNUSBFeeder
         #endregion
 
         #region External vJoy Functions
-        //as of vjoy 2.05, x32 and x64 binaries are separated
-        static string vJoyDirectory = Path.GetPathRoot(Environment.SystemDirectory) + @"Program Files\vJoy"+ ((IntPtr.Size == 8) ? @"\x64\" : @"\x86\");
+        static string vJoyDirectory = Path.GetPathRoot(Environment.SystemDirectory) + @"Program Files\vJoy";
 
         public static void CreateJoystick(uint portNum)
         {
             ProcessStartInfo psi = new ProcessStartInfo
             {
-                WorkingDirectory = vJoyDirectory,
+                //as of vjoy 2.05, x32 and x64 binaries are separated
+                WorkingDirectory = File.Exists(vJoyDirectory + @"\x86\vJoyConfig.exe") ? 
+                    (vJoyDirectory + @"\x86\") : (vJoyDirectory + @"\x64\"),
                 FileName = "vJoyConfig.exe",
-                Arguments = portNum + " -f -a x y z rx ry rz -b 12", //create
+                Arguments = portNum + " -f -a x y z rx ry rz -e Const Ramp -b 12", //create
                 UseShellExecute = true,
                 WindowStyle = ProcessWindowStyle.Hidden,
             };

@@ -8,6 +8,9 @@ using LibUsbDotNet.Main;
 
 //using MadWizard.WinUSBNet;
 using vJoyInterfaceWrap;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.Threading;
 
 
 namespace GCNUSBFeeder
@@ -29,6 +32,7 @@ namespace GCNUSBFeeder
         public static bool gcn3Enabled = false;
         public static bool gcn4Enabled = false;
 
+        private vJoy glob = new vJoy();
         private vJoy gcn1 = new vJoy();
         private vJoy gcn2 = new vJoy();
         private vJoy gcn3 = new vJoy();
@@ -37,6 +41,19 @@ namespace GCNUSBFeeder
         private bool gcn2ok = false;
         private bool gcn3ok = false;
         private bool gcn4ok = false;
+
+        private long gcn1Ffb = 0;
+        private long gcn2Ffb = 0;
+        private long gcn3Ffb = 0;
+        private long gcn4Ffb = 0;
+        private int gcn1FfbDur = 150;
+        private int gcn2FfbDur = 150;
+        private int gcn3FfbDur = 150;
+        private int gcn4FfbDur = 150;
+        private bool gcn1FfbInf = false;
+        private bool gcn2FfbInf = false;
+        private bool gcn3FfbInf = false;
+        private bool gcn4FfbInf = false;
 
         public Driver()
         {
@@ -81,21 +98,31 @@ namespace GCNUSBFeeder
                     {
                         gcn1ok = true;
                         gcn1.ResetAll();
+                        gcn1.FfbRegisterGenCB(FfbRecieved, IntPtr.Zero);
                     }
                     if (gcn2Enabled && gcn2.AcquireVJD(2))
                     {
                         gcn2ok = true;
                         gcn2.ResetAll();
+                        IntPtr user = IntPtr.Zero;
+                        Marshal.StructureToPtr(gcn2, user, false);
+                        gcn2.FfbRegisterGenCB(FfbRecieved, IntPtr.Zero);
                     }
                     if (gcn3Enabled && gcn3.AcquireVJD(3))
                     {
                         gcn3ok = true;
                         gcn3.ResetAll();
+                        IntPtr user = IntPtr.Zero;
+                        Marshal.StructureToPtr(gcn2, user, false);
+                        gcn3.FfbRegisterGenCB(FfbRecieved, IntPtr.Zero);
                     }
                     if (gcn4Enabled && gcn4.AcquireVJD(4))
                     {
                         gcn4ok = true;
                         gcn4.ResetAll();
+                        IntPtr user = IntPtr.Zero;
+                        Marshal.StructureToPtr(gcn2, user, false);
+                        gcn4.FfbRegisterGenCB(FfbRecieved, IntPtr.Zero);
                     }
                 }
                 catch (Exception ex)
@@ -115,8 +142,12 @@ namespace GCNUSBFeeder
                     // PORT 3: bytes 20-27
                     // PORT 4: bytes 29-36l
                     byte[] ReadBuffer = new byte[37]; // 32 (4 players x 8) bytes for input, 5 bytes for formatting
+                    byte[] WriteBuffer = new byte[5]; // 1 for command, 4 for rumble state
+                    WriteBuffer[0] = 0x11;
+                    WriteBuffer[1] = 0;
                     Log(null, new LogEventArgs("Driver successfully started, entering input loop."));
                     run = true;
+                    Stopwatch sw = Stopwatch.StartNew();
                     while (run)
                     {
                         var ec = reader.Read(ReadBuffer, 10, out transferLength);
@@ -129,8 +160,48 @@ namespace GCNUSBFeeder
                         if (gcn2ok) { JoystickHelper.setJoystick(ref gcn2, input2, 2, gcn2DZ); }
                         if (gcn3ok) { JoystickHelper.setJoystick(ref gcn3, input3, 3, gcn3DZ); }
                         if (gcn4ok) { JoystickHelper.setJoystick(ref gcn4, input4, 4, gcn4DZ); }
+
+                        long elapsed = sw.ElapsedMilliseconds;
+                        sw.Reset(); sw.Start();
+
+                        if (Interlocked.Read(ref gcn1Ffb) > 0)
+                        {
+                            if (gcn1FfbInf == false)
+                                Interlocked.Add(ref gcn1Ffb, -elapsed);
+                            WriteBuffer[1] = 1;
+                        }
+                        else
+                            WriteBuffer[1] = 0;
+                        if (Interlocked.Read(ref gcn2Ffb) > 0)
+                        {
+                            if (gcn2FfbInf == false)
+                                Interlocked.Add(ref gcn2Ffb, -elapsed);
+                            WriteBuffer[2] = 1;
+                        }
+                        else
+                            WriteBuffer[2] = 0;
+                        if (Interlocked.Read(ref gcn3Ffb) > 0)
+                        {
+                            if (gcn3FfbInf == false)
+                                Interlocked.Add(ref gcn3Ffb, -elapsed);
+                            WriteBuffer[3] = 1;
+                        }
+                        else
+                            WriteBuffer[3] = 0;
+                        if (Interlocked.Read(ref gcn4Ffb) > 0)
+                        {
+                            if (gcn4FfbInf == false)
+                                Interlocked.Add(ref gcn4Ffb, -elapsed);
+                            WriteBuffer[4] = 1;
+                        }
+                        else
+                            WriteBuffer[4] = 0;
+                        writer.Write(WriteBuffer, 10, out transferLength);
                         System.Threading.Thread.Sleep(5);
                     }
+
+                    WriteBuffer[1] = 0; WriteBuffer[2] = 0; WriteBuffer[3] = 0; WriteBuffer[4] = 0;
+                    writer.Write(WriteBuffer, 10, out transferLength);
 
                     if (GCNAdapter != null)
                     {
@@ -235,6 +306,86 @@ namespace GCNUSBFeeder
             {
                 get { return _text; }
                 set { _text = value; }
+            }
+        }
+
+        void FfbRecieved(IntPtr data, IntPtr userData)
+        {
+            int devId = 0;
+            FFBPType someT = new FFBPType();
+            if (glob.Ffb_h_DeviceID(data, ref devId) == 0 &&
+                glob.Ffb_h_Type(data, ref someT) == 0)
+            {
+                if (someT == FFBPType.PT_EFOPREP)
+                {
+                    vJoy.FFB_EFF_OP a = new vJoy.FFB_EFF_OP();
+                    glob.Ffb_h_EffOp(data, ref a);
+                    if (devId == 1)
+                    {
+                        if (a.EffectOp == FFBOP.EFF_STOP)
+                            Interlocked.Exchange(ref gcn1Ffb, 0);
+                        else
+                            Interlocked.Exchange(ref gcn1Ffb, gcn1FfbDur * a.LoopCount);
+                    }
+                    else if (devId == 2)
+                    {
+                        if (a.EffectOp == FFBOP.EFF_STOP)
+                            Interlocked.Exchange(ref gcn2Ffb, 0);
+                        else
+                            Interlocked.Exchange(ref gcn2Ffb, gcn2FfbDur * a.LoopCount);
+                    }
+                    else if (devId == 3)
+                    {
+                        if (a.EffectOp == FFBOP.EFF_STOP)
+                            Interlocked.Exchange(ref gcn3Ffb, 0);
+                        else
+                            Interlocked.Exchange(ref gcn3Ffb, gcn3FfbDur * a.LoopCount);
+                    }
+                    else if (devId == 4)
+                    {
+                        if (a.EffectOp == FFBOP.EFF_STOP)
+                            Interlocked.Exchange(ref gcn4Ffb, 0);
+                        else
+                            Interlocked.Exchange(ref gcn4Ffb, gcn4FfbDur * a.LoopCount);
+                    }
+                }
+                else if (someT == FFBPType.PT_EFFREP)
+                {
+                    vJoy.FFB_EFF_REPORT b = new vJoy.FFB_EFF_REPORT();
+                    glob.Ffb_h_Eff_Report(data, ref b);
+                    if (devId == 1)
+                    {
+                        gcn1FfbDur = b.Duration;
+                        if (b.Duration == 0xFFFF)
+                            gcn1FfbInf = true;
+                        else
+                            gcn1FfbInf = false;
+                    }
+                    else if (devId == 2)
+                    {
+                        gcn2FfbDur = b.Duration;
+                        if (b.Duration == 0xFFFF)
+                            gcn2FfbInf = true;
+                        else
+                            gcn2FfbInf = false;
+                    }
+                    else if (devId == 3)
+                    {
+                        gcn3FfbDur = b.Duration;
+                        if (b.Duration == 0xFFFF)
+                            gcn3FfbInf = true;
+                        else
+                            gcn3FfbInf = false;
+                    }
+                    else if (devId == 4)
+                    {
+                        gcn4FfbDur = b.Duration;
+                        if (b.Duration == 0xFFFF)
+                            gcn4FfbInf = true;
+                        else
+                            gcn4FfbInf = false;
+                    }
+                }
             }
         }
     }
