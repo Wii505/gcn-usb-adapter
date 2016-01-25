@@ -130,16 +130,8 @@ namespace GCNUSBFeeder
             foreach(FFB_T foo in Enum.GetValues(typeof(FFB_T)))
             {
                 bool res = joystick.IsDeviceFfbEffect(id, (uint)foo);
-                if(foo == FFB_T.CONST || foo == FFB_T.RAMP)
-                {   //we want these to be enabled
-                    if (res == false)
-                        return false;
-                }
-                else
-                {   //we want these to be disabled
-                    if (res == true)
-                        return false;
-                }
+                if (res == false)
+                    return false;
             }
             return true;
         }

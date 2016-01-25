@@ -140,7 +140,7 @@ namespace GCNUSBFeeder
                 WorkingDirectory = File.Exists(vJoyDirectory + @"\x86\vJoyConfig.exe") ? 
                     (vJoyDirectory + @"\x86\") : (vJoyDirectory + @"\x64\"),
                 FileName = "vJoyConfig.exe",
-                Arguments = portNum + " -f -a x y z rx ry rz -e Const Ramp -b 12", //create
+                Arguments = portNum + " -f -a x y z rx ry rz -e all -b 12", //create
                 UseShellExecute = true,
                 WindowStyle = ProcessWindowStyle.Hidden,
             };
