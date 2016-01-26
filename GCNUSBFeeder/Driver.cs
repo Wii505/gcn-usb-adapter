@@ -48,14 +48,21 @@ namespace GCNUSBFeeder
         private long gcn2Ffb = 0;
         private long gcn3Ffb = 0;
         private long gcn4Ffb = 0;
+
         private int gcn1FfbDur = 150;
         private int gcn2FfbDur = 150;
         private int gcn3FfbDur = 150;
         private int gcn4FfbDur = 150;
+
         private bool gcn1FfbInf = false;
         private bool gcn2FfbInf = false;
         private bool gcn3FfbInf = false;
         private bool gcn4FfbInf = false;
+
+        private bool gcn1FfbActive = false;
+        private bool gcn2FfbActive = false;
+        private bool gcn3FfbActive = false;
+        private bool gcn4FfbActive = false;
 
         public Driver()
         {
@@ -151,7 +158,7 @@ namespace GCNUSBFeeder
                         {
                             if (gcn1FfbInf == false)
                                 Interlocked.Add(ref gcn1Ffb, -elapsed);
-                            WriteBuffer[1] = 1;
+                            WriteBuffer[1] = (byte)(gcn1FfbActive ? 1 : 0);
                         }
                         else
                             WriteBuffer[1] = 0;
@@ -159,7 +166,7 @@ namespace GCNUSBFeeder
                         {
                             if (gcn2FfbInf == false)
                                 Interlocked.Add(ref gcn2Ffb, -elapsed);
-                            WriteBuffer[2] = 1;
+                            WriteBuffer[2] = (byte)(gcn2FfbActive ? 1 : 0);
                         }
                         else
                             WriteBuffer[2] = 0;
@@ -167,7 +174,7 @@ namespace GCNUSBFeeder
                         {
                             if (gcn3FfbInf == false)
                                 Interlocked.Add(ref gcn3Ffb, -elapsed);
-                            WriteBuffer[3] = 1;
+                            WriteBuffer[3] = (byte)(gcn3FfbActive ? 1 : 0);
                         }
                         else
                             WriteBuffer[3] = 0;
@@ -175,7 +182,7 @@ namespace GCNUSBFeeder
                         {
                             if (gcn4FfbInf == false)
                                 Interlocked.Add(ref gcn4Ffb, -elapsed);
-                            WriteBuffer[4] = 1;
+                            WriteBuffer[4] = (byte)(gcn4FfbActive ? 1 : 0);
                         }
                         else
                             WriteBuffer[4] = 0;
@@ -396,34 +403,22 @@ namespace GCNUSBFeeder
                     {
                         if (devId == 1)
                         {
-                            if (gcn1FfbPrevSine == a.Period)
-                                Interlocked.Exchange(ref gcn1Ffb, 0);
-                            else
-                                Interlocked.Exchange(ref gcn1Ffb, gcn1FfbDur);
+                            gcn1FfbActive = (gcn1FfbPrevSine != a.Period && a.Magnitude > 0);
                             gcn1FfbPrevSine = a.Period;
                         }
                         else if (devId == 2)
                         {
-                            if (gcn2FfbPrevSine == a.Period)
-                                Interlocked.Exchange(ref gcn2Ffb, 0);
-                            else
-                                Interlocked.Exchange(ref gcn2Ffb, gcn2FfbDur);
+                            gcn2FfbActive = (gcn2FfbPrevSine != a.Period && a.Magnitude > 0);
                             gcn2FfbPrevSine = a.Period;
                         }
                         else if (devId == 3)
                         {
-                            if (gcn3FfbPrevSine == a.Period)
-                                Interlocked.Exchange(ref gcn3Ffb, 0);
-                            else
-                                Interlocked.Exchange(ref gcn3Ffb, gcn3FfbDur);
+                            gcn3FfbActive = (gcn3FfbPrevSine != a.Period && a.Magnitude > 0);
                             gcn3FfbPrevSine = a.Period;
                         }
                         else if (devId == 4)
                         {
-                            if (gcn4FfbPrevSine == a.Period)
-                                Interlocked.Exchange(ref gcn4Ffb, 0);
-                            else
-                                Interlocked.Exchange(ref gcn4Ffb, gcn4FfbDur);
+                            gcn4FfbActive = (gcn4FfbPrevSine != a.Period && a.Magnitude > 0);
                             gcn4FfbPrevSine = a.Period;
                         }
                     }
@@ -446,6 +441,40 @@ namespace GCNUSBFeeder
                     int index = 0;
                     if (vjoy.Ffb_h_EBI(data, ref index) != 0)
                         Log(null, new LogEventArgs("Ffb_h_EBI error"));
+                }
+                else if(someT == FFBPType.PT_CONSTREP)
+                {
+                    vJoy.FFB_EFF_CONSTANT a = new vJoy.FFB_EFF_CONSTANT();
+                    if(vjoy.Ffb_h_Eff_Constant(data, ref a) != 0)
+                        Log(null, new LogEventArgs("Ffb_h_Eff_Constant error"));
+                    else
+                    {
+                        if (devId == 1)
+                            gcn1FfbActive = (a.Magnitude != 0);
+                        else if (devId == 2)
+                            gcn2FfbActive = (a.Magnitude != 0);
+                        else if (devId == 3)
+                            gcn3FfbActive = (a.Magnitude != 0);
+                        else if (devId == 4)
+                            gcn4FfbActive = (a.Magnitude != 0);
+                    }
+                }
+                else if(someT == FFBPType.PT_RAMPREP)
+                {
+                    vJoy.FFB_EFF_RAMP a = new vJoy.FFB_EFF_RAMP();
+                    if (vjoy.Ffb_h_Eff_Ramp(data, ref a) != 0)
+                        Log(null, new LogEventArgs("Ffb_h_Eff_Ramp error"));
+                    else
+                    {
+                        if (devId == 1)
+                            gcn1FfbActive = (a.Start != 0 || a.End != 0);
+                        else if (devId == 2)
+                            gcn2FfbActive = (a.Start != 0 || a.End != 0);
+                        else if (devId == 3)
+                            gcn3FfbActive = (a.Start != 0 || a.End != 0);
+                        else if (devId == 4)
+                            gcn4FfbActive = (a.Start != 0 || a.End != 0);
+                    }
                 }
                 //else
                 //    Log(null, new LogEventArgs("Unimplemented force feedback command: " + someT));
