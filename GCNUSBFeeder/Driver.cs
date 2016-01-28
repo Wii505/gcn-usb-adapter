@@ -39,11 +39,6 @@ namespace GCNUSBFeeder
         private bool gcn3ok = false;
         private bool gcn4ok = false;
 
-        private long gcn1FfbPrevSine = 0;
-        private long gcn2FfbPrevSine = 0;
-        private long gcn3FfbPrevSine = 0;
-        private long gcn4FfbPrevSine = 0;
-
         private long gcn1Ffb = 0;
         private long gcn2Ffb = 0;
         private long gcn3Ffb = 0;
@@ -402,25 +397,13 @@ namespace GCNUSBFeeder
                     else
                     {
                         if (devId == 1)
-                        {
-                            gcn1FfbActive = (gcn1FfbPrevSine != a.Period && a.Magnitude > 0);
-                            gcn1FfbPrevSine = a.Period;
-                        }
+                            gcn1FfbActive = (a.Period > 0 && a.Magnitude > 0);
                         else if (devId == 2)
-                        {
-                            gcn2FfbActive = (gcn2FfbPrevSine != a.Period && a.Magnitude > 0);
-                            gcn2FfbPrevSine = a.Period;
-                        }
+                            gcn2FfbActive = (a.Period > 0 && a.Magnitude > 0);
                         else if (devId == 3)
-                        {
-                            gcn3FfbActive = (gcn3FfbPrevSine != a.Period && a.Magnitude > 0);
-                            gcn3FfbPrevSine = a.Period;
-                        }
+                            gcn3FfbActive = (a.Period > 0 && a.Magnitude > 0);
                         else if (devId == 4)
-                        {
-                            gcn4FfbActive = (gcn4FfbPrevSine != a.Period && a.Magnitude > 0);
-                            gcn4FfbPrevSine = a.Period;
-                        }
+                            gcn4FfbActive = (a.Period > 0 && a.Magnitude > 0);
                     }
                     //Log(null, new LogEventArgs(" " + a.Magnitude + " " + a.Period + " " + a.Phase));
                 }
