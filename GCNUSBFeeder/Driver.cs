@@ -8,6 +8,9 @@ using LibUsbDotNet.Main;
 
 //using MadWizard.WinUSBNet;
 using vJoyInterfaceWrap;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.Threading;
 
 
 namespace GCNUSBFeeder
@@ -29,14 +32,32 @@ namespace GCNUSBFeeder
         public static bool gcn3Enabled = false;
         public static bool gcn4Enabled = false;
 
-        private vJoy gcn1 = new vJoy();
-        private vJoy gcn2 = new vJoy();
-        private vJoy gcn3 = new vJoy();
-        private vJoy gcn4 = new vJoy();
+        private vJoy vjoy = new vJoy();
+
         private bool gcn1ok = false;
         private bool gcn2ok = false;
         private bool gcn3ok = false;
         private bool gcn4ok = false;
+
+        private long gcn1Ffb = 0;
+        private long gcn2Ffb = 0;
+        private long gcn3Ffb = 0;
+        private long gcn4Ffb = 0;
+
+        private int gcn1FfbDur = 150;
+        private int gcn2FfbDur = 150;
+        private int gcn3FfbDur = 150;
+        private int gcn4FfbDur = 150;
+
+        private bool gcn1FfbInf = false;
+        private bool gcn2FfbInf = false;
+        private bool gcn3FfbInf = false;
+        private bool gcn4FfbInf = false;
+
+        private bool gcn1FfbActive = false;
+        private bool gcn2FfbActive = false;
+        private bool gcn3FfbActive = false;
+        private bool gcn4FfbActive = false;
 
         public Driver()
         {
@@ -72,31 +93,22 @@ namespace GCNUSBFeeder
 
                 try
                 {
-                    if (gcn1Enabled && !JoystickHelper.checkJoystick(ref gcn1, 1)) { SystemHelper.CreateJoystick(1); }
-                    if (gcn2Enabled && !JoystickHelper.checkJoystick(ref gcn1, 2)) { SystemHelper.CreateJoystick(2); }
-                    if (gcn3Enabled && !JoystickHelper.checkJoystick(ref gcn1, 3)) { SystemHelper.CreateJoystick(3); }
-                    if (gcn4Enabled && !JoystickHelper.checkJoystick(ref gcn1, 4)) { SystemHelper.CreateJoystick(4); }
+                    if (gcn1Enabled && !JoystickHelper.checkJoystick(ref vjoy, 1)) { SystemHelper.CreateJoystick(1); }
+                    if (gcn2Enabled && !JoystickHelper.checkJoystick(ref vjoy, 2)) { SystemHelper.CreateJoystick(2); }
+                    if (gcn3Enabled && !JoystickHelper.checkJoystick(ref vjoy, 3)) { SystemHelper.CreateJoystick(3); }
+                    if (gcn4Enabled && !JoystickHelper.checkJoystick(ref vjoy, 4)) { SystemHelper.CreateJoystick(4); }
 
-                    if (gcn1Enabled && gcn1.AcquireVJD(1))
-                    {
+                    if (gcn1Enabled && vjoy.AcquireVJD(1))
                         gcn1ok = true;
-                        gcn1.ResetAll();
-                    }
-                    if (gcn2Enabled && gcn2.AcquireVJD(2))
-                    {
+                    if (gcn2Enabled && vjoy.AcquireVJD(2))
                         gcn2ok = true;
-                        gcn2.ResetAll();
-                    }
-                    if (gcn3Enabled && gcn3.AcquireVJD(3))
-                    {
+                    if (gcn3Enabled && vjoy.AcquireVJD(3))
                         gcn3ok = true;
-                        gcn3.ResetAll();
-                    }
-                    if (gcn4Enabled && gcn4.AcquireVJD(4))
-                    {
+                    if (gcn4Enabled && vjoy.AcquireVJD(4))
                         gcn4ok = true;
-                        gcn4.ResetAll();
-                    }
+
+                    vjoy.ResetAll();
+                    vjoy.FfbRegisterGenCB(FfbRecieved, IntPtr.Zero);
                 }
                 catch (Exception ex)
                 {
@@ -115,8 +127,12 @@ namespace GCNUSBFeeder
                     // PORT 3: bytes 20-27
                     // PORT 4: bytes 29-36l
                     byte[] ReadBuffer = new byte[37]; // 32 (4 players x 8) bytes for input, 5 bytes for formatting
+                    byte[] WriteBuffer = new byte[5]; // 1 for command, 4 for rumble state
+                    WriteBuffer[0] = 0x11;
+                    WriteBuffer[1] = 0;
                     Log(null, new LogEventArgs("Driver successfully started, entering input loop."));
                     run = true;
+                    Stopwatch sw = Stopwatch.StartNew();
                     while (run)
                     {
                         var ec = reader.Read(ReadBuffer, 10, out transferLength);
@@ -125,12 +141,52 @@ namespace GCNUSBFeeder
                         var input3 = GCNState.GetState(getFastInput3(ref ReadBuffer));
                         var input4 = GCNState.GetState(getFastInput4(ref ReadBuffer));
 
-                        if (gcn1ok) { JoystickHelper.setJoystick(ref gcn1, input1, 1, gcn1DZ); }
-                        if (gcn2ok) { JoystickHelper.setJoystick(ref gcn2, input2, 2, gcn2DZ); }
-                        if (gcn3ok) { JoystickHelper.setJoystick(ref gcn3, input3, 3, gcn3DZ); }
-                        if (gcn4ok) { JoystickHelper.setJoystick(ref gcn4, input4, 4, gcn4DZ); }
+                        if (gcn1ok) { JoystickHelper.setJoystick(ref vjoy, input1, 1, gcn1DZ); }
+                        if (gcn2ok) { JoystickHelper.setJoystick(ref vjoy, input2, 2, gcn2DZ); }
+                        if (gcn3ok) { JoystickHelper.setJoystick(ref vjoy, input3, 3, gcn3DZ); }
+                        if (gcn4ok) { JoystickHelper.setJoystick(ref vjoy, input4, 4, gcn4DZ); }
+
+                        long elapsed = sw.ElapsedMilliseconds;
+                        sw.Reset(); sw.Start();
+
+                        if (Interlocked.Read(ref gcn1Ffb) > 0)
+                        {
+                            if (gcn1FfbInf == false)
+                                Interlocked.Add(ref gcn1Ffb, -elapsed);
+                            WriteBuffer[1] = (byte)(gcn1FfbActive ? 1 : 0);
+                        }
+                        else
+                            WriteBuffer[1] = 0;
+                        if (Interlocked.Read(ref gcn2Ffb) > 0)
+                        {
+                            if (gcn2FfbInf == false)
+                                Interlocked.Add(ref gcn2Ffb, -elapsed);
+                            WriteBuffer[2] = (byte)(gcn2FfbActive ? 1 : 0);
+                        }
+                        else
+                            WriteBuffer[2] = 0;
+                        if (Interlocked.Read(ref gcn3Ffb) > 0)
+                        {
+                            if (gcn3FfbInf == false)
+                                Interlocked.Add(ref gcn3Ffb, -elapsed);
+                            WriteBuffer[3] = (byte)(gcn3FfbActive ? 1 : 0);
+                        }
+                        else
+                            WriteBuffer[3] = 0;
+                        if (Interlocked.Read(ref gcn4Ffb) > 0)
+                        {
+                            if (gcn4FfbInf == false)
+                                Interlocked.Add(ref gcn4Ffb, -elapsed);
+                            WriteBuffer[4] = (byte)(gcn4FfbActive ? 1 : 0);
+                        }
+                        else
+                            WriteBuffer[4] = 0;
+                        writer.Write(WriteBuffer, 10, out transferLength);
                         System.Threading.Thread.Sleep(5);
                     }
+
+                    WriteBuffer[1] = 0; WriteBuffer[2] = 0; WriteBuffer[3] = 0; WriteBuffer[4] = 0;
+                    writer.Write(WriteBuffer, 10, out transferLength);
 
                     if (GCNAdapter != null)
                     {
@@ -196,10 +252,10 @@ namespace GCNUSBFeeder
                 var input3 = GCNState.GetState(getFastInput3(ref data));
                 var input4 = GCNState.GetState(getFastInput4(ref data));
 
-                if (gcn1ok) { JoystickHelper.setJoystick(ref gcn1, input1, 1, gcn1DZ); }
-                if (gcn2ok) { JoystickHelper.setJoystick(ref gcn2, input2, 2, gcn2DZ); }
-                if (gcn3ok) { JoystickHelper.setJoystick(ref gcn3, input3, 3, gcn3DZ); }
-                if (gcn4ok) { JoystickHelper.setJoystick(ref gcn4, input4, 4, gcn4DZ); }
+                if (gcn1ok) { JoystickHelper.setJoystick(ref vjoy, input1, 1, gcn1DZ); }
+                if (gcn2ok) { JoystickHelper.setJoystick(ref vjoy, input2, 2, gcn2DZ); }
+                if (gcn3ok) { JoystickHelper.setJoystick(ref vjoy, input3, 3, gcn3DZ); }
+                if (gcn4ok) { JoystickHelper.setJoystick(ref vjoy, input4, 4, gcn4DZ); }
             }
             else
             {
@@ -235,6 +291,176 @@ namespace GCNUSBFeeder
             {
                 get { return _text; }
                 set { _text = value; }
+            }
+        }
+
+        void FfbRecieved(IntPtr data, IntPtr userData)
+        {
+            int devId = 0;
+            FFBPType someT = new FFBPType();
+            if (vjoy.Ffb_h_DeviceID(data, ref devId) == 0 &&
+                vjoy.Ffb_h_Type(data, ref someT) == 0)
+            {
+                if (someT == FFBPType.PT_EFOPREP)
+                {
+                    vJoy.FFB_EFF_OP a = new vJoy.FFB_EFF_OP();
+                    vjoy.Ffb_h_EffOp(data, ref a);
+                    if (devId == 1)
+                    {
+                        if (a.EffectOp == FFBOP.EFF_STOP)
+                            Interlocked.Exchange(ref gcn1Ffb, 0);
+                        else
+                            Interlocked.Exchange(ref gcn1Ffb, gcn1FfbDur * a.LoopCount);
+                    }
+                    else if (devId == 2)
+                    {
+                        if (a.EffectOp == FFBOP.EFF_STOP)
+                            Interlocked.Exchange(ref gcn2Ffb, 0);
+                        else
+                            Interlocked.Exchange(ref gcn2Ffb, gcn2FfbDur * a.LoopCount);
+                    }
+                    else if (devId == 3)
+                    {
+                        if (a.EffectOp == FFBOP.EFF_STOP)
+                            Interlocked.Exchange(ref gcn3Ffb, 0);
+                        else
+                            Interlocked.Exchange(ref gcn3Ffb, gcn3FfbDur * a.LoopCount);
+                    }
+                    else if (devId == 4)
+                    {
+                        if (a.EffectOp == FFBOP.EFF_STOP)
+                            Interlocked.Exchange(ref gcn4Ffb, 0);
+                        else
+                            Interlocked.Exchange(ref gcn4Ffb, gcn4FfbDur * a.LoopCount);
+                    }
+                }
+                else if (someT == FFBPType.PT_EFFREP)
+                {
+                    vJoy.FFB_EFF_REPORT b = new vJoy.FFB_EFF_REPORT();
+                    vjoy.Ffb_h_Eff_Report(data, ref b);
+                    if (devId == 1)
+                    {
+                        gcn1FfbDur = b.Duration;
+                        if (b.Duration == 0xFFFF)
+                            gcn1FfbInf = true;
+                        else
+                            gcn1FfbInf = false;
+                    }
+                    else if (devId == 2)
+                    {
+                        gcn2FfbDur = b.Duration;
+                        if (b.Duration == 0xFFFF)
+                            gcn2FfbInf = true;
+                        else
+                            gcn2FfbInf = false;
+                    }
+                    else if (devId == 3)
+                    {
+                        gcn3FfbDur = b.Duration;
+                        if (b.Duration == 0xFFFF)
+                            gcn3FfbInf = true;
+                        else
+                            gcn3FfbInf = false;
+                    }
+                    else if (devId == 4)
+                    {
+                        gcn4FfbDur = b.Duration;
+                        if (b.Duration == 0xFFFF)
+                            gcn4FfbInf = true;
+                        else
+                            gcn4FfbInf = false;
+                    }
+                }
+                else if(someT == FFBPType.PT_CTRLREP)
+                {
+                    FFB_CTRL ctrl = new FFB_CTRL();
+                    vjoy.Ffb_h_DevCtrl(data, ref ctrl);
+                    if(ctrl == FFB_CTRL.CTRL_DEVRST || ctrl == FFB_CTRL.CTRL_STOPALL)
+                    {
+                        if (devId == 1)
+                            Interlocked.Exchange(ref gcn1Ffb, 0);
+                        else if (devId == 2)
+                            Interlocked.Exchange(ref gcn2Ffb, 0);
+                        else if (devId == 3)
+                            Interlocked.Exchange(ref gcn3Ffb, 0);
+                        else if (devId == 4)
+                            Interlocked.Exchange(ref gcn4Ffb, 0);
+                    }
+                    //else
+                    //    Log(null, new LogEventArgs("Unimplemented CTRL: " + ctrl));
+                }
+                else if(someT == FFBPType.PT_PRIDREP)
+                {
+                    vJoy.FFB_EFF_PERIOD a = new vJoy.FFB_EFF_PERIOD();
+                    if (vjoy.Ffb_h_Eff_Period(data, ref a) != 0)
+                        Log(null, new LogEventArgs("Ffb_h_Eff_Period error"));
+                    else
+                    {
+                        if (devId == 1)
+                            gcn1FfbActive = (a.Period > 0 && a.Magnitude > 0);
+                        else if (devId == 2)
+                            gcn2FfbActive = (a.Period > 0 && a.Magnitude > 0);
+                        else if (devId == 3)
+                            gcn3FfbActive = (a.Period > 0 && a.Magnitude > 0);
+                        else if (devId == 4)
+                            gcn4FfbActive = (a.Period > 0 && a.Magnitude > 0);
+                    }
+                    //Log(null, new LogEventArgs(" " + a.Magnitude + " " + a.Period + " " + a.Phase));
+                }
+                else if(someT == FFBPType.PT_GAINREP)
+                {
+                    byte gain = new byte();
+                    if (vjoy.Ffb_h_DevGain(data, ref gain) != 0)
+                        Log(null, new LogEventArgs("Ffb_h_DevGain error"));
+                }
+                else if(someT == FFBPType.PT_NEWEFREP)
+                {
+                    FFBEType a = new FFBEType();
+                    if (vjoy.Ffb_h_EffNew(data, ref a) != 0)
+                        Log(null, new LogEventArgs("Ffb_h_EffNew error"));
+                }
+                else if(someT == FFBPType.PT_BLKFRREP || someT == FFBPType.PT_BLKLDREP)
+                {
+                    int index = 0;
+                    if (vjoy.Ffb_h_EBI(data, ref index) != 0)
+                        Log(null, new LogEventArgs("Ffb_h_EBI error"));
+                }
+                else if(someT == FFBPType.PT_CONSTREP)
+                {
+                    vJoy.FFB_EFF_CONSTANT a = new vJoy.FFB_EFF_CONSTANT();
+                    if(vjoy.Ffb_h_Eff_Constant(data, ref a) != 0)
+                        Log(null, new LogEventArgs("Ffb_h_Eff_Constant error"));
+                    else
+                    {
+                        if (devId == 1)
+                            gcn1FfbActive = (a.Magnitude != 0);
+                        else if (devId == 2)
+                            gcn2FfbActive = (a.Magnitude != 0);
+                        else if (devId == 3)
+                            gcn3FfbActive = (a.Magnitude != 0);
+                        else if (devId == 4)
+                            gcn4FfbActive = (a.Magnitude != 0);
+                    }
+                }
+                else if(someT == FFBPType.PT_RAMPREP)
+                {
+                    vJoy.FFB_EFF_RAMP a = new vJoy.FFB_EFF_RAMP();
+                    if (vjoy.Ffb_h_Eff_Ramp(data, ref a) != 0)
+                        Log(null, new LogEventArgs("Ffb_h_Eff_Ramp error"));
+                    else
+                    {
+                        if (devId == 1)
+                            gcn1FfbActive = (a.Start != 0 || a.End != 0);
+                        else if (devId == 2)
+                            gcn2FfbActive = (a.Start != 0 || a.End != 0);
+                        else if (devId == 3)
+                            gcn3FfbActive = (a.Start != 0 || a.End != 0);
+                        else if (devId == 4)
+                            gcn4FfbActive = (a.Start != 0 || a.End != 0);
+                    }
+                }
+                //else
+                //    Log(null, new LogEventArgs("Unimplemented force feedback command: " + someT));
             }
         }
     }

@@ -8,6 +8,19 @@ namespace GCNUSBFeeder
 {
     public class JoystickHelper
     {
+        private enum FFB_T {
+            CONST = 0x26,
+            RAMP = 0x27,
+            SQUR = 0x30,
+            SINE = 0x31,
+            TRNG = 0x32,
+            STUP = 0x33,
+            STDN = 0x34,
+            SPRNG = 0x40,
+            DMPR = 0x41,
+            INTR = 0x42,
+            FRIC = 0x43
+        };
         public static event EventHandler<Driver.LogEventArgs> Log;
         public static void setJoystick(ref vJoy joystick, GCNState input, uint joystickID, ControllerDeadZones deadZones)
         {
@@ -104,12 +117,23 @@ namespace GCNUSBFeeder
                 }
 
                 //fix missing buttons, if the count is off.
-                if (joystick.GetVJDButtonNumber(id) != 12) 
+                if (joystick.GetVJDButtonNumber(id) != 12 || FfbSetup(ref joystick, id) == false)
                 {
                     SystemHelper.CreateJoystick(id);
                 }
             }
             return checker;
+        }
+
+        private static bool FfbSetup(ref vJoy joystick, uint id)
+        {
+            foreach(FFB_T foo in Enum.GetValues(typeof(FFB_T)))
+            {
+                bool res = joystick.IsDeviceFfbEffect(id, (uint)foo);
+                if (res == false)
+                    return false;
+            }
+            return true;
         }
     }
 }
